@@ -1,10 +1,11 @@
 {
   "name": "FEC",
   "dependencies": {
-    "bootstrap": "^5.0.2",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "jest": "^27.0.6",
     "mongoose": "^5.13.3",
+    "nodemon": "^2.0.12",
     "puppeteer": "^10.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -14,7 +15,7 @@
   "scripts": {
     "start": "webpack --mode development --config webpack.config.js -w",
     "build": "webpack --mode production",
-    "start:dev": "webpack serve"
+    "server-dev": "npx nodemon server/server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
