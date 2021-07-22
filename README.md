@@ -1,12 +1,16 @@
 # FEC
 Front End Capstone project.
 
-## OVERVIEW
+## Overview
 
-run yarn
-- npm install -g yarn
-- yarn install
+## Table of Contents
 
-npm install
+## Description
 
-use yarn to run scripts
+## Installation
+1. create config.js file based on config.example.js template
+2. npm install
+3. npm start
+4. npm run server-dev
+
+## Usage
