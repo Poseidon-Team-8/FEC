@@ -8,19 +8,19 @@ const auth = require('../config.js');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 
-app.get('/asdf', (req, res) => {
-  axios({
-    method: 'get',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products',
-    headers: {
-      // 'User-Agent': 'request',
-      'Authorization': `${auth.TOKEN}`
-    }
-  })
-    .then(response => {
-      res.send(response.data)
-    })
-})
+// Get Request Template
+// app.get('/clientEndpoint', (req, res) => {
+//   axios({
+//     method: 'get',
+//     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products',
+//     headers: {
+//       'Authorization': `${auth.TOKEN}`
+//     }
+//   })
+//     .then(response => {
+//       res.send(response.data)
+//     })
+// })
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
