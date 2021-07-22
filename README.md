@@ -1,6 +1,8 @@
 # FEC
 Front End Capstone project.
 
+## OVERVIEW
+
 run yarn
 - npm install -g yarn
 - yarn install
