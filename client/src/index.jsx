@@ -14,16 +14,16 @@ class App extends React.Component {
     }
   }
 
-  // getProducts() {
-  //   axios.get('/asdf')
-  //     .then( (res) => {
-  //       console.log(res.data);
-  //     });
-  // }
+  getProducts() {
+    axios.get('/clientEndpoint')
+      .then( (res) => {
+        console.log(res.data);
+      });
+  }
 
-  // componentDidMount() {
-  //   this.getProducts();
-  // }
+  componentDidMount() {
+    this.getProducts();
+  }
 
   render() {
     return (
