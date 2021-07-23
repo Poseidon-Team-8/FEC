@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ProductInfo from './productInfo.jsx'
 import StyleSelector from './styleSelector.jsx'
+import Cart from './cart.jsx'
 
 class Overview extends React.Component {
 
@@ -15,7 +16,8 @@ class Overview extends React.Component {
         price: 'Loading',
         overview: 'Loading'
       },
-      styles: []
+      styles: [],
+      currentStyle: -1
     }
   }
 
@@ -59,7 +61,10 @@ class Overview extends React.Component {
     return (
       <div>
         <h2>Overview</h2>
-        <ProductInfo styles={this.state.styles} info={this.state.productInfo} />
+        <ProductInfo info={this.state.productInfo}>
+          <StyleSelector styles={this.state.styles} currentStyle={this.state.currentStyle}/>
+          <Cart />
+        </ProductInfo>
       </div>
     )
   }
