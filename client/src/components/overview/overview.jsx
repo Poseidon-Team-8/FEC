@@ -70,7 +70,10 @@ class Overview extends React.Component {
             styles={this.state.styles}
             currentStyle={this.state.currentStyle}
             updateStyle={(index) => this.updateStyle(index)}/>
-          <Cart />
+          <Cart
+          styles={this.state.styles}
+          currentStyle={this.state.currentStyle}
+          />
         </ProductInfo>
       </div>
     )
