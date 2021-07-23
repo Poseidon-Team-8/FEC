@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-// import StyleSelector from './styleSelector.jsx';
 
 function ProductInfo(props) {
   return (

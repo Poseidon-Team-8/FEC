@@ -52,6 +52,10 @@ class Overview extends React.Component {
       })
   }
 
+  updateStyle = (index) => {
+    this.setState({currentStyle: index})
+  }
+
   componentDidMount() {
     this.getProducts();
     this.getStyles();
@@ -62,7 +66,10 @@ class Overview extends React.Component {
       <div>
         <h2>Overview</h2>
         <ProductInfo info={this.state.productInfo}>
-          <StyleSelector styles={this.state.styles} currentStyle={this.state.currentStyle}/>
+          <StyleSelector
+            styles={this.state.styles}
+            currentStyle={this.state.currentStyle}
+            updateStyle={(index) => this.updateStyle(index)}/>
           <Cart />
         </ProductInfo>
       </div>
