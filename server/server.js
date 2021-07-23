@@ -22,6 +22,33 @@ app.get('/clientEndpoint', (req, res) => {
     })
 })
 
+// get product info
+app.get('/productInfo', (req, res) => {
+  axios({
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.headers.id}`,
+    headers: {
+      'Authorization': `${auth.TOKEN}`
+    }
+  })
+    .then(response => {
+      res.send(response.data)
+    })
+})
+
+// get styles
+app.get('/styles', (req, res) => {
+  axios({
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${req.headers.id}/styles`,
+    headers: {
+      'Authorization': `${auth.TOKEN}`
+    }
+  })
+    .then(response => {
+      res.send(response.data.results)
+    })
+})
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
