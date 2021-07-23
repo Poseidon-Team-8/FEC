@@ -22,6 +22,18 @@ app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 //     })
 // })
 
+app.get('/productAnswers', (req, res) => {
+  axios.get(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?question_id=${req.headers.id}/answers`,{
+    headers: {
+      Authorization: `${auth.TOKEN}`
+    }
+  })
+  .then( response => {
+    res.send(response.data)
+  })
+})
+
 app.get('/productQuestions', (req, res) => {
   axios({
     method: 'get',

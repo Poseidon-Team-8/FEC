@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 const Answers = ({id}) => {
 
-  getAnswers = () => {
+ const getAnswers = () => {
     axios.get('/productAnswers', {
       headers: `${id}`
     })
