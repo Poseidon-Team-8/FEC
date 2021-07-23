@@ -12,8 +12,6 @@ class StyleSelector extends React.Component {
     }
   }
 
-  // receiving this.props.styles, so map it out and render images
-
   render() {
     return (
       <div>
