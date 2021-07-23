@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Display from './display.jsx';
-const auth = require('../../../../config.js');
+import IndividualQ from './individualQ.jsx';
 
 class Questions extends React.Component {
   constructor(props) {
@@ -36,7 +35,7 @@ class Questions extends React.Component {
         Info below
         <div>
           {this.state.productQuestion.map( question =>
-            <Display question={question} key={question.question_id}
+            <IndividualQ question={question} key={question.question_id}
             />
           )}
         </div>
