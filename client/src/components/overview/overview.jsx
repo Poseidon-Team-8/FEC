@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ProductInfo from './productInfo.jsx'
+import StyleSelector from './styleSelector.jsx'
 
 class Overview extends React.Component {
 
@@ -13,7 +14,8 @@ class Overview extends React.Component {
         category: 'Loading',
         price: 'Loading',
         overview: 'Loading'
-      }
+      },
+      styles: []
     }
   }
 
@@ -23,7 +25,7 @@ class Overview extends React.Component {
         id: this.props.productId
       }
     })
-      .then( (res) => {
+      .then(res => {
         this.setState({
           productInfo: {
             title: res.data.name,
@@ -35,15 +37,29 @@ class Overview extends React.Component {
       });
   }
 
+  getStyles() {
+    axios.get('/styles', {
+      headers: {
+        id: this.props.productId
+      }
+    })
+      .then(res => {
+        this.setState({
+          styles: res.data
+        })
+      })
+  }
+
   componentDidMount() {
     this.getProducts();
+    this.getStyles();
   }
 
   render() {
     return (
       <div>
         <h2>Overview</h2>
-        <ProductInfo info={this.state.productInfo} />
+        <ProductInfo styles={this.state.styles} info={this.state.productInfo} />
       </div>
     )
   }
