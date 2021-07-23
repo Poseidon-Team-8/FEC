@@ -24,12 +24,13 @@ app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 
 app.get('/productAnswers', (req, res) => {
   axios.get(
-    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?question_id=${req.headers.id}/answers`,{
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,{
     headers: {
       Authorization: `${auth.TOKEN}`
     }
   })
   .then( response => {
+    console.log('server', response.data)
     res.send(response.data)
   })
 })
