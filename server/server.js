@@ -49,6 +49,37 @@ app.get('/styles', (req, res) => {
       res.send(response.data.results)
     })
 })
+
+
+app.get('/reviews', (req, res) => {
+  let options = {
+    headers: {
+      'Authorization': `${auth.TOKEN}`
+    }
+  }
+
+  if (req.headers.reqtype === 'general') {
+    options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${req.headers.id}`;
+  } else {
+    options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${req.headers.id}`;
+  }
+  axios(options)
+    .then( (response) => {
+      res.send(response.data);
+    })
+    .catch( (err) => {
+      res.send(err);
+    })
+})
+
+
+
+
+
+
+
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
