@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Answers from './answers.jsx'
 
 const IndividualQ = ({question}) => {
-  console.log(question.question_id)
   return (
     <div>
       <p>Q: {question.question_body}</p>

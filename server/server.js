@@ -30,7 +30,6 @@ app.get('/productAnswers', (req, res) => {
     }
   })
   .then( response => {
-    console.log('server', response.data)
     res.send(response.data)
   })
 })
