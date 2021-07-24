@@ -17,7 +17,8 @@ class Overview extends React.Component {
         overview: 'Loading'
       },
       styles: [],
-      currentStyle: -1
+      currentStyle: -1,
+      selectedSize: null,
     }
   }
 

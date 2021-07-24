@@ -22,7 +22,7 @@ function Cart(props) {
             {Object.keys(props.styles[props.currentStyle].skus).map(key => {
               let stock = props.styles[props.currentStyle].skus[key];
               if (stock.quantity > 0) {
-                return <option>{stock.size}</option>
+                return <option>{stock.size}</option> // add onClick to update selectedSize
               }
             })}
         </select>
