@@ -18,7 +18,8 @@ class Overview extends React.Component {
       },
       styles: [],
       currentStyle: -1,
-      selectedSize: null,
+      sku: -1,
+      quantity: -1
     }
   }
 
@@ -53,8 +54,16 @@ class Overview extends React.Component {
       })
   }
 
+  updateQuantity = (quantity) => {
+    this.setState({quantity})
+  }
+
   updateStyle = (index) => {
     this.setState({currentStyle: index})
+  }
+
+  updateSKU = (key) => {
+    this.setState({sku: key})
   }
 
   componentDidMount() {
@@ -74,6 +83,9 @@ class Overview extends React.Component {
           <Cart
           styles={this.state.styles}
           currentStyle={this.state.currentStyle}
+          updateSKU={(key) => this.updateSKU(key)}
+          currentSKU={this.state.sku}
+          updateQuantity={(quantity) => this.updateQuantity(quantity)}
           />
         </ProductInfo>
       </div>
