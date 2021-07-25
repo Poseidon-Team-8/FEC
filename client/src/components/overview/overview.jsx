@@ -108,6 +108,7 @@ class Overview extends React.Component {
           updateQuantity={(quantity) => this.updateQuantity(quantity)}
           />
         </ProductInfo>
+        --- END OF OVERVIEW ---
       </div>
     )
   }

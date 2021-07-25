@@ -7,17 +7,14 @@ function StyleSelector(props) {
     return (
       <div>
         <p>Style Selector > {props.styles.length === 0 ? 'Select Style' : props.styles[props.currentStyle].name}</p>
-        <ul>
           {props.styles.map((item, index) =>
-            <li>
-              <img
-                key={index}
-                index={index}
-                src={item.photos[0].thumbnail_url}
-                onClick={() => props.updateStyle(index)}>
-              </img>
-            </li>)}
-        </ul>
+            <img
+              key={index}
+              index={index}
+              src={item.photos[0].thumbnail_url}
+              onClick={() => props.updateStyle(index)}>
+            </img>
+          )}
       </div>
   )} else {
     return (
