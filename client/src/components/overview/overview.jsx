@@ -32,6 +32,9 @@ class Overview extends React.Component {
         .then(res => {
           console.log(res.data)
         })
+        .catch(err => {
+          console.log('ERROR', err);
+        })
     }
   }
 
@@ -71,7 +74,11 @@ class Overview extends React.Component {
   }
 
   updateStyle = (index) => {
-    this.setState({currentStyle: index})
+    this.setState({
+      currentStyle: index,
+      sku: -1,
+      quantity: -1
+    })
   }
 
   updateSKU = (key) => {

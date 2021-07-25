@@ -10,6 +10,9 @@ import axios from 'axios';
 function Cart(props) {
   function createQuantity(quantity) {
     let total = [];
+    if (quantity > 15) {
+      let quantity = 15
+    }
     for (var i = 1; i <= quantity; i++) {
       total.push(i);
     }
