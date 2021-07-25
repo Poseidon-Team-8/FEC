@@ -62,6 +62,21 @@ app.get('/styles', (req, res) => {
       res.send(response.data.results)
     })
 })
+
+app.post('/updateCart', (req, res) => {
+  let sku = parseInt(req.body.sku)
+  axios({
+    method: 'post',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/cart/?sku_id=${sku}`,
+    headers: {
+      'Authorization': `${auth.TOKEN}`
+    }
+  })
+    .then(response => {
+      res.send(response.data)
+    })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

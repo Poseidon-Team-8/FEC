@@ -23,6 +23,18 @@ class Overview extends React.Component {
     }
   }
 
+  updateCart = () => {
+    let total = this.state.quantity;
+    for (var i = 0; i < total; i++) {
+      axios.post('/updateCart', {
+        sku: this.state.sku
+      })
+        .then(res => {
+          console.log(res.data)
+        })
+    }
+  }
+
   getProducts() {
     axios.get('/productInfo', {
       headers: {
@@ -82,6 +94,7 @@ class Overview extends React.Component {
             updateStyle={(index) => this.updateStyle(index)}/>
           <Cart
           styles={this.state.styles}
+          updateCart={() => this.updateCart()}
           currentStyle={this.state.currentStyle}
           updateSKU={(key) => this.updateSKU(key)}
           currentSKU={this.state.sku}

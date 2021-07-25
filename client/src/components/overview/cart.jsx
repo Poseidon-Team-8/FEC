@@ -42,10 +42,9 @@ function Cart(props) {
           createQuantity(props.styles[props.currentStyle].skus[props.currentSKU].quantity).map(num => <option value={num}>{num}</option>)}
         </select>
       </div>
+        <button onClick={() => props.updateCart()}>Add to Bag</button>
       --- cart end ---
-      <button>should make API call to submit sku, quantity number of times</button>
-
-    </div>
+      </div>
     )
   }
 }
