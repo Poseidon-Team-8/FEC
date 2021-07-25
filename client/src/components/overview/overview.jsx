@@ -17,10 +17,57 @@ class Overview extends React.Component {
         overview: 'Loading'
       },
       styles: [],
-      currentStyle: -1,
-      sku: -1,
-      quantity: -1
+      currentStyle: 0,
+      sku: 0,
+      quantity: 0
     }
+  }
+
+  getProducts() {
+    axios.get('/productInfo', {
+      headers: {
+        id: this.props.productId
+      }
+    })
+    .then(res => {
+      this.setState({
+        productInfo: {
+          title: res.data.name,
+          category: res.data.category,
+          price: res.data.default_price,
+          overview: res.data.description
+        }
+      })
+    });
+  }
+
+  getStyles() {
+    axios.get('/styles', {
+      headers: {
+        id: this.props.productId
+      }
+    })
+    .then(res => {
+      this.setState({
+        styles: res.data
+      })
+    })
+  }
+
+  updateStyle = (index) => {
+    this.setState({
+      currentStyle: index,
+      sku: 0,
+      quantity: 0
+    })
+  }
+
+  updateSKU = (key) => {
+    this.setState({sku: key})
+  }
+
+  updateQuantity = (quantity) => {
+    this.setState({quantity})
   }
 
   updateCart = () => {
@@ -36,53 +83,6 @@ class Overview extends React.Component {
           console.log('ERROR', err);
         })
     }
-  }
-
-  getProducts() {
-    axios.get('/productInfo', {
-      headers: {
-        id: this.props.productId
-      }
-    })
-      .then(res => {
-        this.setState({
-          productInfo: {
-            title: res.data.name,
-            category: res.data.category,
-            price: res.data.default_price,
-            overview: res.data.description
-          }
-        })
-      });
-  }
-
-  getStyles() {
-    axios.get('/styles', {
-      headers: {
-        id: this.props.productId
-      }
-    })
-      .then(res => {
-        this.setState({
-          styles: res.data
-        })
-      })
-  }
-
-  updateQuantity = (quantity) => {
-    this.setState({quantity})
-  }
-
-  updateStyle = (index) => {
-    this.setState({
-      currentStyle: index,
-      sku: -1,
-      quantity: -1
-    })
-  }
-
-  updateSKU = (key) => {
-    this.setState({sku: key})
   }
 
   componentDidMount() {
@@ -104,7 +104,7 @@ class Overview extends React.Component {
           updateCart={() => this.updateCart()}
           currentStyle={this.state.currentStyle}
           updateSKU={(key) => this.updateSKU(key)}
-          currentSKU={this.state.sku}
+          sku={this.state.sku}
           updateQuantity={(quantity) => this.updateQuantity(quantity)}
           />
         </ProductInfo>
