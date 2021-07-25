@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import ProductInfo from './productInfo.jsx'
-import StyleSelector from './styleSelector.jsx'
-import Cart from './cart.jsx'
+import ProductInfo from './productInfo.jsx';
+import StyleSelector from './styleSelector.jsx';
+import Cart from './cart.jsx';
+import Default from './imageDefault.jsx';
 
 class Overview extends React.Component {
 
@@ -95,6 +96,9 @@ class Overview extends React.Component {
       <div>
         <h2>Overview</h2>
         <ProductInfo info={this.state.productInfo}>
+          <Default
+            styles={this.state.styles}
+            currentStyle={this.state.currentStyle}/>
           <StyleSelector
             styles={this.state.styles}
             currentStyle={this.state.currentStyle}
