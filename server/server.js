@@ -8,20 +8,6 @@ const auth = require('../config.js');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 
-//Get Request Template
-app.get('/clientEndpoint', (req, res) => {
-  axios({
-    method: 'get',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products',
-    headers: {
-      'Authorization': `${auth.TOKEN}`
-    }
-  })
-    .then(response => {
-      res.send(response.data)
-    })
-})
-
 app.get('/productQuestions', (req, res) => {
   axios({
     method: 'get',
@@ -63,7 +49,6 @@ app.get('/styles', (req, res) => {
     })
 })
 
-<<<<<<< HEAD
 
 app.get('/reviews', (req, res) => {
   let options = {
@@ -86,15 +71,6 @@ app.get('/reviews', (req, res) => {
     })
 })
 
-
-
-
-
-
-
-
-
-=======
 app.post('/updateCart', (req, res) => {
   let sku = parseInt(req.body.sku)
   axios({
@@ -116,7 +92,6 @@ app.post('/updateCart', (req, res) => {
     })
 })
 
->>>>>>> main
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
