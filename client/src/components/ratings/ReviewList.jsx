@@ -8,7 +8,6 @@ let ReviewList = ({ reviews }) => {
           return <ReviewTile review={ review }/>
         })}
     </div>
-
   )
 }
 
