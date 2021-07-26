@@ -20,9 +20,12 @@ class ReviewTile extends React.Component {
 
 
     return (
-      <div className="container">
+      <div className="review-tile-container">
+        <div className="tile-header">
+          <p>Star Rating</p>
+          <p>{ review.reviewer_name + ", " + postDate }</p>
+        </div>
         <div>
-          <p>{ review.reviewer_name + " " +  postDate }</p>
           <b>{ review.summary }</b>
           <p>{ review.body }</p>
           { review.recommend ? <p>I recommend this product</p> : null }

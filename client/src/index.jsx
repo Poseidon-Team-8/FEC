@@ -29,8 +29,6 @@ class App extends React.Component {
     return (
       <div>
         <h1>Working</h1>
-        <Overview productId={ this.state.productId} />
-        <Questions productId={ this.state.productId } />
         <Ratings productId={ this.state.productId} />
       </div>
     )
