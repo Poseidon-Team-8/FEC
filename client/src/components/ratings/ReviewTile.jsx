@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import StarRating from './StarRating.jsx';
 
 class ReviewTile extends React.Component {
   constructor({props}) {
@@ -22,7 +23,9 @@ class ReviewTile extends React.Component {
     return (
       <div className="review-tile-container">
         <div className="tile-header">
-          <p>Star Rating</p>
+          <div>
+            <StarRating rating={ review.rating } />
+          </div>
           <p>{ review.reviewer_name + ", " + postDate }</p>
         </div>
         <div>
