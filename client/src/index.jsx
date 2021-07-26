@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 
   // getProducts() {
-  //   axios.get('/asdf')
+  //   axios.get('/clientEndpoint')
   //     .then( (res) => {
   //       console.log(res.data);
   //     });
