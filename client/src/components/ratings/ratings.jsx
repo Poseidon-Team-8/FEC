@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 
 import ReviewList from './ReviewList.jsx';
+import RatingBreakdown from './RatingBreakdown.jsx';
+import ProductBreakdown from './ProductBreakdown.jsx';
 
 class Ratings extends React.Component {
   constructor(props) {
@@ -34,9 +36,14 @@ class Ratings extends React.Component {
 
   render() {
     return (
-      <div>
-
-        <ReviewList reviews={ this.state.reviews }/>
+      <div className="widget-container">
+        <div className="left-col-container">
+          <RatingBreakdown />
+          <ProductBreakdown />
+        </div>
+        <div className="right-col-container">
+          <ReviewList reviews={ this.state.reviews }/>
+        </div>
       </div>
     )
   }

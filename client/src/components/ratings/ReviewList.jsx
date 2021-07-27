@@ -2,17 +2,12 @@ import React, { useState, useContext } from 'react';
 import ReviewTile from './ReviewTile.jsx';
 
 let ReviewList = ({ reviews }) => {
-
-  console.log('reviews:', reviews)
   return (
     <div>
-      {
-        reviews.map( review => {
+      {reviews.map( review => {
           return <ReviewTile review={ review }/>
-        })
-      }
+        })}
     </div>
-
   )
 }
 
