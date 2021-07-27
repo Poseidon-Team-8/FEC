@@ -8,26 +8,20 @@ function Default(props) {
   } else {
     let photos = props.styles[props.currentStyle].photos;
     return (
-      <div>
-        {Thumbnails(photos).map((item, index) =>
-          <img
-          className="thumbnail"
-          src={item}
-          key={index}
-          id={index}
-          ></img>)}
-          <img className="main" src={photos[0].url}></img>
+      <div className="side-images">
+        <div className="side-images-child">
+          {photos.map((photo, index) =>
+            <img
+              className="thumbnail"
+              src={photo.url}
+              key={index}
+              id={index}
+            ></img>)}
+        </div>
+          <img className="main side-images-child" src={photos[0].url}></img>
       </div>
     )
   }
-}
-
-function Thumbnails(photos) {
-  let arr = []
-  for (let photo of photos) {
-    arr.push(photo.url)
-  }
-  return arr
 }
 
 export default Default;

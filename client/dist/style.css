@@ -5,8 +5,19 @@
 }
 
 .thumbnail {
+  display: block;
   height: 80px;
   width: 80px;
+}
+
+.side-images {
+  display: flex;
+  /* grid-template-columns: 1fr 1fr; */
+}
+
+.side-images-child {
+  flex: .05;
+  /* border: 2px solid yellow; */
 }
 
 .style {
