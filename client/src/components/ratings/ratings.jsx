@@ -16,7 +16,7 @@ class Ratings extends React.Component {
   getReviews() {
     axios.get('/reviews', {
       headers: {
-        id: this.props.productId,
+        id: 17069,
         reqtype: 'general'
       }
     })

@@ -1,41 +1,33 @@
 import React, { useState, useContext } from 'react';
 import StarRating from './StarRating.jsx';
+import Helpful from './Helpful.jsx';
 
-class ReviewTile extends React.Component {
-  constructor({props}) {
-    super(props);
-    this.state = {
-
-    }
+const ReviewTile = ({ review }) => {
+  const { review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photos } = review;
+  const formatedDate = new Date(date);
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   }
+  const postDate = formatedDate.toLocaleDateString('en-US', options);
 
-  render() {
-    let review = this.props.review;
-    let date = new Date(review.date);
-    let options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }
-    let postDate = date.toLocaleDateString('en-US', options);
-
-
-    return (
-      <div className="review-tile-container">
-        <div className="tile-header">
-          <div>
-            <StarRating rating={ review.rating } />
-          </div>
-          <p>{ review.reviewer_name + ", " + postDate }</p>
-        </div>
+  return (
+    <div className="review-tile-container">
+      <div className="tile-header">
         <div>
-          <b>{ review.summary }</b>
-          <p>{ review.body }</p>
-          { review.recommend ? <p>I recommend this product</p> : null }
+          <StarRating rating={ rating } />
         </div>
+        <p>{ reviewer_name + ", " + postDate }</p>
       </div>
-    )
-  }
+      <div>
+        <b>{ summary }</b>
+        <p>{ body }</p>
+        { recommend ? <p>I recommend this product</p> : null }
+        <Helpful yesCount={ helpfulness } reviewId={ review_id }/>
+      </div>
+    </div>
+  )
 }
 
 export default ReviewTile;
