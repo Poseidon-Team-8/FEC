@@ -9,6 +9,7 @@ function StyleSelector(props) {
         <p>Style Selector > {props.styles.length === 0 ? 'Select Style' : props.styles[props.currentStyle].name}</p>
           {props.styles.map((item, index) =>
             <img
+              className="style"
               key={index}
               index={index}
               src={item.photos[0].thumbnail_url}

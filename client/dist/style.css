@@ -1,3 +1,19 @@
+/* Overview */
+.main {
+  height: 500px;
+  width: 500px;
+}
+
+.thumbnail {
+  height: 80px;
+  width: 80px;
+}
+
+.style {
+  height: 100px;
+  width: 100px
+}
+
 /*
 ================================================
                   Review Tile

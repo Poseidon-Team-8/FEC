@@ -8,10 +8,26 @@ function Default(props) {
   } else {
     let photos = props.styles[props.currentStyle].photos;
     return (
-      // iterate through length of photos indices
-      <img src={photos[0].url}></img>
+      <div>
+        {Thumbnails(photos).map((item, index) =>
+          <img
+          className="thumbnail"
+          src={item}
+          key={index}
+          id={index}
+          ></img>)}
+          <img className="main" src={photos[0].url}></img>
+      </div>
     )
   }
+}
+
+function Thumbnails(photos) {
+  let arr = []
+  for (let photo of photos) {
+    arr.push(photo.url)
+  }
+  return arr
 }
 
 export default Default;
