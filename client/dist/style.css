@@ -1,7 +1,7 @@
 /* Overview */
 .main {
-  height: 500px;
-  width: 500px;
+  height: 560px;
+  width: auto;
 }
 
 .thumbnail {
@@ -12,17 +12,53 @@
 
 .side-images {
   display: flex;
-  overflow: hidden;
-  height: 500px;
+  height: 560px;
 }
 
 .side-images-child {
-  flex: .06;
+  flex: .08;
+}
+
+.side-images-child:first-child {
+  width: 100%;
+  height: auto;
+  overflow: scroll;
+}
+
+.style-selector {
+  display: inline;
+  position: relative;
 }
 
 .style {
+  display: inline;
   height: 100px;
-  width: 100px
+  width: 100px;
+  margin: 5px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/*.style:first-child {
+  position: relative;
+  top: 0;
+} */
+
+.overlay img {
+  position: absolute;
+  /* float: left; */
+}
+
+.selected {
+  /* background-color: green; */
+  /* display: block;
+  overflow: auto; */
+  /* url('https://static.thenounproject.com/png/33609-200.png'); */
+  /* background-size: contain; */
+  /* position: relative;
+  display: inline; */
+  opacity: 0.1;
+  /* z-index: 1; */
 }
 
 /*
