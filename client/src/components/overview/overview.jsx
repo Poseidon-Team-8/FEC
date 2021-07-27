@@ -121,7 +121,6 @@ class Overview extends React.Component {
   render() {
     return (
       <div>
-        <h2>Overview</h2>
         <ProductInfo info={this.state.productInfo}>
           <Default
             image={this.state.image}
@@ -141,7 +140,6 @@ class Overview extends React.Component {
           updateQuantity={(quantity) => this.updateQuantity(quantity)}
           />
         </ProductInfo>
-        --- END OF OVERVIEW ---
       </div>
     )
   }

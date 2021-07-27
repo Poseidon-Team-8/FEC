@@ -6,7 +6,7 @@ function StyleSelector(props) {
   if (props.styles.length > 0) {
     return (
       <div>
-        <p>Style Selector > {props.styles.length === 0 ? 'Select Style' : props.styles[props.currentStyle].name}</p>
+        <p><b>Style</b> > {props.styles.length === 0 ? 'Select Style' : props.styles[props.currentStyle].name}</p>
           {props.styles.map((item, index) =>
             <img
               className="style"
