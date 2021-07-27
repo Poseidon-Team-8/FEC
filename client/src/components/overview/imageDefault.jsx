@@ -15,10 +15,11 @@ function Default(props) {
               className="thumbnail"
               src={photo.url}
               key={index}
-              id={index}
+              onClick={() =>
+                props.updateImage(props.currentStyle, index)}
             ></img>)}
         </div>
-          <img className="main side-images-child" src={photos[0].url}></img>
+          <img className="main side-images-child" src={photos[props.image[props.currentStyle]].url}></img>
       </div>
     )
   }
