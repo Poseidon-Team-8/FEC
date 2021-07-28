@@ -122,3 +122,11 @@
 .helpful-count:link {
   color: black;
 }
+
+.review-photo {
+  display: inline;
+  height: 75px;
+  width: 75px;
+  margin: 5px;
+  overflow: hidden;
+}

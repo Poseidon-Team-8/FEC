@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import StarRating from './StarRating.jsx';
 import Helpful from './Helpful.jsx';
+import ReviewBody from './ReviewBody.jsx';
+import ReviewPhotos from './ReviewPhotos.jsx';
 
 const ReviewTile = ({ review }) => {
   const { review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photos } = review;
@@ -22,7 +24,8 @@ const ReviewTile = ({ review }) => {
       </div>
       <div>
         <b>{ summary }</b>
-        <p>{ body }</p>
+        <ReviewBody body={ body } />
+        <ReviewPhotos photos={ photos } />
         { recommend ? <p>I recommend this product</p> : null }
         <Helpful yesCount={ helpfulness } reviewId={ review_id }/>
       </div>
