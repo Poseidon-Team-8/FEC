@@ -24,8 +24,8 @@
 
 ## Build out 'More Answered Questions'
 
-- [] refactor map function
- - [] map over the first 2 questions in questions array using slice by default
- - [] set the second parameter of slice to a variable with initial state of 2
- - [] add setQuestion function which increases questionAmount in state by 2
- - [] pass setQuestion to onClick in 'More Answered Questions' button
+- [x] refactor map function
+ - [x] map over the first 2 questions in questions array using slice by default
+ - [x] set the second parameter of slice to a variable with initial state of 2
+ - [x] add setQuestion function which increases questionAmount in state by 2
+ - [x] pass setQuestion to onClick in 'More Answered Questions' button
