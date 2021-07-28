@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Display from './display.jsx';
-const auth = require('../../../../config.js');
+import IndividualQ from './individualQ.jsx';
 
 class Questions extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {productQuestion: []};
+    this.state = {
+      productQuestion: [],
+      questionAmount: 2
+    };
     this.getQuestions();
   }
 
-  //write axios get request that queries database for
+
+
   getQuestions = () => {
     const productId = this.props.productId;
     axios({
@@ -26,21 +29,30 @@ class Questions extends React.Component {
     })
   }
 
+  setQuestions = () => {
+    //increase state of questionAmount by 2 on button click
+    this.setState({questionAmount: this.state.questionAmount + 2});
+  }
+
   componentDidMount() {
     this.getQuestions();
   }
 
   render() {
+    let buttonDisplay =
+    this.state.productQuestion.length > 2 ?
+    <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button> : null;
+
     return (
+
       <div>
-        Info below
-        <div>
-          {this.state.productQuestion.map( question =>
-            <Display question={question} key={question.question_id}
-            />
-          )}
-        </div>
+        {this.state.productQuestion.slice(0, this.state.questionAmount).map( question =>
+          <IndividualQ question={question} key={question.question_id}
+          />
+        )}
+        {buttonDisplay}
       </div>
+
     )
   }
 }

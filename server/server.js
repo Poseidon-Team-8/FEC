@@ -8,6 +8,32 @@ const auth = require('../config.js');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 
+// Get Request Template
+// app.get('/clientEndpoint', (req, res) => {
+//   axios({
+//     method: 'get',
+//     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products',
+//     headers: {
+//       'Authorization': `${auth.TOKEN}`
+//     }
+//   })
+//     .then(response => {
+//       res.send(response.data)
+//     })
+// })
+
+app.get('/productAnswers', (req, res) => {
+  axios.get(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,{
+    headers: {
+      Authorization: `${auth.TOKEN}`
+    }
+  })
+  .then( response => {
+    res.send(response.data)
+  })
+})
+
 app.get('/productQuestions', (req, res) => {
   axios({
     method: 'get',
@@ -18,6 +44,9 @@ app.get('/productQuestions', (req, res) => {
   })
   .then(response => {
     res.send(response.data);
+  })
+  .catch(err => {
+    res.send(err);
   })
 })
 
