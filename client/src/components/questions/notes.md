@@ -12,6 +12,12 @@
 - [x] add helpful section to question
 - [x] add add answer button to question
 - [] add who answer is by to answer section
--[] add data of answer to answer section
-- [] add helpful section to a
-- [] add report button to answer section
+-[x] add data of answer to answer section
+- [x] add helpful section to a
+- [x] add report button to answer section
+
+## Build out 'Load more Answers'
+
+- [x] refactor map function
+  - [x] slice the first 2 answers from the answers array
+- [x] add useState to manage state of how many answers to display

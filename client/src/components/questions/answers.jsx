@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import moment from 'moment';
+var moment = require('moment');
 
 const Answers = ({id}) => {
 
-  const [ answers, setAnswer] = useState([])
+  const [ answers, setAnswer] = useState([]);
+
+  const [answerAmount, setAnswerAmount] = useState(2)
 
   const getAnswers = () => {
     axios({
@@ -27,12 +29,13 @@ const Answers = ({id}) => {
 
   return (
     <div>
-      {answers.map( answer =>
-      <div>
-        <p key={answer.answer_id}>A: {answer.body}</p>
-        <p>by {answer.answerer_name} {answer.date} | Helpful? Yes ({answer.helpfulness})</p>
+      {answers.slice(0, answerAmount).map( (answer, key)=>
+      <div key={answer.answer_id}>
+        <p >A: {answer.body}</p>
+        <p>by {answer.answerer_name} {moment(answer.date).format('MMM Do YY')} | Helpful? Yes ({answer.helpfulness})</p>
       </div>
       )}
+      <button onClick={() => setAnswerAmount(answerAmount +2)}>LOAD MORE ANSWERS</button>
     </div>
   )
 }
