@@ -36,6 +36,7 @@ const ReviewTile = ({ review }) => {
         <ReviewPhotos photos={ photos } toggleModal={ toggleModal }/>
         <PhotoModal displayModal={ displayModal } setDisplayModal={ setDisplayModal } imgSrc={ modalImgSrc }/>
         { recommend ? <p>I recommend this product</p> : null }
+        { response ? <div className="seller-response"><b>Response From Seller:</b> <p>{response}</p></div> : null}
         <Helpful yesCount={ helpfulness } reviewId={ review_id }/>
       </div>
     </div>

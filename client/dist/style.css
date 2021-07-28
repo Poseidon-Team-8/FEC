@@ -161,7 +161,7 @@
   box-shadow: 0 0 50px black;
   background-color: #333;
   cursor: pointer;
-  z-index: 999;
+  z-index: 21;
   display: inline-flex;
 }
 
@@ -169,4 +169,14 @@
   object-fit: contain;
   max-height: inherit;
   max-width: inherit;
+}
+
+/*
+================================================
+                 Review Body
+================================================
+*/
+
+.seller-response {
+  background-color: lightgray;
 }
