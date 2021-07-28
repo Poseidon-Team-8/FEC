@@ -87,7 +87,6 @@ app.put('/review-helpful', (req, res) => {
 
   axios(options)
     .then( response => {
-      console.log('put worked!')
       res.send(response.data);
     })
     .catch( err => {
