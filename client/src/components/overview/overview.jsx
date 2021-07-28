@@ -91,7 +91,10 @@ class Overview extends React.Component {
   }
 
   updateSKU = (key) => {
-    this.setState({sku: key})
+    this.setState({
+      sku: key,
+      quantity: 1
+    })
   }
 
   updateQuantity = (quantity) => {
@@ -100,16 +103,22 @@ class Overview extends React.Component {
 
   updateCart = () => {
     let total = this.state.quantity;
+    let flag = true;
     for (var i = 0; i < total; i++) {
       axios.post('/updateCart', {
         sku: this.state.sku
       })
         .then(res => {
-          console.log(res.data)
+          console.log('Successfully added item')
         })
         .catch(err => {
+          flag = false;
+          alert('Error updating cart, please try again')
           console.log('ERROR', err);
         })
+    }
+    if (flag) {
+      alert(`${this.state.quantity} ${this.state.styles[this.state.currentStyle].name} ${this.state.productInfo.title} added to cart`);
     }
   }
 
