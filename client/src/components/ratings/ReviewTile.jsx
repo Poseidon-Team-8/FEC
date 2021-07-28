@@ -25,7 +25,6 @@ const ReviewTile = ({ review }) => {
         <b>{ summary }</b>
         <p>{ body }</p>
         { recommend ? <p>I recommend this product</p> : null }
-        { response ? <Response response={ response } /> : null}
         <Helpful yesCount={ helpfulness } reviewId={ review_id }/>
       </div>
     </div>
