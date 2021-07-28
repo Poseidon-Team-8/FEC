@@ -70,9 +70,10 @@
   margin: 10px;
 }
 
+
 /*
 ================================================
-                  Review Tile
+Ratings & Reviews Widget
 ================================================
 */
 
@@ -98,6 +99,13 @@
   border: 3px solid black;
 }
 
+/*
+================================================
+                Review Tile
+================================================
+*/
+
+
 .review-tile-container {
   display: flex;
   flex-direction: column;
@@ -121,4 +129,8 @@
 
 .helpful-count:link {
   color: black;
+}
+
+.response-container {
+  background-color: lightgray;
 }
