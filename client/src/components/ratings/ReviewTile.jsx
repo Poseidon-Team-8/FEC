@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import StarRating from './StarRating.jsx';
 import Helpful from './Helpful.jsx';
 import ReviewBody from './ReviewBody.jsx';
 import ReviewPhotos from './ReviewPhotos.jsx';
+import PhotoModal from './PhotoModal.jsx';
 
 const ReviewTile = ({ review }) => {
   const { review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photos } = review;
@@ -13,6 +14,13 @@ const ReviewTile = ({ review }) => {
     day: 'numeric'
   }
   const postDate = formatedDate.toLocaleDateString('en-US', options);
+  const [displayModal, setDisplayModal] = useState(false);
+  const  [modalImgSrc, setModalImgSrc] = useState(null);
+
+  const toggleModal = (e) => {
+    setModalImgSrc(e.target.currentSrc)
+    setDisplayModal(!displayModal);
+  }
 
   return (
     <div className="review-tile-container">
@@ -25,7 +33,8 @@ const ReviewTile = ({ review }) => {
       <div>
         <b>{ summary }</b>
         <ReviewBody body={ body } />
-        <ReviewPhotos photos={ photos } />
+        <ReviewPhotos photos={ photos } toggleModal={ toggleModal }/>
+        <PhotoModal displayModal={ displayModal } setDisplayModal={ setDisplayModal } imgSrc={ modalImgSrc }/>
         { recommend ? <p>I recommend this product</p> : null }
         <Helpful yesCount={ helpfulness } reviewId={ review_id }/>
       </div>

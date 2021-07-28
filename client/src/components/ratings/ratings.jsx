@@ -36,15 +36,17 @@ class Ratings extends React.Component {
 
   render() {
     return (
-      <div className="widget-container">
-        <div className="left-col-container">
-          <RatingBreakdown />
-          <ProductBreakdown />
+      <>
+        <div className="widget-container">
+          <div className="left-col-container">
+            <RatingBreakdown />
+            <ProductBreakdown />
+          </div>
+          <div className="right-col-container">
+            <ReviewList reviews={ this.state.reviews }/>
+          </div>
         </div>
-        <div className="right-col-container">
-          <ReviewList reviews={ this.state.reviews }/>
-        </div>
-      </div>
+      </>
     )
   }
 }

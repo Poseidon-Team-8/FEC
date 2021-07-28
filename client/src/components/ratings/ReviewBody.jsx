@@ -1,11 +1,8 @@
 import React, { useState, useContext } from 'react';
 
-const ReviewBody = () => {
+const ReviewBody = ({ body }) => {
   return (
-    <div>
-
-    </div>
-
+    <p>{ body }</p>
   );
 }
 
