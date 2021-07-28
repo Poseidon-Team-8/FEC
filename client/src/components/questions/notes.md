@@ -16,8 +16,16 @@
 - [x] add helpful section to a
 - [x] add report button to answer section
 
-## Build out 'Load more Answers'
+## Build out 'Load More Answers'
 
 - [x] refactor map function
   - [x] slice the first 2 answers from the answers array
 - [x] add useState to manage state of how many answers to display
+
+## Build out 'More Answered Questions'
+
+- [] refactor map function
+ - [] map over the first 2 questions in questions array using slice by default
+ - [] set the second parameter of slice to a variable with initial state of 2
+ - [] add setQuestion function which increases questionAmount in state by 2
+ - [] pass setQuestion to onClick in 'More Answered Questions' button
