@@ -15,6 +15,7 @@ const Answers = ({id}) => {
       }
     })
     .then( response => {
+      console.log(response.data.results)
       setAnswer(response.data.results);
     })
   }
@@ -22,7 +23,7 @@ const Answers = ({id}) => {
   useEffect(() => {
     getAnswers();
   }, [])
-
+  console.log(answers)
   return (
     <div>
       {answers.map( answer =>

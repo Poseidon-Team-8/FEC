@@ -9,3 +9,8 @@
   - [x] setup axios GET request for answers data
   - [x] add answers component
   - [x] add hooks to manage answers data state
+- [] add helpful section to question
+- [] add add answer button to question
+- [] add who answer is by section
+- [] add helpful section
+- [] add report button
