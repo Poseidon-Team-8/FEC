@@ -11,6 +11,7 @@ class Questions extends React.Component {
   }
 
   //write axios get request that queries database for
+
   getQuestions = () => {
     const productId = this.props.productId;
     axios({

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 const Answers = ({id}) => {
 
@@ -15,6 +16,7 @@ const Answers = ({id}) => {
       }
     })
     .then( response => {
+      console.log(response.data.results)
       setAnswer(response.data.results);
     })
   }
@@ -26,7 +28,10 @@ const Answers = ({id}) => {
   return (
     <div>
       {answers.map( answer =>
+      <div>
         <p key={answer.answer_id}>A: {answer.body}</p>
+        <p>by {answer.answerer_name} {answer.date} | Helpful? Yes ({answer.helpfulness})</p>
+      </div>
       )}
     </div>
   )

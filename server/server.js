@@ -45,6 +45,9 @@ app.get('/productQuestions', (req, res) => {
   .then(response => {
     res.send(response.data);
   })
+  .catch(err => {
+    res.send(err);
+  })
 })
 
 // get product info

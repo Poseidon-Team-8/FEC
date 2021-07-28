@@ -6,6 +6,7 @@ const IndividualQ = ({question}) => {
   return (
     <div>
       <p>Q: {question.question_body}</p>
+      <p>Helpful? ({question.question_helpfulness}) Add Answer</p>
       <Answers id={question.question_id} ></Answers>
     </div>
   )
