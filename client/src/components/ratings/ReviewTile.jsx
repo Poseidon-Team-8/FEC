@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import StarRating from './StarRating.jsx';
 import Helpful from './Helpful.jsx';
-import Response from './Response.jsx'
 
 const ReviewTile = ({ review }) => {
   const { review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photos } = review;
