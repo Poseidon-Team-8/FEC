@@ -77,10 +77,9 @@ app.get('/reviews', (req, res) => {
 })
 
 app.put('/review-helpful', (req, res) => {
-  console.log(req.headers.reviewId);
   let options = {
     method: 'put',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.headers.reviewId}/helpful`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.headers['review-id']}/helpful`,
     headers: {
       'Authorization': `${auth.TOKEN}`
     }
@@ -88,7 +87,7 @@ app.put('/review-helpful', (req, res) => {
 
   axios(options)
     .then( response => {
-      cosole.log('put worked!')
+      console.log('put worked!')
       res.send(response.data);
     })
     .catch( err => {
