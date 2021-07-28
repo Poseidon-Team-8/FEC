@@ -49,6 +49,7 @@ class Ratings extends React.Component {
 
   componentDidMount() {
     this.getReviews();
+    this.getMetaData();
   }
 
   render() {
@@ -56,8 +57,8 @@ class Ratings extends React.Component {
       <>
         <div className="widget-container">
           <div className="left-col-container">
-            <RatingBreakdown />
-            <ProductBreakdown />
+            <RatingBreakdown ratings={ this.state.meta.ratings} recommended={ this.state.meta.recommended}/>
+            <ProductBreakdown charateristics={ this.state.meta.charateristics }/>
           </div>
           <div className="right-col-container">
             <ReviewList reviews={ this.state.reviews }/>

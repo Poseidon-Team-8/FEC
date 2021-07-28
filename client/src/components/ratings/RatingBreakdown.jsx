@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-let RatingBreakdown = (props) => {
+let RatingBreakdown = ({ ratings, recommended }) => {
 
-  const
   return (
     <div>
       Rating Breakdown Goes Here!
