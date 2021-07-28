@@ -180,3 +180,7 @@
 .seller-response {
   background-color: lightgray;
 }
+
+.extend-text {
+  cursor: pointer;
+}
