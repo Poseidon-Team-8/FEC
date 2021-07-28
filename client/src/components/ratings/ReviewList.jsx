@@ -4,8 +4,8 @@ import ReviewTile from './ReviewTile.jsx';
 let ReviewList = ({ reviews }) => {
   return (
     <div>
-      {reviews.map( review => {
-          return <ReviewTile review={ review }/>
+      {reviews.map( (review, idx)=> {
+          return <ReviewTile key={ idx } review={ review }/>
         })}
     </div>
   )
