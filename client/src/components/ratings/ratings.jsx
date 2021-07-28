@@ -9,7 +9,8 @@ class Ratings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: [],
+      meta: []
     }
   }
 
@@ -28,6 +29,22 @@ class Ratings extends React.Component {
       .catch( (err) => {
         console.log("Error Fetching Reviews");
       })
+  }
+
+  getMetaData() {
+    axios.get('/meta', {
+      headers: {
+        id: 17084
+      }
+    })
+    .then( (res) => {
+      this.setState({
+        meta: res.data
+      })
+    })
+    .catch( (err) => {
+      console.log("Error Fetching Meta Data");
+    })
   }
 
   componentDidMount() {

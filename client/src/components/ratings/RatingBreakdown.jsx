@@ -1,6 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 let RatingBreakdown = (props) => {
+
+  const
   return (
     <div>
       Rating Breakdown Goes Here!
