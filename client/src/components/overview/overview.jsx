@@ -104,6 +104,9 @@ class Overview extends React.Component {
   updateCart = () => {
     let total = this.state.quantity;
     let flag = true;
+    if (this.state.sku === 0) {
+      // open Size dropdown
+    }
     for (var i = 0; i < total; i++) {
       axios.post('/updateCart', {
         sku: this.state.sku
@@ -117,8 +120,12 @@ class Overview extends React.Component {
           console.log('ERROR', err);
         })
     }
-    if (flag) {
+    if (flag && total !== 0) {
       alert(`${this.state.quantity} ${this.state.styles[this.state.currentStyle].name} ${this.state.productInfo.title} added to cart`);
+      this.setState({
+        sku: 0,
+        quantity: 0
+      })
     }
   }
 
