@@ -1,3 +1,75 @@
+/* ---Overview--- */
+/* image gallery */
+.main {
+  height: 560px;
+  width: auto;
+}
+
+.thumbnail {
+  display: block;
+  height: 80px;
+  width: 80px;
+}
+
+.side-images {
+  display: flex;
+  height: 560px;
+}
+
+.side-images-child {
+  flex: .08;
+}
+
+.side-images-child:first-child {
+  width: 100%;
+  height: auto;
+  overflow: scroll;
+}
+
+/* style selector */
+
+.style-selector {
+  display: inline;
+  position: relative;
+}
+
+.style {
+  display: inline;
+  height: 100px;
+  width: 100px;
+  margin: 5px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/*.style:first-child {
+  position: relative;
+  top: 0;
+} */
+
+.overlay img {
+  position: absolute;
+  /* float: left; */
+}
+
+.selected {
+  /* background-color: green; */
+  /* display: block;
+  overflow: auto; */
+  /* url('https://static.thenounproject.com/png/33609-200.png'); */
+  /* background-size: contain; */
+  /* position: relative;
+  display: inline; */
+  opacity: 0.4;
+  /* z-index: 1; */
+}
+
+/* cart */
+.size-dropdown, .quantity-dropdown, button {
+  display: inline;
+  margin: 10px;
+}
+
 /*
 ================================================
                   Review Tile

@@ -8,8 +8,19 @@ function Default(props) {
   } else {
     let photos = props.styles[props.currentStyle].photos;
     return (
-      // iterate through length of photos indices
-      <img src={photos[0].url}></img>
+      <div className="side-images">
+        <div className="side-images-child">
+          {photos.map((photo, index) =>
+            <img
+              className="thumbnail"
+              src={photo.url}
+              key={index}
+              onClick={() =>
+                props.updateImage(props.currentStyle, index)}
+            ></img>)}
+        </div>
+          <img className="main side-images-child" src={photos[props.image[props.currentStyle]].url}></img>
+      </div>
     )
   }
 }
