@@ -14,17 +14,6 @@ class App extends React.Component {
     }
   }
 
-  // getProducts() {
-  //   axios.get('/asdf')
-  //     .then( (res) => {
-  //       console.log(res.data);
-  //     });
-  // }
-
-  // componentDidMount() {
-  //   this.getProducts();
-  // }
-
   render() {
     return (
       <div>
@@ -36,5 +25,7 @@ class App extends React.Component {
     )
   }
 }
+
+export default App;
 
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -26,6 +26,7 @@ const Answers = ({id}) => {
   useEffect(() => {
     getAnswers();
   }, [])
+<<<<<<< HEAD
 
   return (
     <div>
@@ -36,6 +37,14 @@ const Answers = ({id}) => {
       </div>
       )}
       <button onClick={() => setAnswerAmount(answerAmount +2)}>LOAD MORE ANSWERS</button>
+=======
+  console.log(answers)
+  return (
+    <div>
+      {answers.map( answer =>
+        <p key={answer.answer_id}>A: {answer.body}</p>
+      )}
+>>>>>>> main
     </div>
   )
 }
