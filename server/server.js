@@ -49,6 +49,11 @@ app.get('/styles', (req, res) => {
     })
 })
 
+/*
+========================================================
+                  RATINGS & REVIEWS
+========================================================
+*/
 
 app.get('/reviews', (req, res) => {
   let options = {
@@ -69,6 +74,25 @@ app.get('/reviews', (req, res) => {
     .catch( (err) => {
       res.send(err);
     })
+})
+
+app.put('/review-helpful', (req, res) => {
+  let options = {
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.headers['review-id']}/helpful`,
+    headers: {
+      'Authorization': `${auth.TOKEN}`
+    }
+  }
+
+  axios(options)
+    .then( response => {
+      res.send(response.data);
+    })
+    .catch( err => {
+      res.send(err);
+    })
+
 })
 
 app.post('/updateCart', (req, res) => {
