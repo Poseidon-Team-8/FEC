@@ -28,40 +28,33 @@
 
 /* style selector */
 
-.style-selector {
-  display: inline;
+/* .style-selector {
   position: relative;
-}
+  display: inline;
+} */
 
 .style {
-  display: inline;
+  /* position: relative;s */
+  /* display: inline; */
   height: 100px;
   width: 100px;
   margin: 5px;
   border-radius: 50%;
-  overflow: hidden;
 }
 
-/*.style:first-child {
-  position: relative;
-  top: 0;
+/* .overlay{
+  display: inline;
+  justify-content: flex-start;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  margin: 5px;
+  border-radius: 50%;
+  right: 100px;
 } */
 
-.overlay img {
-  position: absolute;
-  /* float: left; */
-}
-
 .selected {
-  /* background-color: green; */
-  /* display: block;
-  overflow: auto; */
-  /* url('https://static.thenounproject.com/png/33609-200.png'); */
-  /* background-size: contain; */
-  /* position: relative;
-  display: inline; */
   opacity: 0.4;
-  /* z-index: 1; */
 }
 
 /* cart */

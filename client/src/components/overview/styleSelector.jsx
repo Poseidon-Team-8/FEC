@@ -7,23 +7,21 @@ function StyleSelector(props) {
     return (
       <div>
         <p>Style > <b>{props.styles[props.currentStyle].name}</b></p>
-          {props.styles.map((item, index) =>
           <div className="style-selector">
-            <img
-              className={props.currentStyle === index ? 'selected style' : 'style'}
-              key={index}
-              index={index}
-              src={item.photos[0].thumbnail_url}
-              onClick={() => props.updateStyle(index)}
-            ></img>
-            <div className="overlay style">
+            {props.styles.map((item, index) =>
               <img
-                src="https://static.thenounproject.com/png/33609-200.png"
-                className="overlay style"
+                className={props.currentStyle === index ? 'selected style' : 'style'}
+                key={index}
+                index={index}
+                src={item.photos[0].thumbnail_url}
+                onClick={() => props.updateStyle(index)}
                 ></img>
-            </div>
+            )}
           </div>
-          )}
+            {/* <img
+              src="https://static.thenounproject.com/png/33609-200.png"
+              className="overlay"
+              ></img> */}
       </div>
   )} else {
     return (
