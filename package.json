@@ -21,6 +21,7 @@
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-react": "^7.14.5",
+    "@testing-library/react": "^12.0.0",
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "jest": "^27.0.6",
@@ -28,5 +29,11 @@
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ]
   }
 }

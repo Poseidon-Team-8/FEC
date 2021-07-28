@@ -6,8 +6,7 @@ function ProductInfo(props) {
   return (
     <div>
       <h2>{props.info.title}</h2>
-      <p>{props.info.category}</p>
-      <p>{props.info.price}</p>
+      <p>Category: {props.info.category} > Price: ${props.info.price}</p>
       {props.children}
       <p>{props.info.overview}</p>
     </div>

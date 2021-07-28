@@ -8,7 +8,7 @@ function Cart(props) {
   } else {
     let skus = props.styles[props.currentStyle].skus;
     return (
-      <div>
+      <div className="addToBag">
         {Size(skus, props.updateSKU)}
         {Quantity(skus, props.sku, props.updateQuantity)}
         <button onClick={() => props.updateCart()}>Add to Bag</button>
@@ -19,7 +19,7 @@ function Cart(props) {
 
 function Size(skus, updateSKU) {
   return (
-    <div id="size-dropdown">
+    <div className="size-dropdown">
       <select name="sizes" id="size-select" onChange={(e) => updateSKU(e.target.value)}>
         <option value="">Select Size</option>
         {Object.keys(skus).map((key, index) => {
@@ -42,9 +42,8 @@ function Quantity(skus, sku, updateQuantity) {
     )
   } else {
     return (
-      <div id="quantity-dropdown">
+      <div className="quantity-dropdown">
         <select name="quantity" id="quantity-select" onChange={(e) => updateQuantity(e.target.value)}>
-          <option value="">-</option>
           {createQuantity(skus[sku].quantity).map((num, index) => <option key={index} value={num}>{num}</option>)}
         </select>
       </div>
