@@ -184,3 +184,11 @@
 .extend-text {
   cursor: pointer;
 }
+.product-rec {
+  display: flex;
+  align-content: center;
+}
+
+.checkmark {
+  margin-right: 0.5em;
+}
