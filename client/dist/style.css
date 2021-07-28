@@ -131,6 +131,72 @@ Ratings & Reviews Widget
   color: black;
 }
 
-.response-container {
+.review-photo {
+  display: inline;
+  height: 75px;
+  width: 75px;
+  margin: 5px;
+  overflow: hidden;
+}
+
+
+/*
+================================================
+              Review Photo Modal
+================================================
+*/
+
+.photo-modal-background {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+}
+
+.photo-modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80vw;
+  max-height: 80vh;
+  opacity: 100%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 50px black;
+  background-color: #333;
+  cursor: pointer;
+  z-index: 21;
+  display: inline-flex;
+}
+
+.modal-img {
+  object-fit: contain;
+  max-height: inherit;
+  max-width: inherit;
+}
+
+/*
+================================================
+                 Review Body
+================================================
+*/
+
+.seller-response {
   background-color: lightgray;
+}
+
+.extend-text {
+  cursor: pointer;
+}
+.product-rec {
+  display: flex;
+  align-content: center;
+}
+
+.checkmark {
+  margin-right: 0.5em;
 }
