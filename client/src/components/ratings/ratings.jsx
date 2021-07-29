@@ -10,7 +10,7 @@ class Ratings extends React.Component {
     super(props);
     this.state = {
       reviews: [],
-      meta: []
+      meta: undefined
     }
   }
 
@@ -53,19 +53,23 @@ class Ratings extends React.Component {
   }
 
   render() {
-    return (
-      <>
-        <div className="widget-container">
-          <div className="left-col-container">
-            <RatingBreakdown ratings={ this.state.meta.ratings} recommended={ this.state.meta.recommended}/>
-            <ProductBreakdown charateristics={ this.state.meta.charateristics }/>
+    if (this.state.reviews && this.state.meta){
+      return (
+        <>
+          <div className="widget-container">
+            <div className="left-col-container">
+              <RatingBreakdown ratings={ this.state.meta.ratings} recommended={ this.state.meta.recommended}/>
+              <ProductBreakdown characteristics={ this.state.meta.characteristics }/>
+            </div>
+            <div className="right-col-container">
+              <ReviewList reviews={ this.state.reviews }/>
+            </div>
           </div>
-          <div className="right-col-container">
-            <ReviewList reviews={ this.state.reviews }/>
-          </div>
-        </div>
-      </>
-    )
+        </>
+      )
+    } else {
+      return null
+    }
   }
 }
 
