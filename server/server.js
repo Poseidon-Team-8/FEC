@@ -22,6 +22,19 @@ app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 //     })
 // })
 
+app.put('/answerHelpfulness', (req, res) => {
+  axios.put(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.headers.id}/helpful`, {
+      headers: {
+        Authorization: `${auth.TOKEN}`
+      }
+    }
+  )
+  .then( response => {
+    res.status(204).send('Success!')
+  })
+})
+
 app.get('/productAnswers', (req, res) => {
   axios.get(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,{
