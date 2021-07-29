@@ -12,7 +12,7 @@ function Default(props) {
         <div className="side-images-child">
           {photos.map((photo, index) =>
             <img
-              className="thumbnail"
+              className={props.image[props.currentStyle]=== index ? "thumbnail sthumb": "thumbnail"}
               src={photo.url}
               key={index}
               onClick={() =>

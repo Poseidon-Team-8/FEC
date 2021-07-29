@@ -43,6 +43,10 @@
   overflow: scroll;
 }
 
+.sthumb {
+  border: solid red;
+}
+
 /* style selector */
 
 /* .style-selector {

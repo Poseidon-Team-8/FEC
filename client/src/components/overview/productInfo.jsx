@@ -39,5 +39,3 @@ function Share() {
 }
 
 export default ProductInfo;
-
-// price derived from style, strikethrough normal price if sale price (in red) exists
