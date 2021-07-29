@@ -119,11 +119,6 @@ class Overview extends React.Component {
   }
 
   render() {
-    // if (this.styles.length === 0) {
-    //   return (
-    //     <h1>Loading Product Detail</h1>
-    //   )
-    // }
     return (
       <div>
         <ProductInfo
