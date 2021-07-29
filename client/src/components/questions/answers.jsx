@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Helpful from './helpful.jsx'
+import Helpful from './helpful.jsx';
+import Report from './report.jsx';
 var moment = require('moment');
 
 const Answers = ({id}) => {
@@ -9,7 +10,7 @@ const Answers = ({id}) => {
   const [ answers, setAnswer] = useState([]);
   const [answerAmount, setAnswerAmount] = useState(2);
   const [buttonText, setButton] = useState('SEE MORE ANSWERS');
-  const [disable, setDisable] = useState(false);
+
 
   const toggleButton = () => {
     if (answerAmount === 2 ) {
@@ -65,8 +66,7 @@ const Answers = ({id}) => {
         <p>by <strong>{answer.answerer_name}</strong>
         {moment(answer.date).format('MMM Do YY')}</p>
         <Helpful id={answer.answer_id} helpful={answer.helpfulness}/>
-        {disable === false ? <button disabled={false} onClick={() => setDisable(true)}>Report</button> :
-        <button disabled={true}>Reported</button>}
+        <Report id={answer.answer_id}/>
       </div>
       )}
       {answers.length > 2 ? <button onClick={() => toggleButton()}>{buttonText}</button> : null}
