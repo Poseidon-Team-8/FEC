@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 const Helpful = ({id, helpful}) => {
-  console.log(id)
-  const [helpCount, setHelpCount] = useState(helpful)
-  //send put request updating helpfulness count by 1
-  const updateHelpfulness = () => {
+
+  const [helpCount, setHelpCount] = useState(helpful);
+  const [disable, setDisable] = useState(false);
+
+
+  const updateHelpfulness = (e) => {
     axios({
       method: 'put',
       url: '/answerHelpfulness',
@@ -14,7 +16,9 @@ const Helpful = ({id, helpful}) => {
       }
     })
     .then(result => {
-      setHelpCount(helpCount+1)
+      setHelpCount(helpCount+1);
+      setDisable(true);
+      e.target.style.fontWeight = 'bold';
     })
 
   };
@@ -26,7 +30,7 @@ const Helpful = ({id, helpful}) => {
 
   return (
     <div>
-      <button onClick={() => updateHelpfulness()}>Yes ({helpCount})</button>
+      <button disabled={disable} onClick={(e) => updateHelpfulness(e)}>Yes ({helpCount})</button>
     </div>
   )
 }

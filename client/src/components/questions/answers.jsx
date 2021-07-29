@@ -32,7 +32,6 @@ const Answers = ({id}) => {
     })
     .then( response => {
       setAnswer(response.data.results);
-      console.log(response.data)
     })
   }
 

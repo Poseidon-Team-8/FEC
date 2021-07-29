@@ -1,18 +1,32 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const Report = (props) => {
+const Report = ({id}) => {
+  console.log(id)
 
   const [disable, setDisable] = useState(false);
 
+  const handleReport = () => {
+    axios({
+      method: 'put',
+      url: '/answerReport',
+      headers: {
+        id: `${id}`
+      }
+    })
+    .then(result => {
+      setDisable(true);
+    })
+  }
+
+
+
   return (
     <div>
-      <p>report me</p>
+      <button disabled={disable} onClick={() => handleReport(true)}>Report</button>
     </div>
   )
 }
 
 export default Report;
 
-// {disable === false ? <button disabled={false} onClick={() => setDisable(true)}>Report</button> :
-//         <button disabled={true}>Reported</button>}
