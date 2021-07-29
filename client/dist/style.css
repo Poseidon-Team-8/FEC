@@ -1,4 +1,21 @@
 /* ---Overview--- */
+
+/* product info */
+.ogprice {
+  text-decoration-line: line-through;
+}
+
+.salePrice {
+  color: red;
+}
+
+.social {
+  width: 30px;
+  height: auto;
+  display: inline;
+  margin: 10px;
+}
+
 /* image gallery */
 .main {
   height: 560px;
@@ -24,6 +41,10 @@
   width: 100%;
   height: auto;
   overflow: scroll;
+}
+
+.sthumb {
+  border: solid red;
 }
 
 /* style selector */
