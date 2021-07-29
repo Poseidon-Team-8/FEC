@@ -49,10 +49,11 @@
 
 /* style selector */
 
-/* .style-selector {
-  position: relative;
-  display: inline;
-} */
+.style-selector {
+  display: flex;
+  flex-wrap: wrap;
+  width: 440px;
+}
 
 .style {
   /* position: relative;s */
