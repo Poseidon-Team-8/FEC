@@ -21,6 +21,16 @@ app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 //       res.send(response.data)
 //     })
 // })
+app.put('/answerReport', (req, res) => {
+  axios.put(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.headers.id}/report`, null, {
+      Authorization: `${auth.TOKEN}`
+    }
+  )
+  .then(result => {
+    res.status(204).send('Success!')
+  })
+})
 
 app.put('/answerHelpfulness', (req, res) => {
   axios.put(
