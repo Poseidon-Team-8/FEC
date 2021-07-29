@@ -10,7 +10,6 @@ class Questions extends React.Component {
       productQuestion: [],
       questionAmount: 2
     };
-    this.getQuestions();
   }
 
 

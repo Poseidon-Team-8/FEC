@@ -9,6 +9,18 @@ const Answers = ({id}) => {
 
   const [answerAmount, setAnswerAmount] = useState(2);
 
+  const [buttonText, setButton] = useState('LOAD MORE ANSWERS');
+
+  const toggleButton = () => {
+    if (answerAmount === 2 ) {
+      setAnswerAmount(answers.length);
+      setButton('COLLAPSE ANSWERS');
+    } else {
+      setAnswerAmount(2);
+      setButton('LOAD MORE ANSWERS')
+    }
+  }
+
   const getAnswers = () => {
     axios({
       method: 'get',
@@ -32,10 +44,10 @@ const Answers = ({id}) => {
       {answers.slice(0, answerAmount).map( (answer, key)=>
       <div key={answer.answer_id}>
         <p >A: {answer.body}</p>
-        <p>by {answer.answerer_name} {moment(answer.date).format('MMM Do YY')} | Helpful? Yes ({answer.helpfulness})</p>
+        <p>by <strong>{answer.answerer_name}</strong> {moment(answer.date).format('MMM Do YY')} | Helpful? Yes ({answer.helpfulness})</p>
       </div>
       )}
-      <button onClick={() => setAnswerAmount(answerAmount +2)}>LOAD MORE ANSWERS</button>
+      {answers.length > 2 ? <button onClick={() => toggleButton()}>{buttonText}</button> : null}
     </div>
   )
 }
