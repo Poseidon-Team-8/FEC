@@ -1,4 +1,14 @@
 /* ---Overview--- */
+
+/* product info */
+.ogprice {
+  text-decoration-line: line-through;
+}
+
+.salePrice {
+  color: red;
+}
+
 /* image gallery */
 .main {
   height: 560px;

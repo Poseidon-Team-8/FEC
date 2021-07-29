@@ -11,7 +11,6 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     let image = {}
-    // ugly, but needed to populate "image" with initial index for multiple views, ran into "can't update unmounted component" when calling setImage in componentDidMount
     for (var i = 0; i < 20; i++) {
       image[i] = 0
     }
@@ -19,7 +18,6 @@ class Overview extends React.Component {
       productInfo: {
         title: 'Loading',
         category: 'Loading',
-        price: 'Loading',
         overview: 'Loading'
       },
       styles: [],
@@ -41,7 +39,6 @@ class Overview extends React.Component {
         productInfo: {
           title: res.data.name,
           category: res.data.category,
-          price: res.data.default_price,
           overview: res.data.description
         }
       })
@@ -61,7 +58,6 @@ class Overview extends React.Component {
     })
   }
 
-
   updateStyle = (index) => {
     this.setState({
       currentStyle: index,
@@ -69,18 +65,6 @@ class Overview extends React.Component {
       quantity: 0
     })
   }
-
-  // setImage = () => {
-  //   // populate state object "image" with as many key/value pairs as there are styles
-  //   this.setState(prevState => {
-  //     let styles = this.state.styles;
-  //     let image = {};
-  //     for (var i = 0; i < styles.length; i++) {
-  //       image[i] = 0;
-  //     }
-  //     return { image };
-  //   })
-  // }
 
   updateImage = (key, index) => {
     this.setState(prevState => {
@@ -135,25 +119,36 @@ class Overview extends React.Component {
   }
 
   render() {
+    // if (this.styles.length === 0) {
+    //   return (
+    //     <h1>Loading Product Detail</h1>
+    //   )
+    // }
     return (
       <div>
-        <ProductInfo info={this.state.productInfo}>
+        <ProductInfo
+          info={this.state.productInfo}
+          styles={this.state.styles}
+          currentStyle={this.state.currentStyle}
+        >
           <Default
             image={this.state.image}
             updateImage={(key, index) => this.updateImage(key, index)}
             styles={this.state.styles}
-            currentStyle={this.state.currentStyle}/>
+            currentStyle={this.state.currentStyle}
+          />
           <StyleSelector
             styles={this.state.styles}
             currentStyle={this.state.currentStyle}
-            updateStyle={(index) => this.updateStyle(index)}/>
+            updateStyle={(index) => this.updateStyle(index)}
+          />
           <Cart
-          styles={this.state.styles}
-          updateCart={() => this.updateCart()}
-          currentStyle={this.state.currentStyle}
-          updateSKU={(key) => this.updateSKU(key)}
-          sku={this.state.sku}
-          updateQuantity={(quantity) => this.updateQuantity(quantity)}
+            styles={this.state.styles}
+            updateCart={() => this.updateCart()}
+            currentStyle={this.state.currentStyle}
+            updateSKU={(key) => this.updateSKU(key)}
+            sku={this.state.sku}
+            updateQuantity={(quantity) => this.updateQuantity(quantity)}
           />
         </ProductInfo>
       </div>
