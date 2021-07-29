@@ -64,7 +64,7 @@ const Answers = ({id}) => {
         <p >A: {answer.body}</p>
         <p>by <strong>{answer.answerer_name}</strong>
         {moment(answer.date).format('MMM Do YY')}</p>
-        <p>| <Helpful id={answer.answer_id}/> Yes ({answer.helpfulness}) </p>
+        <Helpful id={answer.answer_id} helpful={answer.helpfulness}/>
         {disable === false ? <button disabled={false} onClick={() => setDisable(true)}>Report</button> :
         <button disabled={true}>Reported</button>}
       </div>

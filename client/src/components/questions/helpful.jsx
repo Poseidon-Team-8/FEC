@@ -1,16 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 
-const Helpful = ({id}) => {
-
+const Helpful = ({id, helpful}) => {
+  console.log(id)
+  const [helpCount, setHelpCount] = useState(helpful)
   //send put request updating helpfulness count by 1
-  axios({
-    method: 'PUT',
-    url: '/answerHelpfulness',
-    headers: {
-      id: `${id}`
-    }
-  })
+  const updateHelpfulness = () => {
+    axios({
+      method: 'put',
+      url: '/answerHelpfulness',
+      headers: {
+        id: `${id}`
+      }
+    })
+    .then(result => {
+      setHelpCount(helpCount+1)
+    })
+
+  };
 
 
   //allows button to be clicked only once per user
@@ -19,7 +26,7 @@ const Helpful = ({id}) => {
 
   return (
     <div>
-      <p>something ${id}</p>
+      <button onClick={() => updateHelpfulness()}>Yes ({helpCount})</button>
     </div>
   )
 }

@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 
 app.put('/answerHelpfulness', (req, res) => {
   axios.put(
-    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.headers.id}/helpful`, {
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.headers.id}/helpful`, null, {
       headers: {
         Authorization: `${auth.TOKEN}`
       }
