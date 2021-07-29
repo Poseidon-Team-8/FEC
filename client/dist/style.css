@@ -87,7 +87,7 @@
 
 /*
 ================================================
-Ratings & Reviews Widget
+          Ratings & Reviews Widget
 ================================================
 */
 
@@ -118,7 +118,6 @@ Ratings & Reviews Widget
                 Review Tile
 ================================================
 */
-
 
 .review-tile-container {
   display: flex;
@@ -214,3 +213,21 @@ Ratings & Reviews Widget
 .checkmark {
   margin-right: 0.5em;
 }
+
+/*
+================================================
+                Rating Summary
+================================================
+*/
+
+.rating-summary-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.rating-sum-avg {
+  margin-right: 1em;
+}
+

@@ -9,7 +9,8 @@ class Ratings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: [],
+      meta: undefined
     }
   }
 
@@ -30,17 +31,35 @@ class Ratings extends React.Component {
       })
   }
 
+  getMetaData() {
+    axios.get('/meta', {
+      headers: {
+        id: 17084
+      }
+    })
+    .then( (res) => {
+      this.setState({
+        meta: res.data
+      })
+    })
+    .catch( (err) => {
+      console.log("Error Fetching Meta Data");
+    })
+  }
+
   componentDidMount() {
     this.getReviews();
+    this.getMetaData();
   }
 
   render() {
+    if (!this.state.reviews || !this.state.meta) return null;
     return (
       <>
         <div className="widget-container">
           <div className="left-col-container">
-            <RatingBreakdown />
-            <ProductBreakdown />
+            <RatingBreakdown ratings={ this.state.meta.ratings} recommended={ this.state.meta.recommended}/>
+            <ProductBreakdown characteristics={ this.state.meta.characteristics }/>
           </div>
           <div className="right-col-container">
             <ReviewList reviews={ this.state.reviews }/>
