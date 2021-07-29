@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+// import StarRating from '../ratings/StarRating.jsx';
 
 function ProductInfo(props) {
 
@@ -15,6 +16,7 @@ function ProductInfo(props) {
   return (
     <div>
       <h2>{props.info.title}</h2>
+      {/* <RatingSummary ratingAvg={ ratingAvg }/> */}
       <p>Category: {props.info.category} > Price:
       {prices.sale_price ? <span> <span className="ogprice">${prices.original_price}</span> <span className="salePrice">{prices.sale_price}</span> </span> : <span> ${prices.original_price}</span>}
       </p>
@@ -25,10 +27,22 @@ function ProductInfo(props) {
   );
 }
 
+// const RatingSummary = ({ ratingAvg }) => {
+//   return (
+//     <div className="rating-summary-container">
+//       <h1 className="rating-sum-avg">{ ratingAvg }</h1>
+//       <StarRating rating={ ratingAvg }/>
+//     </div>
+//   )
+// }
+
 function Share() {
   return (
     <div>
-      <div class="fb-share-button" className="social" data-href="http://localhost:3000/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><img className="social" src="./icons/f_logo_RGB-Blue_1024.png"></img></a></div>
+      <div class="fb-share-button" className="social" data-href="http://localhost:3000/" data-layout="button" data-size="small"><a target="_blank"
+      // href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2F&amp;src=sdkpreparse"
+      href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      class="fb-xfbml-parse-ignore"><img className="social" src="./icons/f_logo_RGB-Blue_1024.png"></img></a></div>
 
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false"><img className="social" src="./icons/2021 Twitter logo - blue.png"></img></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 

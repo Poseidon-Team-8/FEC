@@ -1,6 +1,9 @@
-/* ---Overview--- */
+/*
+================================================
+             Product Info
+================================================
+*/
 
-/* product info */
 .ogprice {
   text-decoration-line: line-through;
 }
@@ -16,7 +19,11 @@
   margin: 10px;
 }
 
-/* image gallery */
+/*
+================================================
+             Image Gallery
+================================================
+*/
 .main {
   height: 560px;
   width: auto;
@@ -47,12 +54,17 @@
   border: solid red;
 }
 
-/* style selector */
+/*
+================================================
+                Style Selector
+================================================
+*/
 
-/* .style-selector {
-  position: relative;
-  display: inline;
-} */
+.style-selector {
+  display: flex;
+  flex-wrap: wrap;
+  width: 440px;
+}
 
 .style {
   /* position: relative;s */
@@ -78,12 +90,16 @@
   opacity: 0.4;
 }
 
-/* cart */
+/*
+================================================
+                    Cart
+================================================
+*/
+
 .size-dropdown, .quantity-dropdown, button {
   display: inline;
   margin: 10px;
 }
-
 
 /*
 ================================================
