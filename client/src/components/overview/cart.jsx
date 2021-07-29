@@ -8,7 +8,7 @@ function Cart(props) {
   } else {
     let skus = props.styles[props.currentStyle].skus;
     return (
-      <div className="addToBag">
+      <div className="cart">
         {Size(skus, props.updateSKU)}
         {Quantity(skus, props.sku, props.updateQuantity)}
         <button onClick={() => props.updateCart()}>Add to Bag</button>

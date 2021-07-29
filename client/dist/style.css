@@ -27,8 +27,13 @@
 
 .image-gallery {
   display: flex;
-  border: solid black;
   flex-wrap: wrap;
+}
+
+.image-container {
+  width: 850px;
+  border: solid black;
+  margin-right: 10px;
 }
 
 .main {
@@ -64,7 +69,10 @@
 .style-selector {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
+}
+
+.style-name {
+  align-self: center;
 }
 
 .styles-grid {
@@ -103,9 +111,19 @@
 ================================================
 */
 
+.cart {
+  align-self: center;
+}
+
 .size-dropdown, .quantity-dropdown, button {
   display: inline;
   margin: 10px;
+  background-color: white;
+  /* font-size: medium; */
+}
+
+button:hover {
+  background-color: rgba(0, 195, 255, 0.92)
 }
 
 /*
