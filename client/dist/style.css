@@ -9,6 +9,13 @@
   color: red;
 }
 
+.social {
+  width: 30px;
+  height: auto;
+  display: inline;
+  margin: 10px;
+}
+
 /* image gallery */
 .main {
   height: 560px;
