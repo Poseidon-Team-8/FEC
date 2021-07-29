@@ -24,9 +24,16 @@
              Image Gallery
 ================================================
 */
+
+.image-gallery {
+  display: flex;
+  border: solid black;
+}
+
 .main {
   height: 560px;
   width: auto;
+  position: absolute;
 }
 
 .thumbnail {
@@ -37,20 +44,13 @@
 
 .side-images {
   display: flex;
+  flex-direction: column;
+  position: relative;
   height: 560px;
+  overflow: auto;
 }
 
-.side-images-child {
-  flex: .08;
-}
-
-.side-images-child:first-child {
-  width: 100%;
-  height: auto;
-  overflow: scroll;
-}
-
-.sthumb {
+.selected-thumb {
   border: solid red;
 }
 
@@ -62,17 +62,26 @@
 
 .style-selector {
   display: flex;
+  flex-direction: column;;
+}
+
+.styles-grid {
+  display: flex;
   flex-wrap: wrap;
   width: 440px;
 }
 
-.style {
+.style-thumbnail {
   /* position: relative;s */
   /* display: inline; */
   height: 100px;
   width: 100px;
   margin: 5px;
   border-radius: 50%;
+}
+
+.selected-style {
+  opacity: 0.4;
 }
 
 /* .overlay{
@@ -85,10 +94,6 @@
   border-radius: 50%;
   right: 100px;
 } */
-
-.selected {
-  opacity: 0.4;
-}
 
 /*
 ================================================

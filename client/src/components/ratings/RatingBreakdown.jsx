@@ -5,7 +5,7 @@ import RatingSummary from './RatingSummary.jsx';
 const RatingBreakdown = ({ ratings, recommended }) => {
 
   const ratingSum = Object.values(ratings).reduce((a, b) => parseInt(a) + parseInt(b));
-  const ratingAvg = (ratingSum/6).toFixed(1);
+  const ratingAvg = (ratingSum/5).toFixed(1);
   console.log(recommended)
 
   const totalReviews = Object.values(recommended).reduce((a, b) => parseInt(a) + parseInt(b));

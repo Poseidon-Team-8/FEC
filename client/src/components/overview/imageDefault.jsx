@@ -8,18 +8,18 @@ function Default(props) {
   } else {
     let photos = props.styles[props.currentStyle].photos;
     return (
-      <div className="side-images">
-        <div className="side-images-child">
+      <div className="image-gallery">
+          <img className="main" src={photos[props.image[props.currentStyle]].url}></img>
+        <div className="side-images">
           {photos.map((photo, index) =>
             <img
-              className={props.image[props.currentStyle]=== index ? "thumbnail sthumb": "thumbnail"}
-              src={photo.url}
-              key={index}
-              onClick={() =>
-                props.updateImage(props.currentStyle, index)}
-            ></img>)}
+            className={props.image[props.currentStyle]=== index ? "thumbnail selected-thumb": "thumbnail"}
+            src={photo.url}
+            key={index}
+            onClick={() =>
+              props.updateImage(props.currentStyle, index)}
+              ></img>)}
         </div>
-          <img className="main side-images-child" src={photos[props.image[props.currentStyle]].url}></img>
       </div>
     )
   }

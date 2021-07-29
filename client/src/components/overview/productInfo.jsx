@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-// import StarRating from '../ratings/StarRating.jsx';
+import StarRating from '../ratings/StarRating.jsx';
+import ratingAvg from '../ratings/RatingBreakdown.jsx'
 
 function ProductInfo(props) {
 
@@ -16,7 +17,7 @@ function ProductInfo(props) {
   return (
     <div>
       <h2>{props.info.title}</h2>
-      {/* <RatingSummary ratingAvg={ ratingAvg }/> */}
+      <StarRating ratingAvg={ ratingAvg }/>
       <p>Category: {props.info.category} > Price:
       {prices.sale_price ? <span> <span className="ogprice">${prices.original_price}</span> <span className="salePrice">{prices.sale_price}</span> </span> : <span> ${prices.original_price}</span>}
       </p>
@@ -26,15 +27,6 @@ function ProductInfo(props) {
     </div>
   );
 }
-
-// const RatingSummary = ({ ratingAvg }) => {
-//   return (
-//     <div className="rating-summary-container">
-//       <h1 className="rating-sum-avg">{ ratingAvg }</h1>
-//       <StarRating rating={ ratingAvg }/>
-//     </div>
-//   )
-// }
 
 function Share() {
   return (

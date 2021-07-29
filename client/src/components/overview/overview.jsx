@@ -119,11 +119,6 @@ class Overview extends React.Component {
   }
 
   render() {
-    // if (this.styles.length === 0) {
-    //   return (
-    //     <h1>Loading Product Detail</h1>
-    //   )
-    // }
     return (
       <div>
         <ProductInfo
@@ -141,15 +136,16 @@ class Overview extends React.Component {
             styles={this.state.styles}
             currentStyle={this.state.currentStyle}
             updateStyle={(index) => this.updateStyle(index)}
-          />
-          <Cart
-            styles={this.state.styles}
-            updateCart={() => this.updateCart()}
-            currentStyle={this.state.currentStyle}
-            updateSKU={(key) => this.updateSKU(key)}
-            sku={this.state.sku}
-            updateQuantity={(quantity) => this.updateQuantity(quantity)}
-          />
+          >
+            <Cart
+              styles={this.state.styles}
+              updateCart={() => this.updateCart()}
+              currentStyle={this.state.currentStyle}
+              updateSKU={(key) => this.updateSKU(key)}
+              sku={this.state.sku}
+              updateQuantity={(quantity) => this.updßateQuantity(quantity)}
+              />
+          </StyleSelector>
         </ProductInfo>
       </div>
     )
