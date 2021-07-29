@@ -131,12 +131,13 @@ class Overview extends React.Component {
             updateImage={(key, index) => this.updateImage(key, index)}
             styles={this.state.styles}
             currentStyle={this.state.currentStyle}
-          ></Default>
+          >
+
             <StyleSelector
               styles={this.state.styles}
               currentStyle={this.state.currentStyle}
               updateStyle={(index) => this.updateStyle(index)}
-            >
+              >
               <Cart
                 styles={this.state.styles}
                 updateCart={() => this.updateCart()}
@@ -146,6 +147,7 @@ class Overview extends React.Component {
                 updateQuantity={(quantity) => this.updateQuantity(quantity)}
                 />
             </StyleSelector>
+                </Default>
         </ProductInfo>
       </div>
     )

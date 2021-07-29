@@ -28,6 +28,7 @@
 .image-gallery {
   display: flex;
   border: solid black;
+  flex-wrap: wrap;
 }
 
 .main {
@@ -63,6 +64,7 @@
 .style-selector {
   display: flex;
   flex-direction: column;
+  margin-left: auto;
 }
 
 .styles-grid {
