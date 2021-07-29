@@ -11,6 +11,8 @@ const Answers = ({id}) => {
 
   const [buttonText, setButton] = useState('LOAD MORE ANSWERS');
 
+  const [disable, setDisable] = useState(false);
+
   const toggleButton = () => {
     if (answerAmount === 2 ) {
       setAnswerAmount(answers.length);
@@ -44,7 +46,11 @@ const Answers = ({id}) => {
       {answers.slice(0, answerAmount).map( (answer, key)=>
       <div key={answer.answer_id}>
         <p >A: {answer.body}</p>
-        <p>by <strong>{answer.answerer_name}</strong> {moment(answer.date).format('MMM Do YY')} | Helpful? Yes ({answer.helpfulness})</p>
+        <p>by <strong>{answer.answerer_name}</strong>
+        {moment(answer.date).format('MMM Do YY')}</p>
+        <p>| Helpful? Yes ({answer.helpfulness}) </p>
+        <button disabled={disable}
+        onClick={() => setDisable(true)}>Report</button>
       </div>
       )}
       {answers.length > 2 ? <button onClick={() => toggleButton()}>{buttonText}</button> : null}
