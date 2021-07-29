@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 
-const ProductBreakdown = ({ characteristics: { Comfort, Fit, Length, Quality } }) => {
+const ProductBreakdown = ({ characteristics }) => {
 
-  return (
+   return (
     <div>
       Product Breakdown Goes Here!
     </div>
