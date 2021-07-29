@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Helpful from './helpful.jsx'
 var moment = require('moment');
 
 const Answers = ({id}) => {
 
   const [ answers, setAnswer] = useState([]);
-
   const [answerAmount, setAnswerAmount] = useState(2);
-
-  const [buttonText, setButton] = useState('LOAD MORE ANSWERS');
-
+  const [buttonText, setButton] = useState('SEE MORE ANSWERS');
   const [disable, setDisable] = useState(false);
 
   const toggleButton = () => {
@@ -19,7 +17,7 @@ const Answers = ({id}) => {
       setButton('COLLAPSE ANSWERS');
     } else {
       setAnswerAmount(2);
-      setButton('LOAD MORE ANSWERS')
+      setButton('SEE MORE ANSWERS')
     }
   }
 
@@ -32,25 +30,43 @@ const Answers = ({id}) => {
       }
     })
     .then( response => {
-      console.log(response.data.results)
       setAnswer(response.data.results);
+      console.log(response.data)
     })
   }
 
   useEffect(() => {
     getAnswers();
   }, [])
+  let copyOfAnswers = answers;
+  const sortAnswers = (answersArray) => {
+    let sellerArray = [];
+    answersArray.sort( (a, b) => {
+      return b.helpfulness-a.helpfulness;
+    })
+    for (let i = 0; i < answersArray.length; i++) {
+      if ( answersArray[i].answerer_name === 'Seller' ) {
+        sellerArray.push(answersArray[i])
+      }
+    }
+    let filteredArray = answersArray.filter(answer => {
+      return answer.answerer_name !== 'Seller';
+    });
+    let concatedArray = sellerArray.concat(filteredArray)
+    return concatedArray;
+  }
 
+  copyOfAnswers = sortAnswers(copyOfAnswers);
   return (
     <div>
-      {answers.slice(0, answerAmount).map( (answer, key)=>
+      {copyOfAnswers.slice(0, answerAmount).map( (answer, key)=>
       <div key={answer.answer_id}>
         <p >A: {answer.body}</p>
         <p>by <strong>{answer.answerer_name}</strong>
         {moment(answer.date).format('MMM Do YY')}</p>
-        <p>| Helpful? Yes ({answer.helpfulness}) </p>
-        <button disabled={disable}
-        onClick={() => setDisable(true)}>Report</button>
+        <p>| <Helpful id={answer.answer_id}/> Yes ({answer.helpfulness}) </p>
+        {disable === false ? <button disabled={false} onClick={() => setDisable(true)}>Report</button> :
+        <button disabled={true}>Reported</button>}
       </div>
       )}
       {answers.length > 2 ? <button onClick={() => toggleButton()}>{buttonText}</button> : null}
