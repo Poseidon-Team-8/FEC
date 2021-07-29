@@ -10,12 +10,11 @@ const RatingBreakdown = ({ ratings, recommended }) => {
   const totalReviews = Object.values(recommended).reduce((a, b) => parseInt(a) + parseInt(b));
   const percentRecommended = ((parseInt(recommended.true)/totalReviews)*100).toFixed(1);
 
-
   return (
     <>
       <div className="rating-breakdown-container">
         <RatingSummary ratingAvg={ ratingAvg }/>
-        <p style={{ "text-align": "center"}}>{`${percentRecommended}% of reviews recommend this product`}</p>
+        <p style={{ "textAlign": "center"}}>{`${percentRecommended}% of reviews recommend this product`}</p>
         <Breakdown ratings={ ratings } totalReviews={ totalReviews } />
       </div>
     </>

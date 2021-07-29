@@ -16,17 +16,15 @@ const Thumb = styled.div`
 `;
 
 const BreakdownEntry = ({ rating, numReviews, percentage}) => {
-  console.log('rating: ', rating);
-  console.log('percentage:', percentage);
   return (
     <div className="breakdown-entry-container">
-      <div style={{ "margin-right": "0.5em" }}>
-        <a href="javascript:" className="helpful-count">{ `${rating} stars`}</a>
+      <div style={{ "marginRight": "0.5em" }}>
+        <a href="javascript:void()" className="helpful-count">{ `${rating} stars`}</a>
       </div>
       <Track>
         <Thumb percentage={ percentage }/>
       </Track>
-      <div style={{ "margin-left": "0.5em"}}>
+      <div style={{ "marginLeft": "0.5em"}}>
         <span>({ numReviews })</span>
       </div>
     </div>
