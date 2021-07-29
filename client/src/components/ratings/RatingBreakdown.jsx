@@ -15,7 +15,7 @@ const RatingBreakdown = ({ ratings, recommended }) => {
     <>
       <div className="rating-breakdown-container">
         <RatingSummary ratingAvg={ ratingAvg }/>
-        <p>{`${percentRecommended}% of reviews recommend this product`}</p>
+        <p style={{ "text-align": "center"}}>{`${percentRecommended}% of reviews recommend this product`}</p>
         <Breakdown ratings={ ratings } totalReviews={ totalReviews } />
       </div>
     </>

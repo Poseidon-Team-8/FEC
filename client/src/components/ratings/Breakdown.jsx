@@ -6,7 +6,7 @@ const Breakdown = ({ ratings, totalReviews }) => {
     <div className='breakdown-container'>
       {
         Object.values(ratings).map( (rating, idx) => {
-          return <BreakdownEntry rating={ idx + 1} percentage={ (rating/totalReviews*100).toFixed(2) } />
+          return <BreakdownEntry rating={ idx + 1} numReviews={ rating } percentage={ (rating/totalReviews*100).toFixed(2) } />
         })
       }
     </div>
