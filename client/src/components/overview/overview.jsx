@@ -136,20 +136,21 @@ class Overview extends React.Component {
             updateImage={(key, index) => this.updateImage(key, index)}
             styles={this.state.styles}
             currentStyle={this.state.currentStyle}
-          />
-          <StyleSelector
-            styles={this.state.styles}
-            currentStyle={this.state.currentStyle}
-            updateStyle={(index) => this.updateStyle(index)}
-          />
-          <Cart
-            styles={this.state.styles}
-            updateCart={() => this.updateCart()}
-            currentStyle={this.state.currentStyle}
-            updateSKU={(key) => this.updateSKU(key)}
-            sku={this.state.sku}
-            updateQuantity={(quantity) => this.updateQuantity(quantity)}
-          />
+          ></Default>
+            <StyleSelector
+              styles={this.state.styles}
+              currentStyle={this.state.currentStyle}
+              updateStyle={(index) => this.updateStyle(index)}
+            >
+              <Cart
+                styles={this.state.styles}
+                updateCart={() => this.updateCart()}
+                currentStyle={this.state.currentStyle}
+                updateSKU={(key) => this.updateSKU(key)}
+                sku={this.state.sku}
+                updateQuantity={(quantity) => this.updateQuantity(quantity)}
+                />
+            </StyleSelector>
         </ProductInfo>
       </div>
     )
