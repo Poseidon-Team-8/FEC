@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 
-let ProductBreakdown = (props) => {
+const ProductBreakdown = ({ characteristics: { Comfort, Fit, Length, Quality } }) => {
+
   return (
     <div>
       Product Breakdown Goes Here!
