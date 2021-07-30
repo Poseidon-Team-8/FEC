@@ -55,7 +55,7 @@ const Ratings = ({ productId }) => {
           <ProductBreakdown characteristics={ meta.characteristics }/>
         </div>
         <div className="right-col-container">
-          <ReviewListSort numReviews={ reviews.length }/>
+          <ReviewListSort numReviews={ reviews.length } getSortedReviews={ getReviews }/>
           <ReviewList reviews={ reviews }/>
         </div>
       </div>
