@@ -24,6 +24,7 @@ class Overview extends React.Component {
       sku: 0,
       quantity: 0,
       modal: false,
+      zoom: false,
       image: image
     }
   }
@@ -60,6 +61,10 @@ class Overview extends React.Component {
 
   toggleModal = () => {
     this.setState({ modal: !this.state.modal })
+  }
+
+  toggleZoom = () => {
+    this.setState({ zoom: !this.state.zoom })
   }
 
   updateStyle = (index) => {
@@ -137,6 +142,8 @@ class Overview extends React.Component {
             currentStyle={this.state.currentStyle}
             modal={this.state.modal}
             toggleModal={() => this.toggleModal()}
+            zoom={this.state.zoom}
+            toggleZoom={() => this.toggleZoom()}
           >
 
             <StyleSelector

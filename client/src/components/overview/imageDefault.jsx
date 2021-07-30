@@ -15,8 +15,12 @@ function Default(props) {
           src={photos[props.image[props.currentStyle]].url}
           onClick={() => props.toggleModal()}></img>
 
-          <ImageModal modal={props.modal} toggle={props.toggleModal}>
-            <img className="modal-img" src={photos[props.image[props.currentStyle]].url}></img>
+          <ImageModal
+            modal={props.modal}
+            toggleModal={props.toggleModal}
+            zoom={props.zoom}
+            toggleZoom={props.toggleZoom}>
+              <img className="modal-img" src={photos[props.image[props.currentStyle]].url}></img>
           </ImageModal>
 
           <div className="side-images">

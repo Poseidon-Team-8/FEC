@@ -4,9 +4,12 @@ const ImageModal = (props) => {
   return (
     <>{props.modal &&
       <>
-        <div className="photo-modal-background" onClick={props.toggle}></div>
-        <div className="photo-modal-container">
-          {props.children}
+        <div className="photo-modal-background" onClick={props.toggleModal}></div>
+        <div
+          className={props.zoom ? "photo-modal-container zoom" : "photo-modal-container"}
+          onClick={props.toggleZoom}
+        >
+            {props.children}
         </div>
       </>
     }</>);
