@@ -11,12 +11,13 @@ const Ratings = ({ productId }) => {
   const [reviews, setReviews] = useState([]);
   const [meta, setMeta] = useState(undefined);
 
-  const getReviews = (sort) => {
+  const getReviews = (sort, count) => {
     axios.get('/reviews', {
       headers: {
         id: 18029,
         reqtype: 'general',
-        sort: `${sort}`
+        sort: `${sort}`,
+        count: count
       }
     })
     .then( (res) => {
@@ -35,6 +36,9 @@ const Ratings = ({ productId }) => {
     })
     .then( (res) => {
       setMeta(res.data);
+      console.log()
+      let totalReviews = Object.values(res.data.recommended).reduce((a, b) => parseInt(a) + parseInt(b));
+      getReviews('relevant', totalReviews);
     })
     .catch( (err) => {
       console.log("Error Fetching Meta Data");
@@ -42,7 +46,6 @@ const Ratings = ({ productId }) => {
   }
 
   useEffect(() => {
-    getReviews('relevant');
     getMetaData();
   }, [])
 
