@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
 
 function Cart(props) {
   if (props.styles.length === 0) {

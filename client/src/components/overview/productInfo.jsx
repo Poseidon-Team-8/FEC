@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
 import StarRating from '../ratings/StarRating.jsx';
 import ratingAvg from '../ratings/RatingBreakdown.jsx'
 

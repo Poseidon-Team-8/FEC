@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
 
 function StyleSelector(props) {
   if (props.styles.length > 0) {
