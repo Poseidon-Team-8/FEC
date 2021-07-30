@@ -10,7 +10,7 @@ const ReviewBody = ({ body }) => {
     if (showPreview) {
       return (
         <>
-          <p>{ preview }</p>
+          <p>{ preview }...</p>
           <a className="extend-text" onClick={ () => setShowPreview(false)}>Show more</a>
         </>
       );

@@ -193,6 +193,7 @@ button:hover {
 
 .helpful-count:link {
   color: black;
+  display: inline;
 }
 
 .review-photo {
@@ -282,3 +283,21 @@ button:hover {
   margin-right: 1em;
 }
 
+/*
+================================================
+                Rating Breakdown
+================================================
+*/
+
+.breakdown-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.breakdown-entry-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5em;
+  width: 100%;
+}
