@@ -13,10 +13,10 @@ function Default(props) {
         <img
           className="main"
           src={photos[props.image[props.currentStyle]].url}
-          onClick={props.toggleModal}></img>
+          onClick={() => props.toggleModal()}></img>
 
           <ImageModal modal={props.modal} toggle={props.toggleModal}>
-          <img className="main" src={photos[props.image[props.currentStyle]].url}></img>
+            <img className="modal-img" src={photos[props.image[props.currentStyle]].url}></img>
           </ImageModal>
 
           <div className="side-images">
