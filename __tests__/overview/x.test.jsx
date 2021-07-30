@@ -9,6 +9,6 @@ describe('displays product info', () => {
     const x = new ShallowRenderer();
     x.render(<ProductInfo info={{title: 'Heir Force Ones'}} />);
     const result = x.getRenderOutput()
-    expect(result.props.children[0].props.children).toBe('Heir Force Ones')
+    expect(result.props.children[0].props.children).toBe('›)
   })
 })

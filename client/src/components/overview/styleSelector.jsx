@@ -16,13 +16,14 @@ function StyleSelector(props) {
                 src={item.photos[0].thumbnail_url}
                 onClick={() => props.updateStyle(index)}
                 ></img>
+              //   <img
+              // src="https://static.thenounproject.com/png/33609-200.png"
+              // className="overlay"
+              // ></img>
             )}
           </div>
           {props.children}
-            {/* <img
-              src="https://static.thenounproject.com/png/33609-200.png"
-              className="overlay"
-              ></img> */}
+
       </div>
   )} else {
     return (
