@@ -5,10 +5,13 @@ import Breakdown from './Breakdown.jsx';
 
 const RatingBreakdown = ({ ratings, recommended }) => {
 
-  const ratingSum = Object.values(ratings).reduce((a, b) => parseInt(a) + parseInt(b));
-  const ratingAvg = (ratingSum/5).toFixed(1);
-  console.log(recommended)
-
+  let ratingSum = 0;
+  let numVotes = 0;
+  for (let key in ratings) {
+    ratingSum += parseInt(key)*parseInt(ratings[key]);
+    numVotes += parseInt(ratings[key]);
+  }
+  const ratingAvg = (ratingSum/numVotes).toFixed(1);
   const totalReviews = Object.values(recommended).reduce((a, b) => parseInt(a) + parseInt(b));
   const percentRecommended = ((parseInt(recommended.true)/totalReviews)*100).toFixed(1);
 
