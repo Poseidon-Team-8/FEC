@@ -102,6 +102,9 @@ app.get('/productInfo', (req, res) => {
     .then(response => {
       res.send(response.data)
     })
+    .catch(error => {
+      console.log('SERVER SIDE ERROR', error)
+    })
 })
 
 // get styles

@@ -70,14 +70,14 @@
 ## Setup Answer modal
 
 - [x] pass productId and question body down from questions component
-- [] add GET request to pull down product Name
-- [] add Title (H2) 'Submit your Answer'
-- [] add subtitle: 'Product Name: Question Body'
-- [] add Your Answer input field
-- [] add What is your nickname input field
-- [] add Your email input field
-- [] add Upload your photos field
-- [] add Submit answer button
+- [x] add GET request to pull down product Name
+- [x] add Title (H2) 'Submit your Answer'
+- [x] add subtitle: 'Product Name: Question Body'
+- [x] add Your Answer input field
+- [x] add What is your nickname input field
+- [x] add Your email input field
+- [] add Upload your photos field **not required
+- [x] add Submit answer button
 - [] form needs to be validated
   - [] error occurs if:
     - [] any mandatory field is blank
