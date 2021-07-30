@@ -8,6 +8,7 @@ const AddAnswer = ( {body, productId, questionId}) => {
   const [answerInput, setAnswerInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
+  const [isClicked, setIsClicked] = useState(false);
 
 const getProductInfo = () => {
   axios({
@@ -67,12 +68,14 @@ const getProductInfo = () => {
         <label>
           What is your nickname:
           <input className='submit-name' type='text' maxLength='60' required
-          value={nameInput} onChange={(e) => setNameInput(e.target.value)}/>
+          value={nameInput} placeHolder='Example: jack543!'
+          onChange={(e) => setNameInput(e.target.value)}/>
         </label>
         <label>
           Your email:
           <input className='submit-email' type='email' maxLength='60' required
-          value={emailInput} onChange={(e) => setEmailInput(e.target.value)}/>
+          value={emailInput} placeHolder='Example: jack@email.com'
+          onChange={(e) => setEmailInput(e.target.value)}/>
         </label>
           <input className='submit-answerButton' type='button' value='Submit Answer'
           onClick={() => handleOnSubmit()}
