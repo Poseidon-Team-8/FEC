@@ -1,13 +1,26 @@
 import React, { useState, useContext } from 'react';
+import ReactDOM from 'react-dom';
 import ReviewTile from './ReviewTile.jsx';
 
-let ReviewList = ({ reviews }) => {
+const ReviewList = ({ reviews }) => {
+  const formatedReviews = reviews.map( (review, idx) => { return <ReviewTile key={ idx } review={ review }/> })
+  console.log(formatedReviews);
+
+  const [numReviewsRendered, setNumReviewsRendered] = useState(2);
+
+  const addReviews = () => {
+    setNumReviewsRendered(prev => prev + 2);
+  }
   return (
-    <div>
-      {reviews.map( (review, idx) => {
-          return <ReviewTile key={ idx } review={ review }/>
-        })}
-    </div>
+    <>
+      <div className="review-list-container">
+        { formatedReviews.slice(0,numReviewsRendered) }
+      </div>
+      <div className="button-container">
+        <button onClick={ () => addReviews() }>More Reviews</button>
+        <button>Write A Review +</button>
+      </div>
+    </>
   )
 }
 
