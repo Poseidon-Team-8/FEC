@@ -1,76 +1,69 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import ReviewList from './ReviewList.jsx';
+import ReviewListSort from './ReviewListSort.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 
-class Ratings extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reviews: [],
-      meta: undefined
-    }
-  }
+const Ratings = ({ productId }) => {
 
-  getReviews() {
+  const [reviews, setReviews] = useState([]);
+  const [meta, setMeta] = useState(undefined);
+
+  const getReviews = (sort) => {
     axios.get('/reviews', {
       headers: {
         id: 18029,
-        reqtype: 'general'
+        reqtype: 'general',
+        sort: `${sort}`
       }
     })
-      .then( (res) => {
-        this.setState({
-          reviews: res.data.results
-        });
-      })
-      .catch( (err) => {
-        console.log("Error Fetching Reviews");
-      })
+    .then( (res) => {
+      setReviews(res.data.results);
+    })
+    .catch( (err) => {
+      console.log("Error Fetching Reviews");
+    })
   }
 
-  getMetaData() {
+  const getMetaData = () => {
     axios.get('/meta', {
       headers: {
         id: 18029
       }
     })
     .then( (res) => {
-      this.setState({
-        meta: res.data
-      })
+      setMeta(res.data);
     })
     .catch( (err) => {
       console.log("Error Fetching Meta Data");
     })
   }
 
-  componentDidMount() {
-    this.getReviews();
-    this.getMetaData();
-  }
+  useEffect(() => {
+    getReviews('relevant');
+    getMetaData();
+  }, [])
 
-  render() {
-    if (!this.state.reviews || !this.state.meta) return null;
-    return (
-      <>
-        <div className="widget-container">
-          <div className="left-col-container">
-            <RatingBreakdown ratings={ this.state.meta.ratings} recommended={ this.state.meta.recommended}/>
-            <ProductBreakdown characteristics={ this.state.meta.characteristics }/>
-          </div>
-          <div className="right-col-container">
-            <ReviewList reviews={ this.state.reviews }/>
-          </div>
+  if (!reviews || !meta) return null;
+  return (
+    <>
+      <div className="widget-container">
+        <div className="left-col-container">
+          <RatingBreakdown ratings={ meta.ratings} recommended={ meta.recommended}/>
+          <ProductBreakdown characteristics={ meta.characteristics }/>
         </div>
-        <div style={{ "marginBottom": "5em"}}>
+        <div className="right-col-container">
+          <ReviewListSort numReviews={ reviews.length }/>
+          <ReviewList reviews={ reviews }/>
+        </div>
+      </div>
+      <div style={{ "marginBottom": "5em"}}>
 
-        </div>
-      </>
-    )
-  }
+      </div>
+    </>
+  )
 }
 
 export default Ratings;
