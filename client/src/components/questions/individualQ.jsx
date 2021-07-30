@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Answers from './answers.jsx'
+import HelpfulQ from './helpfulQuestion.jsx'
 
 const IndividualQ = ({question}) => {
 
@@ -9,7 +10,7 @@ const IndividualQ = ({question}) => {
     <div>
       <div>
         <p>Q: {question.question_body}</p>
-        <p>Helpful? ({question.question_helpfulness}) Add Answer</p>
+        <HelpfulQ id={question.question_id} helpful={question.question_helpfulness} />
         <Answers id={question.question_id} ></Answers>
       </div>
     </div>

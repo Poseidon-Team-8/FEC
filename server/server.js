@@ -21,6 +21,34 @@ app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 //       res.send(response.data)
 //     })
 // })
+app.put('/answerReport', (req, res) => {
+  axios.put(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.headers.id}/report`, null, {
+      headers: {
+        Authorization: `${auth.TOKEN}`
+      }
+    }
+  )
+  .then(result => {
+    res.status(204).send('Success!')
+  })
+  .catch(error => {
+    console.log('SERVER ERROR', error);
+  })
+})
+
+app.put('/answerHelpfulness', (req, res) => {
+  axios.put(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.headers.id}/helpful`, null, {
+      headers: {
+        Authorization: `${auth.TOKEN}`
+      }
+    }
+  )
+  .then( result => {
+    res.status(204).send('Success!')
+  })
+})
 
 app.get('/productAnswers', (req, res) => {
   axios.get(
@@ -29,8 +57,20 @@ app.get('/productAnswers', (req, res) => {
       Authorization: `${auth.TOKEN}`
     }
   })
-  .then( response => {
-    res.send(response.data)
+  .then( result => {
+    res.send(result.data)
+  })
+})
+
+app.put('/questionHelpfulness', (req, res) => {
+  axios.put(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/helpful`, null,{
+    headers: {
+      Authorization: `${auth.TOKEN}`
+    }
+  })
+  .then(result => {
+    res.status(204).send('Success!')
   })
 })
 
