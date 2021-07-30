@@ -21,6 +21,22 @@ app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 //       res.send(response.data)
 //     })
 // })
+app.post('/addAnswer', (req, res) => {
+  axios.post(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,
+    {
+      body: req.data.body,
+      name: req.data.name,
+      email: req.data.email
+    },
+    {
+      headers: {
+        Authorization: `${auth.TOKEN}`
+      }
+    }
+  )
+})
+
 app.put('/answerReport', (req, res) => {
   axios.put(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.headers.id}/report`, null, {

@@ -78,6 +78,10 @@
 - [x] add Your email input field
 - [] add Upload your photos field **not required
 - [x] add Submit answer button
+- [x] add hooks for answer, name, email
+- [x] invoke hooks with onChange for answer, name, email
+- [x] write function to handle submit which invokes a POST request
+- [] write POST request handler which invoke another POST request to database
 - [] form needs to be validated
   - [] error occurs if:
     - [] any mandatory field is blank
