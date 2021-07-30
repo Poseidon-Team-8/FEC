@@ -28,8 +28,19 @@ const AddAnswer = ( {body, productId, questionId}) => {
       method: 'post',
       url: '/addAnswer',
       data: {
-
+        body: `${answerInput}`,
+        name: `${nameInput}`,
+        email: `${emailInput}`
+      },
+      headers: {
+        id: `${questionId}`
       }
+    })
+    .then(result => {
+      console.log('Success!')
+    })
+    .catch(error => {
+      console.log('CLIENT SIDE ERROR', error)
     })
   }
   //write onChange functions for each input field
