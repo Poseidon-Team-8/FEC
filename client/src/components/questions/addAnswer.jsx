@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ const AddAnswer = ( {body, productId, questionId}) => {
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
 
+const getProductInfo = () => {
   axios({
     method: 'get',
     url: '/productInfo',
@@ -22,8 +23,10 @@ const AddAnswer = ( {body, productId, questionId}) => {
   .catch(error => {
     console.log('THIS IS CLIENT SIDE ERROR', error)
   })
+}
 
   const handleOnSubmit = () => {
+    console.log('Sent')
     axios({
       method: 'post',
       url: '/addAnswer',
@@ -46,17 +49,11 @@ const AddAnswer = ( {body, productId, questionId}) => {
       console.log('CLIENT SIDE ERROR', error)
     })
   }
-  //write onChange functions for each input field
-
-
-
-  //build function which invokes set'something' for useState for each input field
-  //then fire off post request
+  useEffect(() => {
+    getProductInfo();
+  }, []);
 
   return (
-
-    //will need to add onChange functions for each input field
-    //write a ternary to display button or modal with form
     <div>
       <h2>Submit Your Answer </h2>
       <h3>{body}: </h3>
@@ -65,26 +62,23 @@ const AddAnswer = ( {body, productId, questionId}) => {
         <label>
           Your Answer:
           <input className='submit-answer' type='text' maxLength='1000' required
-          onChange={(e) => setAnswerInput(e.target.value)}/>
+          value={answerInput} onChange={(e) => setAnswerInput(e.target.value)}/>
         </label>
         <label>
           What is your nickname:
           <input className='submit-name' type='text' maxLength='60' required
-          onChange={(e) => setNameInput(e.target.value)}/>
+          value={nameInput} onChange={(e) => setNameInput(e.target.value)}/>
         </label>
         <label>
           Your email:
           <input className='submit-email' type='email' maxLength='60' required
-          onChange={(e) => setEmailInput(e.target.value)}/>
+          value={emailInput} onChange={(e) => setEmailInput(e.target.value)}/>
         </label>
           <input className='submit-answerButton' type='button' value='Submit Answer'
           onClick={() => handleOnSubmit()}
           />
-
-
       </form>
     </div>
-
   )
 }
 

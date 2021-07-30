@@ -25,9 +25,9 @@ app.post('/addAnswer', (req, res) => {
   axios.post(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,
     {
-      body: req.data.body,
-      name: req.data.name,
-      email: req.data.email
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email
     },
     {
       headers: {
@@ -35,6 +35,9 @@ app.post('/addAnswer', (req, res) => {
       }
     }
   )
+  .then(result => {
+    res.status(200).send('Success server side!')
+  } )
 })
 
 app.put('/answerReport', (req, res) => {
