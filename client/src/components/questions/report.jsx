@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 const Report = ({id}) => {
-  console.log(id)
 
   const [disable, setDisable] = useState(false);
 

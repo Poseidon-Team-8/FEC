@@ -8,7 +8,7 @@ class Questions extends React.Component {
     super(props);
     this.state = {
       productQuestion: [],
-      questionAmount: 4
+      questionAmount: 2
     };
   }
 
@@ -27,14 +27,12 @@ class Questions extends React.Component {
       let sortedQuestions = response.data.results.sort((a, b) => {
         return b.question_helpfulness - a.question_helpfulness;
       })
-      console.log(sortedQuestions)
       this.setState({productQuestion: sortedQuestions})
     })
   }
 
   setQuestions = () => {
-    //increase state of questionAmount by 2 on button click
-    this.setState({questionAmount: this.state.questionAmount + productQuestion.length -4});
+    this.setState({questionAmount: this.state.questionAmount + 2});
   }
 
   componentDidMount() {
@@ -42,10 +40,15 @@ class Questions extends React.Component {
   }
 
   render() {
-    let buttonDisplay =
-    this.state.productQuestion.length > 4 ?
-    <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button> : null;
-
+    let buttonDisplay;
+    // this.state.productQuestion.length > 2 ?
+    // <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button> : null;
+    if ( this.state.productQuestion.length > 2 &&
+      this.state.questionAmount < this.state.productQuestion.length ) {
+      buttonDisplay = <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button>;
+    } else {
+      buttonDisplay = null;
+    }
     return (
 
       <div>
