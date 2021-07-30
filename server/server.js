@@ -164,6 +164,26 @@ app.put('/review-helpful', (req, res) => {
 
 })
 
+app.get('/meta', (req, res) => {
+  let options = {
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${req.headers.id}`,
+    headers: {
+      'Authorization': `${auth.TOKEN}`
+    }
+  }
+
+  axios(options)
+    .then( response => {
+      res.send(response.data)
+    })
+    .catch( err => {
+      res.send(err);
+    })
+})
+
+
+// ===================================================
+
 app.post('/updateCart', (req, res) => {
   let sku = parseInt(req.body.sku)
   axios({

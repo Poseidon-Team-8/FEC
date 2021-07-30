@@ -9,4 +9,4 @@ config.js
 #!/.yarn/cache
 /.pnp.*
 node_modules
-bundle.js
+client/dist/bundle.js

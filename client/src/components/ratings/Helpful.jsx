@@ -35,11 +35,11 @@ const Helpful = ({ yesCount, reviewId }) => {
 
   return (
     <div>
-      <p style={{ "display": "inline" }}>Was this review helpful? </p>
+      <span>Was this review helpful? </span>
       <a href='javascript:;' className='helpful-count' onClick={ (e) => updateYesCounter(e) }>Yes</a>
-      <p style={{ "display": "inline" }}> ({ yesCounter }) | </p>
+      <span> ({ yesCounter }) | </span>
       <a href='javascript:;' className='helpful-count' onClick={ (e) => updateNoCounter(e) }>No</a>
-      <p style={{ "display": "inline" }}> ({ noCounter })</p>
+      <span> ({ noCounter })</span>
     </div>
   );
 }

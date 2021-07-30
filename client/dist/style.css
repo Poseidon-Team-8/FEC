@@ -1,5 +1,29 @@
-/* ---Overview--- */
-/* image gallery */
+/*
+================================================
+             Product Info
+================================================
+*/
+
+.ogprice {
+  text-decoration-line: line-through;
+}
+
+.salePrice {
+  color: red;
+}
+
+.social {
+  width: 30px;
+  height: auto;
+  display: inline;
+  margin: 10px;
+}
+
+/*
+================================================
+             Image Gallery
+================================================
+*/
 .main {
   height: 560px;
   width: auto;
@@ -26,12 +50,21 @@
   overflow: scroll;
 }
 
-/* style selector */
+.sthumb {
+  border: solid red;
+}
 
-/* .style-selector {
-  position: relative;
-  display: inline;
-} */
+/*
+================================================
+                Style Selector
+================================================
+*/
+
+.style-selector {
+  display: flex;
+  flex-wrap: wrap;
+  width: 440px;
+}
 
 .style {
   /* position: relative;s */
@@ -57,16 +90,20 @@
   opacity: 0.4;
 }
 
-/* cart */
+/*
+================================================
+                    Cart
+================================================
+*/
+
 .size-dropdown, .quantity-dropdown, button {
   display: inline;
   margin: 10px;
 }
 
-
 /*
 ================================================
-Ratings & Reviews Widget
+          Ratings & Reviews Widget
 ================================================
 */
 
@@ -98,7 +135,6 @@ Ratings & Reviews Widget
 ================================================
 */
 
-
 .review-tile-container {
   display: flex;
   flex-direction: column;
@@ -122,6 +158,7 @@ Ratings & Reviews Widget
 
 .helpful-count:link {
   color: black;
+  display: inline;
 }
 
 .review-photo {
@@ -192,4 +229,40 @@ Ratings & Reviews Widget
 
 .checkmark {
   margin-right: 0.5em;
+}
+
+/*
+================================================
+                Rating Summary
+================================================
+*/
+
+.rating-summary-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.rating-sum-avg {
+  margin-right: 1em;
+}
+
+/*
+================================================
+                Rating Breakdown
+================================================
+*/
+
+.breakdown-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.breakdown-entry-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5em;
+  width: 100%;
 }
