@@ -23,6 +23,7 @@ class Overview extends React.Component {
       currentStyle: 0,
       sku: 0,
       quantity: 0,
+      modal: false,
       image: image
     }
   }
@@ -55,6 +56,10 @@ class Overview extends React.Component {
         styles: res.data
       })
     })
+  }
+
+  toggleModal = () => {
+    this.setState({ modal: !this.state.modal })
   }
 
   updateStyle = (index) => {
@@ -130,6 +135,8 @@ class Overview extends React.Component {
             updateImage={(key, index) => this.updateImage(key, index)}
             styles={this.state.styles}
             currentStyle={this.state.currentStyle}
+            modal={this.state.modal}
+            toggleModal={() => this.toggleModal()}
           >
 
             <StyleSelector

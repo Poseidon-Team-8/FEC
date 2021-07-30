@@ -2,10 +2,10 @@ import React from 'react';
 
 const ImageModal = (props) => {
   return (
-    <>{props.show &&
+    <>{props.modal &&
       <>
-        <div className="image-modal-background" onClick={props.onClick}></div>
-        <div className="image-modal-container" onClick={props.onClick}>
+        <div className="photo-modal-background" onClick={props.toggle}></div>
+        <div className="photo-modal-container">
           {props.children}
         </div>
       </>

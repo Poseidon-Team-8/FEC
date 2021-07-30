@@ -1,4 +1,6 @@
 import React from 'react';
+import ImageModal from './imageModal.jsx'
+
 
 function Default(props) {
   if (props.styles.length === 0) {
@@ -8,7 +10,15 @@ function Default(props) {
     return (
       <div className="image-gallery">
         <div className="image-container">
+        <img
+          className="main"
+          src={photos[props.image[props.currentStyle]].url}
+          onClick={props.toggleModal}></img>
+
+          <ImageModal modal={props.modal} toggle={props.toggleModal}>
           <img className="main" src={photos[props.image[props.currentStyle]].url}></img>
+          </ImageModal>
+
           <div className="side-images">
             {photos.map((photo, index) =>
               <img
