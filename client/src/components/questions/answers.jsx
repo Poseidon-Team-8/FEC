@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Helpful from './helpful.jsx';
+import Helpful from './helpfulAnswer.jsx';
 import Report from './report.jsx';
 var moment = require('moment');
 
