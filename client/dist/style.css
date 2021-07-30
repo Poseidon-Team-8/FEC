@@ -32,14 +32,23 @@
 
 .image-container {
   width: 850px;
-  border: solid black;
+  height: 560px;
+  /* border: solid black; */
   margin-right: 10px;
+  position: relative;
 }
 
 .main {
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   height: 560px;
   width: auto;
   position: absolute;
+  z-index: -1;
+
 }
 
 .thumbnail {
@@ -51,13 +60,13 @@
 .side-images {
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
   height: 560px;
   overflow: auto;
 }
 
 .selected-thumb {
-  border: solid red;
+  border: solid rgba(0, 195, 255, 0.92);
 }
 
 /*
