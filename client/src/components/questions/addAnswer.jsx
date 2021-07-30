@@ -23,7 +23,7 @@ const AddAnswer = ( {body, productId, questionId}) => {
     console.log('THIS IS CLIENT SIDE ERROR', error)
   })
 
-  handleOnSubmit = () => {
+  const handleOnSubmit = () => {
     axios({
       method: 'post',
       url: '/addAnswer',
@@ -37,7 +37,10 @@ const AddAnswer = ( {body, productId, questionId}) => {
       }
     })
     .then(result => {
-      console.log('Success!')
+      setAnswerInput('');
+      setNameInput('');
+      setEmailInput('');
+      console.log('Success!');
     })
     .catch(error => {
       console.log('CLIENT SIDE ERROR', error)
@@ -74,7 +77,9 @@ const AddAnswer = ( {body, productId, questionId}) => {
           <input className='submit-email' type='email' maxLength='60' required
           onChange={(e) => setEmailInput(e.target.value)}/>
         </label>
-          <input className='submit-answerButton' type='button' value='Submit Answer'/>
+          <input className='submit-answerButton' type='button' value='Submit Answer'
+          onClick={() => handleOnSubmit()}
+          />
 
 
       </form>
