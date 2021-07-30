@@ -18,7 +18,7 @@ const Thumb = styled.div`
 const BreakdownEntry = ({ rating, numReviews, percentage}) =>(
     <div className="breakdown-entry-container">
       <div style={{ "marginRight": "0.5em" }}>
-        <a href="javascript:void()" className="helpful-count">{ `${rating} stars` }</a>
+        <a href="javascript:" className="helpful-count">{ `${rating} stars` }</a>
       </div>
       <Track>
         <Thumb percentage={ percentage }/>
