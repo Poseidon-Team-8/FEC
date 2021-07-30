@@ -65,6 +65,9 @@ class Ratings extends React.Component {
             <ReviewList reviews={ this.state.reviews }/>
           </div>
         </div>
+        <div style={{ "marginBottom": "5em"}}>
+
+        </div>
       </>
     )
   }

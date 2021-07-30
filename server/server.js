@@ -132,7 +132,7 @@ app.get('/reviews', (req, res) => {
   }
 
   if (req.headers.reqtype === 'general') {
-    options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${req.headers.id}`;
+    options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${req.headers.id}&count=${80}&sort=relevant`;
   } else {
     options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${req.headers.id}`;
   }

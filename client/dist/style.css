@@ -165,7 +165,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   width: 65%;
-  border: 3px solid black;
+  /* border: 3px solid black; */
 }
 
 /*
@@ -177,7 +177,8 @@ button:hover {
 .review-tile-container {
   display: flex;
   flex-direction: column;
-  border: 3px solid black;
+  /* border: 3px solid black; */
+  border-bottom: 3px solid black;
 }
 
 .tile-header {
@@ -304,4 +305,16 @@ button:hover {
   align-items: center;
   margin-top: 0.5em;
   width: 100%;
+}
+
+/*
+================================================
+                 Review List
+================================================
+*/
+
+.review-list-container {
+  height: 800px;
+  margin-top: 0.5em;
+  overflow-y: auto;
 }
