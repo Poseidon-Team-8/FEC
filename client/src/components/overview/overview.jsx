@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
@@ -24,6 +23,8 @@ class Overview extends React.Component {
       currentStyle: 0,
       sku: 0,
       quantity: 0,
+      modal: false,
+      zoom: false,
       image: image
     }
   }
@@ -56,6 +57,14 @@ class Overview extends React.Component {
         styles: res.data
       })
     })
+  }
+
+  toggleModal = () => {
+    this.setState({ modal: !this.state.modal })
+  }
+
+  toggleZoom = () => {
+    this.setState({ zoom: !this.state.zoom })
   }
 
   updateStyle = (index) => {
@@ -119,11 +128,6 @@ class Overview extends React.Component {
   }
 
   render() {
-    // if (this.styles.length === 0) {
-    //   return (
-    //     <h1>Loading Product Detail</h1>
-    //   )
-    // }
     return (
       <div>
         <ProductInfo
@@ -136,20 +140,27 @@ class Overview extends React.Component {
             updateImage={(key, index) => this.updateImage(key, index)}
             styles={this.state.styles}
             currentStyle={this.state.currentStyle}
-          />
-          <StyleSelector
-            styles={this.state.styles}
-            currentStyle={this.state.currentStyle}
-            updateStyle={(index) => this.updateStyle(index)}
-          />
-          <Cart
-            styles={this.state.styles}
-            updateCart={() => this.updateCart()}
-            currentStyle={this.state.currentStyle}
-            updateSKU={(key) => this.updateSKU(key)}
-            sku={this.state.sku}
-            updateQuantity={(quantity) => this.updateQuantity(quantity)}
-          />
+            modal={this.state.modal}
+            toggleModal={() => this.toggleModal()}
+            zoom={this.state.zoom}
+            toggleZoom={() => this.toggleZoom()}
+          >
+
+            <StyleSelector
+              styles={this.state.styles}
+              currentStyle={this.state.currentStyle}
+              updateStyle={(index) => this.updateStyle(index)}
+              >
+              <Cart
+                styles={this.state.styles}
+                updateCart={() => this.updateCart()}
+                currentStyle={this.state.currentStyle}
+                updateSKU={(key) => this.updateSKU(key)}
+                sku={this.state.sku}
+                updateQuantity={(quantity) => this.updateQuantity(quantity)}
+                />
+            </StyleSelector>
+                </Default>
         </ProductInfo>
       </div>
     )

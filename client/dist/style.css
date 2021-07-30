@@ -24,9 +24,32 @@
              Image Gallery
 ================================================
 */
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-container {
+  width: 850px;
+  height: 560px;
+  /* border: solid black; */
+  margin-right: 10px;
+  position: relative;
+}
+
+/* box-sizing: border box */
+
 .main {
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   height: 560px;
   width: auto;
+  height: 100%;
+  position: absolute;
 }
 
 .thumbnail {
@@ -36,23 +59,20 @@
 }
 
 .side-images {
-  display: flex;
+  flex-direction: column;
+  position: relative;
   height: 560px;
+  width: 100px;
+  overflow: auto;
 }
 
-.side-images-child {
-  flex: .08;
+.selected-thumb {
+  border: solid rgba(0, 195, 255, 0.92);
 }
 
-.side-images-child:first-child {
-  width: 100%;
-  height: auto;
-  overflow: scroll;
-}
+/* .zoom {
 
-.sthumb {
-  border: solid red;
-}
+} */
 
 /*
 ================================================
@@ -62,11 +82,20 @@
 
 .style-selector {
   display: flex;
+  flex-direction: column;
+}
+
+.style-name {
+  align-self: center;
+}
+
+.styles-grid {
+  display: flex;
   flex-wrap: wrap;
   width: 440px;
 }
 
-.style {
+.style-thumbnail {
   /* position: relative;s */
   /* display: inline; */
   height: 100px;
@@ -75,7 +104,11 @@
   border-radius: 50%;
 }
 
-/* .overlay{
+.selected-style {
+  opacity: 0.4;
+}
+
+.overlay{
   display: inline;
   justify-content: flex-start;
   position: absolute;
@@ -84,10 +117,6 @@
   margin: 5px;
   border-radius: 50%;
   right: 100px;
-} */
-
-.selected {
-  opacity: 0.4;
 }
 
 /*
@@ -96,9 +125,19 @@
 ================================================
 */
 
+.cart {
+  align-self: center;
+}
+
 .size-dropdown, .quantity-dropdown, button {
   display: inline;
   margin: 10px;
+  background-color: white;
+  /* font-size: medium; */
+}
+
+button:hover {
+  background-color: rgba(0, 195, 255, 0.92)
 }
 
 /*
