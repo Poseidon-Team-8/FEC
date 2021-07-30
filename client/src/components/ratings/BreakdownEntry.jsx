@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const Track = styled.div`
   width: 60%;
   height: 10px;
-  background-color: #222;
-  border-radius: 5px;
+  background-color: #dee3e3;
+  border-radius: 2px;
 `;
 
 const Thumb = styled.div`
@@ -15,8 +15,7 @@ const Thumb = styled.div`
   border-radius: 2px;
 `;
 
-const BreakdownEntry = ({ rating, numReviews, percentage}) => {
-  return (
+const BreakdownEntry = ({ rating, numReviews, percentage}) =>(
     <div className="breakdown-entry-container">
       <div style={{ "marginRight": "0.5em" }}>
         <a href="javascript:void()" className="helpful-count">{ `${rating} stars` }</a>
@@ -28,7 +27,6 @@ const BreakdownEntry = ({ rating, numReviews, percentage}) => {
         <span>({ numReviews })</span>
       </div>
     </div>
-  );
-}
+);
 
 export default BreakdownEntry;
