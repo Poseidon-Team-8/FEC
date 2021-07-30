@@ -17,7 +17,7 @@ class Ratings extends React.Component {
   getReviews() {
     axios.get('/reviews', {
       headers: {
-        id: 18024,
+        id: 18029,
         reqtype: 'general'
       }
     })
@@ -34,7 +34,7 @@ class Ratings extends React.Component {
   getMetaData() {
     axios.get('/meta', {
       headers: {
-        id: 18024
+        id: 18029
       }
     })
     .then( (res) => {

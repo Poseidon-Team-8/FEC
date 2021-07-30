@@ -15,7 +15,7 @@ const Thumb = styled.div`
   border-radius: 2px;
 `;
 
-const BreakdownEntry = ({ rating, numReviews, percentage}) =>(
+const BreakdownEntry = ({ rating, numReviews, percentage}) => (
     <div className="breakdown-entry-container">
       <div style={{ "marginRight": "0.5em" }}>
         <a href="javascript:" className="helpful-count">{ `${rating} stars` }</a>
