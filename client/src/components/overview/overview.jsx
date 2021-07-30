@@ -14,11 +14,6 @@ class Overview extends React.Component {
       image[i] = 0
     }
     this.state = {
-      productInfo: {
-        title: 'Loading',
-        category: 'Loading',
-        overview: 'Loading'
-      },
       styles: [],
       currentStyle: 0,
       sku: 0,
@@ -27,23 +22,6 @@ class Overview extends React.Component {
       zoom: false,
       image: image
     }
-  }
-
-  getProducts() {
-    axios.get('/productInfo', {
-      headers: {
-        id: this.props.productId
-      }
-    })
-    .then(res => {
-      this.setState({
-        productInfo: {
-          title: res.data.name,
-          category: res.data.category,
-          overview: res.data.description
-        }
-      })
-    });
   }
 
   getStyles() {
@@ -123,18 +101,13 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    this.getProducts();
     this.getStyles();
   }
 
   render() {
     return (
       <div>
-        <ProductInfo
-          info={this.state.productInfo}
-          styles={this.state.styles}
-          currentStyle={this.state.currentStyle}
-        >
+        <ProductInfo productId={this.props.productId} styles={this.state.styles} currentStyle={this.state.currentStyle}>
           <Default
             image={this.state.image}
             updateImage={(key, index) => this.updateImage(key, index)}

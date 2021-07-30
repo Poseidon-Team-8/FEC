@@ -1,8 +1,26 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import StarRating from '../ratings/StarRating.jsx';
 import ratingAvg from '../ratings/RatingBreakdown.jsx'
 
 function ProductInfo(props) {
+
+  const [product, setProduct] = useState();
+
+  useEffect(() => {
+    axios.get('/productInfo', {
+      headers: {
+        id: props.productId
+      }
+    })
+    .then(res => {
+      setProduct({
+          title: res.data.name,
+          category: res.data.category,
+          overview: res.data.description
+        })
+      })
+  }, [])
 
   if (props.styles.length === 0) {
     return (
@@ -14,14 +32,14 @@ function ProductInfo(props) {
   let priceInfo = `Price: ${prices.original_price}`
   return (
     <div>
-      <h2>{props.info.title}</h2>
+      <h2>{product.title}</h2>
       <StarRating ratingAvg={ ratingAvg }/>
-      <p>Category: {props.info.category} > Price:
+      <p>Category: {product.category} > Price:
       {prices.sale_price ? <span> <span className="ogprice">${prices.original_price}</span> <span className="salePrice">{prices.sale_price}</span> </span> : <span> ${prices.original_price}</span>}
       </p>
       {Share()}
       {props.children}
-      <p>{props.info.overview}</p>
+      <p>{product.overview}</p>
     </div>
   );
 }
