@@ -3,15 +3,10 @@ import styled from 'styled-components';
 
 const CharacteristicEntry = ({ characteristic, value }) => {
   const percentage = (value/5*100).toFixed(2);
-  console.log(characteristic);
-  console.log(percentage)
-
   const displayFit = (characteristic === 'Fit');
   const displayLength = (characteristic === 'Length');
   const displayComfort = (characteristic === 'Comfort');
   const displayQuality = (characteristic === 'Quality');
-
-  console.log('displayFit: ', displayFit);
 
   const Container = styled.div`
     margin-top: 0.5em;
@@ -80,24 +75,24 @@ const CharacteristicEntry = ({ characteristic, value }) => {
           <Arrow src="./icons/arrow.svg" percentage={ percentage }/>
         </Track>
         <FitScale visibility={ displayFit }>
-          <p2>Small</p2>
-          <p2>Perfect</p2>
-          <p2>Large</p2>
+          <small>Small</small>
+          <small>Perfect</small>
+          <small>Large</small>
         </FitScale>
         <LengthScale visibility={ displayLength }>
-          <p2>Short</p2>
-          <p2>Perfect</p2>
-          <p2>Long</p2>
+          <small>Short</small>
+          <small>Perfect</small>
+          <small>Long</small>
         </LengthScale>
         <ComfortScale visibility={ displayComfort }>
-          <p2>Poor</p2>
-          <p2>Average</p2>
-          <p2>Great</p2>
+          <small>Poor</small>
+          <small>Average</small>
+          <small>Great</small>
         </ComfortScale>
         <QualityScale visibility={ displayQuality }>
-          <p2>Poor</p2>
-          <p2>Average</p2>
-          <p2>Great</p2>
+          <small>Poor</small>
+          <small>Average</small>
+          <small>Great</small>
         </QualityScale>
       </Container>
     </>
