@@ -25,7 +25,9 @@ let StarRating = ({ rating }) => {
   }
 
   return (
-    stars
+    <div className="star-container">
+      { stars }
+    </div>
   );
 }
 

@@ -1,10 +1,23 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
-let RatingBreakdown = (props) => {
+import RatingSummary from './RatingSummary.jsx';
+import Breakdown from './Breakdown.jsx';
+
+const RatingBreakdown = ({ ratings, recommended }) => {
+
+  const ratingSum = Object.values(ratings).reduce((a, b) => parseInt(a) + parseInt(b));
+  const ratingAvg = (ratingSum/6).toFixed(1);
+  const totalReviews = Object.values(recommended).reduce((a, b) => parseInt(a) + parseInt(b));
+  const percentRecommended = ((parseInt(recommended.true)/totalReviews)*100).toFixed(1);
+
   return (
-    <div>
-      Rating Breakdown Goes Here!
-    </div>
+    <>
+      <div className="rating-breakdown-container">
+        <RatingSummary ratingAvg={ ratingAvg }/>
+        <p style={{ "textAlign": "center"}}>{`${percentRecommended}% of reviews recommend this product`}</p>
+        <Breakdown ratings={ ratings } totalReviews={ totalReviews } />
+      </div>
+    </>
   )
 }
 
