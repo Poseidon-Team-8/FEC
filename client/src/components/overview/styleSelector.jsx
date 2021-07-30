@@ -1,27 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
 
 function StyleSelector(props) {
   if (props.styles.length > 0) {
     return (
-      <div>
-        <p>Style > <b>{props.styles[props.currentStyle].name}</b></p>
-          <div className="style-selector">
+      <div className="style-selector">
+        <p className="style-name">Style > <b>{props.styles[props.currentStyle].name}</b></p>
+          <div className="styles-grid">
             {props.styles.map((item, index) =>
               <img
-                className={props.currentStyle === index ? 'selected style' : 'style'}
+                className={props.currentStyle === index ? 'selected-style style-thumbnail' : 'style-thumbnail'}
                 key={index}
                 index={index}
                 src={item.photos[0].thumbnail_url}
                 onClick={() => props.updateStyle(index)}
                 ></img>
+              //   <img
+              // src="https://static.thenounproject.com/png/33609-200.png"
+              // className="overlay"
+              // ></img>
             )}
           </div>
-            {/* <img
-              src="https://static.thenounproject.com/png/33609-200.png"
-              className="overlay"
-              ></img> */}
+          {props.children}
+
       </div>
   )} else {
     return (

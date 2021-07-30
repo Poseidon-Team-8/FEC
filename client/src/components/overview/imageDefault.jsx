@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import ImageModal from './imageModal.jsx'
+
 
 function Default(props) {
   if (props.styles.length === 0) {
@@ -8,18 +8,33 @@ function Default(props) {
   } else {
     let photos = props.styles[props.currentStyle].photos;
     return (
-      <div className="side-images">
-        <div className="side-images-child">
-          {photos.map((photo, index) =>
-            <img
-              className={props.image[props.currentStyle]=== index ? "thumbnail sthumb": "thumbnail"}
+      <div className="image-gallery">
+        <div className="image-container">
+        <img
+          className="main"
+          src={photos[props.image[props.currentStyle]].url}
+          onClick={() => props.toggleModal()}></img>
+
+          <ImageModal
+            modal={props.modal}
+            toggleModal={props.toggleModal}
+            zoom={props.zoom}
+            toggleZoom={props.toggleZoom}>
+              <img className="modal-img" src={photos[props.image[props.currentStyle]].url}></img>
+          </ImageModal>
+
+          <div className="side-images">
+            {photos.map((photo, index) =>
+              <img
+              className={props.image[props.currentStyle]=== index ? "thumbnail selected-thumb": "thumbnail"}
               src={photo.url}
               key={index}
               onClick={() =>
                 props.updateImage(props.currentStyle, index)}
-            ></img>)}
+                ></img>)}
+          </div>
         </div>
-          <img className="main side-images-child" src={photos[props.image[props.currentStyle]].url}></img>
+        {props.children}
       </div>
     )
   }
