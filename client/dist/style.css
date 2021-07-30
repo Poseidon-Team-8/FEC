@@ -276,5 +276,6 @@
 
 .review-list-container {
   height: 600px;
+  margin-top: 0.5em;
   overflow-y: auto;
 }

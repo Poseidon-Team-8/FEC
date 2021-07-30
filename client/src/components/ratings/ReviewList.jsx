@@ -14,10 +14,12 @@ const ReviewList = ({ reviews }) => {
   return (
     <>
       <div className="review-list-container">
-        { formatedReviews.slice(0,numReviewsRendered) }
+        { formatedReviews.slice(0, numReviewsRendered) }
       </div>
       <div className="button-container">
-        <button onClick={ () => addReviews() }>More Reviews</button>
+        {
+          (numReviewsRendered < formatedReviews.length) ? <button onClick={ () => addReviews() }>More Reviews</button> : null
+        }
         <button>Write A Review +</button>
       </div>
     </>
