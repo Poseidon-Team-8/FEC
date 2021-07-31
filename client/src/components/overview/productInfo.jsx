@@ -4,7 +4,7 @@ import axios from 'axios';
 // import ratingAvg from '../ratings/RatingBreakdown.jsx';
 
 function ProductInfo(props) {
-  if (!props.styles.length) {
+  if (!props.styles.length || !props.product) {
     return null
   }
 
