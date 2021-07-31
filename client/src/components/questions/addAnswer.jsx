@@ -90,10 +90,11 @@ const AddAnswer = ( {body, productId, questionId}) => {
   }, []);
 
 
-
+  //input fields not clearing because axios is asynchronous and clear the fields happens once response comes back
+  //maybe write a function that can take care of this instead of calling them in then block
   return (
     <div>
-      {isClicked === false ? <button onClick={() => setIsClicked(true)}>Add Answer</button> :
+      { !isClicked ? <button onClick={() => setIsClicked(true)}>Add Answer</button> :
       <div className='modal-container'>
         <div className='modal-content'>
           <h2>Submit Your Answer </h2>
