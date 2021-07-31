@@ -4,7 +4,7 @@ import RatingSummary from './RatingSummary.jsx';
 import RatingSortMenu from './RatingSortMenu.jsx';
 import Breakdown from './Breakdown.jsx';
 
-const RatingBreakdown = ({ ratings, recommended }) => {
+const RatingBreakdown = ({ ratings, recommended, reviews, filteredReviews, setFilteredReviews }) => {
 
   let ratingSum = 0;
   let numVotes = 0;
@@ -18,6 +18,12 @@ const RatingBreakdown = ({ ratings, recommended }) => {
   const [sortSelections, setSortSelections] = useState(new Set());
 
   useEffect(() => {
+    //update state of reviews based on what is in sortSelections
+    if (sortSelections.size) {
+      setFilteredReviews(reviews.filter( review => sortSelections.has(review.rating)));
+    } else {
+      setFilteredReviews([]);
+    }
   }, [sortSelections])
 
   return (

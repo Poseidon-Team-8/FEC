@@ -8,8 +8,6 @@ const RatingSortMenu = ({ sortSelections, setSortSelections }) => {
     ratingSortItems.push( <RatingSortItem key={ ratingSort } rating={ ratingSort } sortSelections={ sortSelections } setSortSelections={ setSortSelections } /> )
   });
 
-  console.log(sortSelections)
-
   return (
     <div className="rating-sort-menu">
       {
