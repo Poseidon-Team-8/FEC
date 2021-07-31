@@ -8,6 +8,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
   const [answerInput, setAnswerInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
+  const [imageInput, setImageInput] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
   const validate = () => {
@@ -17,6 +18,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
     let emailValid = emailInput.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
     let requiredValidEmail = '';
     let message = 'You must enter the following:';
+    console.log(imageInput);
 
     if ( answerInput === '' ) {
       requiredAnswer = 'An answer';
@@ -99,6 +101,11 @@ const AddAnswer = ( {body, productName, questionId}) => {
               onChange={(e) => setEmailInput(e.target.value)}/>
             </label>
             <p>For authentication reasons, you will not be emailed</p>
+            <label>
+              Upload your photos:
+              <input type='file' multiple
+              onChange={(e) => setImageInput(...e.target.files)} />
+            </label>
               <input className='submit-answerButton' type='button' value='Submit Answer'
               onClick={() => handleOnSubmit()}
               />
