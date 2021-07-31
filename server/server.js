@@ -21,6 +21,25 @@ app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 //       res.send(response.data)
 //     })
 // })
+app.post('/addAnswer', (req, res) => {
+  axios.post(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,
+    {
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email
+    },
+    {
+      headers: {
+        Authorization: `${auth.TOKEN}`
+      }
+    }
+  )
+  .then(result => {
+    res.status(200).send('Success server side!')
+  } )
+})
+
 app.put('/answerReport', (req, res) => {
   axios.put(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.headers.id}/report`, null, {
@@ -101,6 +120,9 @@ app.get('/productInfo', (req, res) => {
   })
     .then(response => {
       res.send(response.data)
+    })
+    .catch(error => {
+      console.log('SERVER SIDE ERROR', error)
     })
 })
 
