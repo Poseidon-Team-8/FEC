@@ -70,8 +70,8 @@
   border: solid rgba(0, 195, 255, 0.92);
 }
 
-/* .zoom {
-
+/* .zoom:hover {
+  transform: scale(2.5)
 } */
 
 /*
