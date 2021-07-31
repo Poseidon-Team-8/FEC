@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import StarRating from '../ratings/StarRating.jsx';
-import ratingAvg from '../ratings/RatingBreakdown.jsx'
+// import StarRating from '../ratings/StarRating.jsx';
+// import ratingAvg from '../ratings/RatingBreakdown.jsx';
 
 function ProductInfo(props) {
-
-  if (props.styles.length === 0) {
-    return (
-      <p>Loading Product Info</p>
-      )
+  if (!props.styles.length || !props.product) {
+    return null
   }
 
   const prices = props.styles[props.styleIndex];
@@ -17,7 +14,7 @@ function ProductInfo(props) {
   return (
     <div>
       <h2>{props.product.title}</h2>
-      <StarRating ratingAvg={ ratingAvg }/>
+      {/* <StarRating ratingAvg={ ratingAvg }/> */}
       <p>Category: {props.product.category} > Price:
       {prices.sale_price ? <span> <span className="ogprice">${prices.original_price}</span> <span className="salePrice">{prices.sale_price}</span> </span> : <span> ${prices.original_price}</span>}
       </p>
@@ -36,7 +33,7 @@ function Share() {
       href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       ><img className="social" src="./icons/f_logo_RGB-Blue_1024.png"></img></a></div>
 
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false"><img className="social" src="./icons/2021 Twitter logo - blue.png"></img></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false"><img className="social" src="./icons/2021 Twitter logo - blue.png"></img></a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
 
       <a className="social" href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"><img className="social" src="./icons/pinterest.png"></img>
     </a>
