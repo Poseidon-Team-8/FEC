@@ -53,7 +53,9 @@ class Questions extends React.Component {
 
       <div>
         {this.state.productQuestion.slice(0, this.state.questionAmount).map( question =>
-          <IndividualQ question={question} key={question.question_id}
+          <IndividualQ question={question}
+          key={question.question_id}
+          productId={this.props.productId}
           />
         )}
         {buttonDisplay}

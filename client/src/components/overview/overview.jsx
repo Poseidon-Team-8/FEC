@@ -1,111 +1,91 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import Cart from './cart.jsx';
 import Default from './imageDefault.jsx';
 
-class Overview extends React.Component {
-
-  constructor(props) {
-    super(props);
-    let image = {}
-    for (var i = 0; i < 20; i++) {
-      image[i] = 0
-    }
-    this.state = {
-      productInfo: {
-        title: 'Loading',
-        category: 'Loading',
-        overview: 'Loading'
-      },
-      styles: [],
-      currentStyle: 0,
-      sku: 0,
-      quantity: 0,
-      modal: false,
-      zoom: false,
-      image: image
-    }
+function Overview(props) {
+  let imageObject = {}
+  for (var i = 0; i < 20; i++) {
+    imageObject[i] = 0
   }
+  const [product, setProduct] = useState();
+  const [styles, setStyles] = useState([]);
+  const [styleIndex, setStyleIndex] = useState(0);
+  const [sku, setSKU] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [modal, setModal] = useState(false);
+  const [zoom, setZoom] = useState(false);
+  const [image, setImage] = useState(imageObject)
 
-  getProducts() {
+  useEffect(() => {
+    getProduct();
+    getStyles();
+  }, []);
+
+  const getProduct = () => {
     axios.get('/productInfo', {
-      headers: {
-        id: this.props.productId
-      }
+      headers: {id: props.productId}
     })
     .then(res => {
-      this.setState({
-        productInfo: {
+      setProduct({
           title: res.data.name,
           category: res.data.category,
           overview: res.data.description
-        }
+        })
       })
-    });
   }
 
-  getStyles() {
+  const getStyles = () => {
     axios.get('/styles', {
-      headers: {
-        id: this.props.productId
-      }
+      headers: {id: props.productId}
     })
     .then(res => {
-      this.setState({
-        styles: res.data
-      })
+      setStyles(res.data)
     })
   }
 
-  toggleModal = () => {
-    this.setState({ modal: !this.state.modal })
+  const updateStyle = (index) => {
+    setStyleIndex(index);
+    setSKU(0);
+    setQuantity(0);
   }
 
-  toggleZoom = () => {
-    this.setState({ zoom: !this.state.zoom })
+  const toggleModal = () => {
+    setModal(!modal)
   }
 
-  updateStyle = (index) => {
-    this.setState({
-      currentStyle: index,
-      sku: 0,
-      quantity: 0
-    })
+  const toggleZoom = () => {
+    setZoom(!zoom)
   }
 
-  updateImage = (key, index) => {
-    this.setState(prevState => {
-      let image = Object.assign({}, prevState.image);
-      image[key] = index;
-      return { image };
-    })
+  const updateSKU = (key) => {
+    setSKU(key);
+    setQuantity(1);
   }
 
-  updateSKU = (key) => {
-    this.setState({
-      sku: key,
-      quantity: 1
-    })
+  const updateQuantity = (quantity) => {
+    setQuantity(quantity)
   }
 
-  updateQuantity = (quantity) => {
-    this.setState({quantity})
+  const updateImage = (key, index) => {
+    image[key] = index;
+    setImage({...image});
   }
 
-  updateCart = () => {
-    let total = this.state.quantity;
+  const updateCart = () => {
     let flag = true;
-    if (this.state.sku === 0) {
+    if (sku === 0) {
       // open Size dropdown
     }
-    for (var i = 0; i < total; i++) {
+    for (var i = 0; i < quantity; i++) {
+      // refactor this part to be in server
       axios.post('/updateCart', {
-        sku: this.state.sku
+        sku: sku
       })
         .then(res => {
-          console.log('Successfully added item')
+          console.log('items successfully added')
         })
         .catch(err => {
           flag = false;
@@ -113,58 +93,46 @@ class Overview extends React.Component {
           console.log('ERROR', err);
         })
     }
-    if (flag && total !== 0) {
-      alert(`${this.state.quantity} ${this.state.styles[this.state.currentStyle].name} ${this.state.productInfo.title} added to cart`);
-      this.setState({
-        sku: 0,
-        quantity: 0
-      })
+    if (flag && quantity !== 0) {
+      alert(`${quantity} ${styles[styleIndex].name} ${product.title} added to cart`);
+      // have to update not only the state but the display
+      setSKU(0);
+      setQuantity(0);
     }
   }
 
-  componentDidMount() {
-    this.getProducts();
-    this.getStyles();
-  }
-
-  render() {
     return (
       <div>
         <ProductInfo
-          info={this.state.productInfo}
-          styles={this.state.styles}
-          currentStyle={this.state.currentStyle}
-        >
+          product={product}
+          styles={styles}
+          styleIndex={styleIndex} >
           <Default
-            image={this.state.image}
-            updateImage={(key, index) => this.updateImage(key, index)}
-            styles={this.state.styles}
-            currentStyle={this.state.currentStyle}
-            modal={this.state.modal}
-            toggleModal={() => this.toggleModal()}
-            zoom={this.state.zoom}
-            toggleZoom={() => this.toggleZoom()}
-          >
-
+            image={image}
+            updateImage={(key, index) => updateImage(key, index)}
+            styles={styles}
+            styleIndex={styleIndex}
+            modal={modal}
+            toggleModal={() => toggleModal()}
+            zoom={zoom}
+            toggleZoom={() => toggleZoom()}>
             <StyleSelector
-              styles={this.state.styles}
-              currentStyle={this.state.currentStyle}
-              updateStyle={(index) => this.updateStyle(index)}
-              >
+              styles={styles}
+              styleIndex={styleIndex}
+              setStyleIndex={setStyleIndex}
+              updateStyle={(index) => updateStyle(index)}>
               <Cart
-                styles={this.state.styles}
-                updateCart={() => this.updateCart()}
-                currentStyle={this.state.currentStyle}
-                updateSKU={(key) => this.updateSKU(key)}
-                sku={this.state.sku}
-                updateQuantity={(quantity) => this.updateQuantity(quantity)}
-                />
+                styles={styles}
+                updateCart={() => updateCart()}
+                styleIndex={styleIndex}
+                updateSKU={(key) => updateSKU(key)}
+                sku={sku}
+                updateQuantity={(quantity) => updateQuantity(quantity)}/>
             </StyleSelector>
-                </Default>
+          </Default>
         </ProductInfo>
       </div>
     )
-  }
 }
 
 export default Overview;

@@ -4,7 +4,7 @@ function Cart(props) {
   if (props.styles.length === 0) {
     return(<p>loading cart</p>)
   } else {
-    let skus = props.styles[props.currentStyle].skus;
+    let skus = props.styles[props.styleIndex].skus;
     return (
       <div className="cart">
         {Size(skus, props.updateSKU)}

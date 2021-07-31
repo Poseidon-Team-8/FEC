@@ -30,7 +30,7 @@ const Arrow = styled.img`
 `;
 
 const FitScale = styled.div`
-  display: ${props => props.visibility ? 'flex' : 'none'};
+  display: ${props => props.visibility === 'true' ? 'flex' : 'none'};
   flex-direction: row;
   justify-content: space-between;
   margin-left: 1em;
@@ -38,7 +38,7 @@ const FitScale = styled.div`
 `;
 
 const LengthScale = styled.div`
-  display: ${props => props.visibility ? 'flex' : 'none'};
+  display: ${props => props.visibility === 'true' ? 'flex' : 'none'};
   flex-direction: row;
   justify-content: space-between;
   margin-left: 1em;
@@ -46,7 +46,7 @@ const LengthScale = styled.div`
 `;
 
 const ComfortScale = styled.div`
-  display: ${props => props.visibility ? 'flex' : 'none'};
+  display: ${props => props.visibility === 'true' ? 'flex' : 'none'};
   flex-direction: row;
   justify-content: space-between;
   margin-left: 1em;
@@ -54,7 +54,7 @@ const ComfortScale = styled.div`
 `;
 
 const QualityScale = styled.div`
-  display: ${props => props.visibility ? 'flex' : 'none'};
+  display: ${props => props.visibility === 'true' ? 'flex' : 'none'};
   flex-direction: row;
   justify-content: space-between;
   margin-left: 1em;
@@ -75,22 +75,22 @@ const CharacteristicEntry = ({ characteristic, value }) => {
         <Track>
           <Arrow src="./icons/arrow.svg" percentage={ percentage }/>
         </Track>
-        <FitScale visibility={ displayFit }>
+        <FitScale visibility={ String(displayFit) }>
           <small>Small</small>
           <small>Perfect</small>
           <small>Large</small>
         </FitScale>
-        <LengthScale visibility={ displayLength }>
+        <LengthScale visibility={ String(displayLength) }>
           <small>Short</small>
           <small>Perfect</small>
           <small>Long</small>
         </LengthScale>
-        <ComfortScale visibility={ displayComfort }>
+        <ComfortScale visibility={ String(displayComfort) }>
           <small>Poor</small>
           <small>Average</small>
           <small>Great</small>
         </ComfortScale>
-        <QualityScale visibility={ displayQuality }>
+        <QualityScale visibility={ String(displayQuality) }>
           <small>Poor</small>
           <small>Average</small>
           <small>Great</small>
