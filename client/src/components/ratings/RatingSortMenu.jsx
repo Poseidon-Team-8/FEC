@@ -3,9 +3,9 @@ import RatingSortItem from './RatingSortItem.jsx';
 
 const RatingSortMenu = ({ sortSelections, setSortSelections }) => {
 
-  let ratingSortButtons = [];
+  let ratingSortItems = [];
   sortSelections.forEach( (ratingSort) => {
-    ratingSortButtons.push( <RatingSortItem rating={ ratingSort } /> )
+    ratingSortItems.push( <RatingSortItem key={ ratingSort } rating={ ratingSort } sortSelections={ sortSelections } setSortSelections={ setSortSelections } /> )
   });
 
   console.log(sortSelections)
@@ -13,7 +13,7 @@ const RatingSortMenu = ({ sortSelections, setSortSelections }) => {
   return (
     <div className="rating-sort-menu">
       {
-        ratingSortButtons
+        ratingSortItems
       }
     </div>
   );

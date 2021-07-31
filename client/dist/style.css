@@ -332,6 +332,7 @@ button:hover {
   border: 1px solid black;
   width: 80%;
 }
+
 /*
 ================================================
                  Review List
@@ -342,4 +343,20 @@ button:hover {
   height: 800px;
   margin-top: 0.5em;
   overflow-y: auto;
+}
+
+/*
+================================================
+           Rating Breakdown Sort
+================================================
+*/
+
+.rating-sort-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rating-sort-button {
+  height: 1.5em;
+  width: auto;
 }

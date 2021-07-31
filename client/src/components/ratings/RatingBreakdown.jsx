@@ -18,7 +18,6 @@ const RatingBreakdown = ({ ratings, recommended }) => {
   const [sortSelections, setSortSelections] = useState(new Set());
 
   useEffect(() => {
-    console.log(sortSelections)
   }, [sortSelections])
 
   return (

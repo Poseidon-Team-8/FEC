@@ -18,8 +18,7 @@ const Thumb = styled.div`
 const BreakdownEntry = ({ rating, numReviews, percentage, sortSelections, setSortSelections}) => {
 
   const setSort = () => {
-    setSortSelections(sortSelections.add(rating));
-    console.log('clicked!', sortSelections)
+    setSortSelections(new Set([...sortSelections.add(rating)]));
   }
 
   return (
