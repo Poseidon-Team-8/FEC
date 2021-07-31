@@ -89,33 +89,43 @@ const AddAnswer = ( {body, productId, questionId}) => {
     getProductInfo();
   }, []);
 
+
+
   return (
     <div>
-      <h2>Submit Your Answer </h2>
-      <h3>{body}: </h3>
-      <p>{productName}</p>
-      <form>
-        <label>
-          Your Answer:
-          <input className='submit-answer' type='text' maxLength='1000' required
-          value={answerInput} onChange={(e) => setAnswerInput(e.target.value)}/>
-        </label>
-        <label>
-          What is your nickname:
-          <input className='submit-name' type='text' maxLength='60' required
-          value={nameInput} placeHolder='Example: jack543!'
-          onChange={(e) => setNameInput(e.target.value)}/>
-        </label>
-        <label>
-          Your email:
-          <input className='submit-email' type='email' maxLength='60' required
-          value={emailInput} placeHolder='Example: jack@email.com'
-          onChange={(e) => setEmailInput(e.target.value)}/>
-        </label>
-          <input className='submit-answerButton' type='button' value='Submit Answer'
-          onClick={() => handleOnSubmit()}
-          />
-      </form>
+      {isClicked === false ? <button onClick={() => setIsClicked(true)}>Add Answer</button> :
+      <div className='modal-container'>
+        <div className='modal-content'>
+          <h2>Submit Your Answer </h2>
+          <h3>{body}: </h3>
+          <p>{productName}</p>
+          <form>
+            <label>
+              Your Answer*:
+              <input className='submit-answer' type='text' maxLength='1000' required
+              value={answerInput} onChange={(e) => setAnswerInput(e.target.value)}/>
+            </label>
+            <label>
+              What is your nickname*:
+              <input className='submit-name' type='text' maxLength='60' required
+              value={nameInput} placeHolder='Example: jack543!'
+              onChange={(e) => setNameInput(e.target.value)}/>
+            </label>
+            <label>
+              Your email*:
+              <input className='submit-email' type='email' maxLength='60' required
+              value={emailInput} placeHolder='Example: jack@email.com'
+              onChange={(e) => setEmailInput(e.target.value)}/>
+            </label>
+            <p>For authentication reasons, you will not be emailed</p>
+              <input className='submit-answerButton' type='button' value='Submit Answer'
+              onClick={() => handleOnSubmit()}
+              onClick={() => setIsClicked(false)}
+              />
+          </form>
+        </div>
+      </div>
+    }
     </div>
   )
 }

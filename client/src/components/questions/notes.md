@@ -81,11 +81,15 @@
 - [x] add hooks for answer, name, email
 - [x] invoke hooks with onChange for answer, name, email
 - [x] write function to handle submit which invokes a POST request
-- [] write POST request handler which invoke another POST request to database
-- [] form needs to be validated
-  - [] error occurs if:
-    - [] any mandatory field is blank
-    - [] email is not valid format
-    - [] images selected are invalid or can't upload
+- [x] write POST request handler which invoke another POST request to database
+- [x] form needs to be validated
+  - [x] error occurs if:
+    - [x] any mandatory field is blank
+    - [x] email is not valid format
+    - [x] images selected are invalid or can't upload
+- [x] write a condition to display a button if isClicked is false,
+and display the add answer form when isClicked is true
+
+- [] setup modal through styles.css file
 
 
