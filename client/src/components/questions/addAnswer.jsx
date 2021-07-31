@@ -79,7 +79,7 @@ const AddAnswer = ( {body, productId, questionId}) => {
       setAnswerInput('');
       setNameInput('');
       setEmailInput('');
-      console.log('Success!');
+      setIsClicked(false);
     })
     .catch(error => {
       console.log('CLIENT SIDE ERROR', error)
@@ -89,13 +89,11 @@ const AddAnswer = ( {body, productId, questionId}) => {
     getProductInfo();
   }, []);
 
-
-  //input fields not clearing because axios is asynchronous and clear the fields happens once response comes back
-  //maybe write a function that can take care of this instead of calling them in then block
+// toggle button once I get response so I can clear fields firts
   return (
     <div>
       { !isClicked ? <button onClick={() => setIsClicked(true)}>Add Answer</button> :
-      <div className='modal-container'>
+      <div className='modal-container' onClick={() => setIsClicked(false)}>
         <div className='modal-content'>
           <h2>Submit Your Answer </h2>
           <h3>{body}: </h3>
@@ -121,7 +119,6 @@ const AddAnswer = ( {body, productId, questionId}) => {
             <p>For authentication reasons, you will not be emailed</p>
               <input className='submit-answerButton' type='button' value='Submit Answer'
               onClick={() => handleOnSubmit()}
-              onClick={() => setIsClicked(false)}
               />
           </form>
         </div>
