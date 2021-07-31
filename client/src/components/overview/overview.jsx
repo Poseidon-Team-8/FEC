@@ -75,64 +75,57 @@ function Overview(props) {
   }
 
   const updateCart = () => {
-    let flag = true;
-    if (sku === 0) {
-      // open Size dropdown
+    if (!quantity || !sku) {
+      return null
     }
-    for (var i = 0; i < quantity; i++) {
-      // refactor this part to be in server
-      axios.post('/updateCart', {
-        sku: sku
+    axios.post('/updateCart', {
+      sku: sku,
+      quantity: quantity
+    })
+      .then(res => {
+        alert(`${quantity} ${styles[styleIndex].name} ${product.title} added to cart`);
+        // have to update not only the state but the display
+        setSKU(0);
+        setQuantity(0);
       })
-        .then(res => {
-          console.log('items successfully added')
-        })
-        .catch(err => {
-          flag = false;
-          alert('Error updating cart, please try again')
-          console.log('ERROR', err);
-        })
-    }
-    if (flag && quantity !== 0) {
-      alert(`${quantity} ${styles[styleIndex].name} ${product.title} added to cart`);
-      // have to update not only the state but the display
-      setSKU(0);
-      setQuantity(0);
-    }
+      .catch(err => {
+        alert('Error updating cart, please try again')
+        console.log('ERROR', err);
+      })
   }
 
-    return (
-      <div>
-        <ProductInfo
-          product={product}
+  return (
+    <div>
+      <ProductInfo
+        product={product}
+        styles={styles}
+        styleIndex={styleIndex} >
+        <Default
+          image={image}
+          updateImage={(key, index) => updateImage(key, index)}
           styles={styles}
-          styleIndex={styleIndex} >
-          <Default
-            image={image}
-            updateImage={(key, index) => updateImage(key, index)}
+          styleIndex={styleIndex}
+          modal={modal}
+          toggleModal={() => toggleModal()}
+          zoom={zoom}
+          toggleZoom={() => toggleZoom()}>
+          <StyleSelector
             styles={styles}
             styleIndex={styleIndex}
-            modal={modal}
-            toggleModal={() => toggleModal()}
-            zoom={zoom}
-            toggleZoom={() => toggleZoom()}>
-            <StyleSelector
+            setStyleIndex={setStyleIndex}
+            updateStyle={(index) => updateStyle(index)}>
+            <Cart
               styles={styles}
+              updateCart={() => updateCart()}
               styleIndex={styleIndex}
-              setStyleIndex={setStyleIndex}
-              updateStyle={(index) => updateStyle(index)}>
-              <Cart
-                styles={styles}
-                updateCart={() => updateCart()}
-                styleIndex={styleIndex}
-                updateSKU={(key) => updateSKU(key)}
-                sku={sku}
-                updateQuantity={(quantity) => updateQuantity(quantity)}/>
-            </StyleSelector>
-          </Default>
-        </ProductInfo>
-      </div>
-    )
+              updateSKU={(key) => updateSKU(key)}
+              sku={sku}
+              updateQuantity={(quantity) => updateQuantity(quantity)}/>
+          </StyleSelector>
+        </Default>
+      </ProductInfo>
+    </div>
+  )
 }
 
 export default Overview;
