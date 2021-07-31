@@ -33,7 +33,7 @@ function Share() {
       href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       ><img className="social" src="./icons/f_logo_RGB-Blue_1024.png"></img></a></div>
 
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false"><img className="social" src="./icons/2021 Twitter logo - blue.png"></img></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false"><img className="social" src="./icons/2021 Twitter logo - blue.png"></img></a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
 
       <a className="social" href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"><img className="social" src="./icons/pinterest.png"></img>
     </a>
