@@ -36,9 +36,9 @@ const Helpful = ({ yesCount, reviewId }) => {
   return (
     <div>
       <span>Was this review helpful? </span>
-      <a href='javascript:;' className='helpful-count' onClick={ (e) => updateYesCounter(e) }>Yes</a>
+      <a href='#!' className='helpful-count' onClick={ (e) => updateYesCounter(e) }>Yes</a>
       <span> ({ yesCounter }) | </span>
-      <a href='javascript:;' className='helpful-count' onClick={ (e) => updateNoCounter(e) }>No</a>
+      <a href='#!' className='helpful-count' onClick={ (e) => updateNoCounter(e) }>No</a>
       <span> ({ noCounter })</span>
     </div>
   );

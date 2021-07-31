@@ -1,14 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
 
 function Cart(props) {
   if (props.styles.length === 0) {
     return(<p>loading cart</p>)
   } else {
-    let skus = props.styles[props.currentStyle].skus;
+    let skus = props.styles[props.styleIndex].skus;
     return (
-      <div className="addToBag">
+      <div className="cart">
         {Size(skus, props.updateSKU)}
         {Quantity(skus, props.sku, props.updateQuantity)}
         <button onClick={() => props.updateCart()}>Add to Bag</button>
