@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-const AddAnswer = ( {body, productId, questionId}) => {
+const AddAnswer = ( {body, productName, questionId}) => {
 
-  const [productName, setProductName] = useState('');
+  // const [productName, setProductName] = useState('');
   const [answerInput, setAnswerInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
@@ -43,22 +43,6 @@ const AddAnswer = ( {body, productId, questionId}) => {
     }
   }
 
-  const getProductInfo = () => {
-    axios({
-      method: 'get',
-      url: '/productInfo',
-      headers: {
-        id: `${productId}`
-      }
-    })
-    .then( results => {
-      setProductName(results.data.name);
-    })
-    .catch(error => {
-      console.log('THIS IS CLIENT SIDE ERROR', error)
-    })
-  }
-
   const handleOnSubmit = () => {
     if (validate()) {
       return;
@@ -85,16 +69,14 @@ const AddAnswer = ( {body, productId, questionId}) => {
       console.log('CLIENT SIDE ERROR', error)
     })
   }
-  useEffect(() => {
-    getProductInfo();
-  }, []);
 
 // toggle button once I get response so I can clear fields firts
   return (
     <div>
       { !isClicked ? <button onClick={() => setIsClicked(true)}>Add Answer</button> :
-      <div className='modal-container' onClick={() => setIsClicked(false)}>
+      <div className='modal-container' >
         <div className='modal-content'>
+        <button onClick={() => setIsClicked(false)}>Exit</button>
           <h2>Submit Your Answer </h2>
           <h3>{body}: </h3>
           <p>{productName}</p>

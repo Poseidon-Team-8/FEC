@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
-const AddQuestion = (props) => {
+const AddQuestion = ({ productName, productId}) => {
 
-  const [productName, setProductName] = useState('');
-  const [answerInput, setAnswerInput] = useState('');
+  // const [productName, setProductName] = useState('');
+  const [questionInput, setQuestionInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [isClicked, setIsClicked] = useState(false);
 
   const validate = () => {
-    let requiredAnswer = '';
+    let requiredQuestion = '';
     let requiredName = '';
     let requiredEmail = '';
     let emailValid = emailInput.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
     let requiredValidEmail = '';
     let message = 'You must enter the following:';
 
-    if ( answerInput === '' ) {
-      requiredAnswer = 'An answer';
+    if ( questionInput === '' ) {
+      requiredQuestion = 'A question';
     }
     if ( nameInput === '' ) {
       requiredName = 'A name';
@@ -29,8 +30,8 @@ const AddQuestion = (props) => {
     if ( !emailValid ) {
       requiredValidEmail = 'A valid email';
     }
-    if ( requiredAnswer || requiredName || requiredEmail || requiredValidEmail) {
-      let invalidInfo = [requiredAnswer, requiredName, requiredEmail, requiredValidEmail];
+    if ( requiredQuestion || requiredName || requiredEmail || requiredValidEmail) {
+      let invalidInfo = [requiredQuestion, requiredName, requiredEmail, requiredValidEmail];
       let alertMessage = `${message}`;
       invalidInfo.forEach(requiredInfo => {
         if ( requiredInfo) {
@@ -42,40 +43,22 @@ const AddQuestion = (props) => {
     }
   }
 
-  const getProductInfo = () => {
-    axios({
-      method: 'get',
-      url: '/productInfo',
-      headers: {
-        id: `${productId}`
-      }
-    })
-    .then( results => {
-      setProductName(results.data.name);
-    })
-    .catch(error => {
-      console.log('THIS IS CLIENT SIDE ERROR', error)
-    })
-  }
-
   const handleOnSubmit = () => {
     if (validate()) {
       return;
     }
     axios({
       method: 'post',
-      url: '/addAnswer',
+      url: '/addQuestion',
       data: {
-        body: `${answerInput}`,
+        body: `${questionInput}`,
         name: `${nameInput}`,
-        email: `${emailInput}`
-      },
-      headers: {
-        id: `${questionId}`
+        email: `${emailInput}`,
+        product_id: `${productId}`
       }
     })
     .then(result => {
-      setAnswerInput('');
+      setQuestionInput('');
       setNameInput('');
       setEmailInput('');
       setIsClicked(false);
@@ -84,24 +67,21 @@ const AddQuestion = (props) => {
       console.log('CLIENT SIDE ERROR', error)
     })
   }
-  useEffect(() => {
-    getProductInfo();
-  }, []);
 
 // toggle button once I get response so I can clear fields firts
   return (
     <div>
-      { !isClicked ? <button onClick={() => setIsClicked(true)}>Add Answer</button> :
-      <div className='modal-container' onClick={() => setIsClicked(false)}>
+      { !isClicked ? <button onClick={() => setIsClicked(true)}>Add A Question</button> :
+      <div className='modal-container'>
         <div className='modal-content'>
-          <h2>Submit Your Answer </h2>
-          <h3>{body}: </h3>
-          <p>{productName}</p>
+        <button onClick={() => setIsClicked(false)}>Exit</button>
+          <h2>Ask Your Question </h2>
+          <h3>About the {productName}</h3>
           <form>
             <label>
-              Your Answer*:
-              <input className='submit-answer' type='text' maxLength='1000' required
-              value={answerInput} onChange={(e) => setAnswerInput(e.target.value)}/>
+              Your Question*:
+              <input className='submit-question' type='text' maxLength='1000' required
+              value={questionInput} onChange={(e) => setQuestionInput(e.target.value)}/>
             </label>
             <label>
               What is your nickname*:
@@ -116,7 +96,7 @@ const AddQuestion = (props) => {
               onChange={(e) => setEmailInput(e.target.value)}/>
             </label>
             <p>For authentication reasons, you will not be emailed</p>
-              <input className='submit-answerButton' type='button' value='Submit Answer'
+              <input className='submit-questionButton' type='button' value='Submit Question'
               onClick={() => handleOnSubmit()}
               />
           </form>

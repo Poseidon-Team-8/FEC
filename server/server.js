@@ -40,6 +40,30 @@ app.post('/addAnswer', (req, res) => {
   } )
 })
 
+app.post('/addQuestion', (req, res) => {
+  let productId = Number(req.body.product_id);
+  axios.post(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/`,
+    {
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email,
+      product_id: productId
+    },
+    {
+      headers: {
+        Authorization: `${auth.TOKEN}`
+      }
+    }
+  )
+  .then(result => {
+    res.status(200).send('Success server side!')
+  })
+  .catch(error => {
+    console.log('SERVER SIDE ERROR', error)
+  })
+})
+
 app.put('/answerReport', (req, res) => {
   axios.put(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${req.headers.id}/report`, null, {
