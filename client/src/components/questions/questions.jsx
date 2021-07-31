@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import IndividualQ from './individualQ.jsx';
+import AddQuestion from './addQuestion.jsx';
 
 class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       productQuestion: [],
-      questionAmount: 2
+      questionAmount: 2,
+      productName: ''
     };
   }
 
@@ -27,7 +29,7 @@ class Questions extends React.Component {
       let sortedQuestions = response.data.results.sort((a, b) => {
         return b.question_helpfulness - a.question_helpfulness;
       })
-      this.setState({productQuestion: sortedQuestions})
+      this.setState({productQuestion: sortedQuestions, productName: response.data.name})
     })
   }
 
@@ -56,9 +58,14 @@ class Questions extends React.Component {
           <IndividualQ question={question}
           key={question.question_id}
           productId={this.props.productId}
+          productName={this.state.productName}
           />
         )}
         {buttonDisplay}
+        <AddQuestion
+        productName={this.state.productName}
+        productId={this.props.productId}
+        />
       </div>
 
     )

@@ -94,25 +94,25 @@ and display the add answer form when isClicked is true
 
 ## Setup AddQuestion modal
 
-- [] pass productId and question body down from questions component
-- [] add GET request to pull down product Name
-- [] add Title (H2) 'Submit your Question'
-- [] add subtitle: 'About the [Product Name Here]'
-- [] add Your Question input field
-- [] add What is your nickname input field
-- [] add Your email input field
-- [] add Upload your photos field **not required
-- [] add Submit question button
-- [] add hooks for question, name, email
-- [] invoke hooks with onChange for question, name, email
-- [] write function to handle submit which invokes a POST request
-- [] write POST request handler which invoke another POST request to database
-- [] form needs to be validated
-  - [] error occurs if:
-    - [] any mandatory field is blank
-    - [] email is not valid format
-    - [] images selected are invalid or can't upload
-- [] write a condition to display a button if isClicked is false,
+- [x] pass productId and question body down from questions component
+- [x] add GET request to pull down product Name
+- [x] add Title (H2) 'Submit your Question'
+- [x] add subtitle: 'About the [Product Name Here]'
+- [x] add Your Question input field
+- [x] add What is your nickname input field
+- [x] add Your email input field
+- [x] add Upload your photos field **not required
+- [x] add Submit question button
+- [x] add hooks for question, name, email
+- [x] invoke hooks with onChange for question, name, email
+- [x] write function to handle submit which invokes a POST request
+- [x] write POST request handler which invoke another POST request to database
+- [x] form needs to be validated
+  - [x] error occurs if:
+    - [x] any mandatory field is blank
+    - [x] email is not valid format
+    - [x] images selected are invalid or can't upload
+- [x] write a condition to display a button if isClicked is false,
 and display the add answer form when isClicked is true
 
 - [x] setup modal through styles.css file
