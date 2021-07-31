@@ -5,21 +5,6 @@ import ratingAvg from '../ratings/RatingBreakdown.jsx'
 
 function ProductInfo(props) {
 
-  const [product, setProduct] = useState();
-
-  useEffect(() => {
-    axios.get('/productInfo', {
-      headers: {id: props.productId}
-    })
-    .then(res => {
-      setProduct({
-          title: res.data.name,
-          category: res.data.category,
-          overview: res.data.description
-        })
-      })
-  }, [])
-
   if (props.styles.length === 0) {
     return (
       <p>Loading Product Info</p>
@@ -27,17 +12,18 @@ function ProductInfo(props) {
   }
 
   const prices = props.styles[props.styleIndex];
-  let priceInfo = `Price: ${prices.original_price}`
+  const priceInfo = `Price: ${prices.original_price}`
+
   return (
     <div>
-      <h2>{product.title}</h2>
+      <h2>{props.product.title}</h2>
       <StarRating ratingAvg={ ratingAvg }/>
-      <p>Category: {product.category} > Price:
+      <p>Category: {props.product.category} > Price:
       {prices.sale_price ? <span> <span className="ogprice">${prices.original_price}</span> <span className="salePrice">{prices.sale_price}</span> </span> : <span> ${prices.original_price}</span>}
       </p>
       {Share()}
       {props.children}
-      <p>{product.overview}</p>
+      <p>{props.product.overview}</p>
     </div>
   );
 }
