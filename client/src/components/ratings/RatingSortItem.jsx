@@ -5,7 +5,6 @@ const RatingSortItem = ({ rating, sortSelections, setSortSelections }) => {
   const removeSort = () => {
     sortSelections.delete(rating)
     setSortSelections(new Set([...sortSelections]))
-    console.log(sortSelections)
   }
 
   return (

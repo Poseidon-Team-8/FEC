@@ -8,11 +8,12 @@ const RatingSortMenu = ({ sortSelections, setSortSelections }) => {
     ratingSortItems.push( <RatingSortItem key={ ratingSort } rating={ ratingSort } sortSelections={ sortSelections } setSortSelections={ setSortSelections } /> )
   });
 
+  console.log(sortSelections)
+
   return (
     <div className="rating-sort-menu">
-      {
-        ratingSortItems
-      }
+      { ratingSortItems }
+      { sortSelections.size !== 0 ? <button onClick={ () => setSortSelections(new Set()) }>Remove All Filters</button> : null}
     </div>
   );
 }
