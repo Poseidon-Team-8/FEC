@@ -15,10 +15,16 @@ const Thumb = styled.div`
   border-radius: 2px;
 `;
 
-const BreakdownEntry = ({ rating, numReviews, percentage}) => (
+const BreakdownEntry = ({ rating, numReviews, percentage, sortSelections, setSortSelections}) => {
+
+  const setSort = () => {
+    setSortSelections(new Set([...sortSelections.add(rating)]));
+  }
+
+  return (
     <div className="breakdown-entry-container">
       <div style={{ "marginRight": "0.5em" }}>
-        <a href="#!" className="helpful-count">{ `${rating} stars` }</a>
+        <a href="javascript:" className="helpful-count" onClick={ () => setSort() }>{rating} stars</a>
       </div>
       <Track>
         <Thumb percentage={ percentage }/>
@@ -27,6 +33,7 @@ const BreakdownEntry = ({ rating, numReviews, percentage}) => (
         <span>({ numReviews })</span>
       </div>
     </div>
-);
+  );
+};
 
 export default BreakdownEntry;
