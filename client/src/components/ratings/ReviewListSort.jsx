@@ -4,7 +4,7 @@ const ReviewListSort = ({ numReviews, getSortedReviews }) => {
 
   const onChange = () => {
     const sortBy = document.getElementById("sort-reviews").value;
-    getSortedReviews(sortBy);
+    getSortedReviews(sortBy, numReviews);
   }
 
   return (
