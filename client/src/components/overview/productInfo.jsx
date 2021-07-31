@@ -9,9 +9,7 @@ function ProductInfo(props) {
 
   useEffect(() => {
     axios.get('/productInfo', {
-      headers: {
-        id: props.productId
-      }
+      headers: {id: props.productId}
     })
     .then(res => {
       setProduct({
@@ -28,7 +26,7 @@ function ProductInfo(props) {
       )
   }
 
-  const prices = props.styles[props.currentStyle];
+  const prices = props.styles[props.styleIndex];
   let priceInfo = `Price: ${prices.original_price}`
   return (
     <div>
