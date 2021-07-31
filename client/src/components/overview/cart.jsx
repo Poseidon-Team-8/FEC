@@ -1,18 +1,17 @@
 import React from 'react';
 
 function Cart(props) {
-  if (props.styles.length === 0) {
-    return(<p>loading cart</p>)
-  } else {
-    let skus = props.styles[props.styleIndex].skus;
-    return (
-      <div className="cart">
-        {Size(skus, props.updateSKU)}
-        {Quantity(skus, props.sku, props.updateQuantity)}
-        <button onClick={() => props.updateCart()}>Add to Bag</button>
-      </div>
-    )
+  if (!props.styles.length) {
+    return null
   }
+  let skus = props.styles[props.styleIndex].skus;
+  return (
+    <div className="cart">
+      {Size(skus, props.updateSKU)}
+      {Quantity(skus, props.sku, props.updateQuantity)}
+      <button onClick={() => props.updateCart()}>Add to Bag</button>
+    </div>
+  )
 }
 
 function Size(skus, updateSKU) {
@@ -38,15 +37,14 @@ function Quantity(skus, sku, updateQuantity) {
         <option>-</option>
       </select>
     )
-  } else {
-    return (
-      <div className="quantity-dropdown">
-        <select name="quantity" id="quantity-select" onChange={(e) => updateQuantity(e.target.value)}>
-          {createQuantity(skus[sku].quantity).map((num, index) => <option key={index} value={num}>{num}</option>)}
-        </select>
-      </div>
-    )
   }
+  return (
+    <div className="quantity-dropdown">
+      <select name="quantity" id="quantity-select" onChange={(e) => updateQuantity(e.target.value)}>
+        {createQuantity(skus[sku].quantity).map((num, index) => <option key={index} value={num}>{num}</option>)}
+      </select>
+    </div>
+  )
 }
 
 function createQuantity(quantity) {
