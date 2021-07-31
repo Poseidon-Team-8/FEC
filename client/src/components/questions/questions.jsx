@@ -14,8 +14,6 @@ class Questions extends React.Component {
     };
   }
 
-
-
   getQuestions = () => {
     const productId = this.props.productId;
     axios({
