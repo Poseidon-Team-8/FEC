@@ -24,7 +24,7 @@ const RatingBreakdown = ({ ratings, recommended, reviews, filteredReviews, setFi
     } else {
       setFilteredReviews([]);
     }
-  }, [sortSelections])
+  }, [sortSelections, reviews])
 
   return (
     <>

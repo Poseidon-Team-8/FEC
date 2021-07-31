@@ -12,7 +12,7 @@ const ReviewListSort = ({ numReviews, totalNumReviews, getSortedReviews }) => {
       <b>
         <span>{`${numReviews} reviews, sort by `}</span>
       </b>
-      <select onChange={ () => onChange() } id="sort-reviews" defaultValue={'DEFAULT'}>
+      <select onChange={ () => onChange() } id="sort-reviews" defaultValue={'relevant'}>
         <option value='relevant'>relevance</option>
         <option value='newest'>newest</option>
         <option value='helpful'>helpfulness</option>
