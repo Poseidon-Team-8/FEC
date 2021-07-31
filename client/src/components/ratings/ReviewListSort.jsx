@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 
-const ReviewListSort = ({ numReviews, getSortedReviews }) => {
+const ReviewListSort = ({ numReviews, totalNumReviews, getSortedReviews }) => {
 
   const onChange = () => {
     const sortBy = document.getElementById("sort-reviews").value;
-    getSortedReviews(sortBy, numReviews);
+    getSortedReviews(sortBy, totalNumReviews);
   }
 
   return (

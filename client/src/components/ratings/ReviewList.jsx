@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import ReviewTile from './ReviewTile.jsx';
 
 const ReviewList = ({ reviews }) => {
-
-  console.log(reviews)
-
   if (reviews.length === 0) {
     return (
       <button>Write A Review +</button>

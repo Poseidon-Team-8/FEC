@@ -50,7 +50,6 @@ const Ratings = ({ productId }) => {
     getMetaData();
   }, [])
 
-  console.log('Size of filtered reviews', filteredReviews.size)
   if (!reviews || !meta) return null;
   return (
     <>
@@ -60,7 +59,7 @@ const Ratings = ({ productId }) => {
           <ProductBreakdown characteristics={ meta.characteristics }/>
         </div>
         <div className="right-col-container">
-          <ReviewListSort numReviews={ filteredReviews.length !== 0 ? filteredReviews.length : reviews.length } getSortedReviews={ getReviews }/>
+          <ReviewListSort numReviews={ filteredReviews.length ? filteredReviews.length : reviews.length } totalNumReviews={ reviews.length } getSortedReviews={ getReviews }/>
           <ReviewList reviews={ filteredReviews.length ? filteredReviews : reviews }/>
         </div>
       </div>
