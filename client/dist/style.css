@@ -339,7 +339,7 @@ button:hover {
 */
 
 .review-list-container {
-  height: 800 px;
+  height: 800px;
   margin-top: 0.5em;
   overflow-y: auto;
 }
