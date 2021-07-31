@@ -10,24 +10,59 @@ const AddAnswer = ( {body, productId, questionId}) => {
   const [emailInput, setEmailInput] = useState('');
   const [isClicked, setIsClicked] = useState(false);
 
-const getProductInfo = () => {
-  axios({
-    method: 'get',
-    url: '/productInfo',
-    headers: {
-      id: `${productId}`
+  const validate = () => {
+    let requiredAnswer = '';
+    let requiredName = '';
+    let requiredEmail = '';
+    let emailValid = emailInput.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+    let requiredValidEmail = '';
+    let message = 'You must enter the following:';
+
+    if ( answerInput === '' ) {
+      requiredAnswer = 'An answer';
     }
-  })
-  .then( results => {
-    setProductName(results.data.name);
-  })
-  .catch(error => {
-    console.log('THIS IS CLIENT SIDE ERROR', error)
-  })
-}
+    if ( nameInput === '' ) {
+      requiredName = 'A name';
+    }
+    if ( emailInput === '' ) {
+      requiredEmail = 'An email';
+    }
+    if ( !emailValid ) {
+      requiredValidEmail = 'A valid email';
+    }
+    if ( requiredAnswer || requiredName || requiredEmail || requiredValidEmail) {
+      let invalidInfo = [requiredAnswer, requiredName, requiredEmail, requiredValidEmail];
+      let alertMessage = `${message}`;
+      invalidInfo.forEach(requiredInfo => {
+        if ( requiredInfo) {
+          alertMessage += '\n' + requiredInfo;
+        }
+      })
+      alert(alertMessage);
+      return true;
+    }
+  }
+
+  const getProductInfo = () => {
+    axios({
+      method: 'get',
+      url: '/productInfo',
+      headers: {
+        id: `${productId}`
+      }
+    })
+    .then( results => {
+      setProductName(results.data.name);
+    })
+    .catch(error => {
+      console.log('THIS IS CLIENT SIDE ERROR', error)
+    })
+  }
 
   const handleOnSubmit = () => {
-    console.log('Sent')
+    if (validate()) {
+      return;
+    }
     axios({
       method: 'post',
       url: '/addAnswer',
