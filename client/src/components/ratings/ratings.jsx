@@ -10,6 +10,7 @@ const Ratings = ({ productId }) => {
 
   const [reviews, setReviews] = useState([]);
   const [meta, setMeta] = useState(undefined);
+  const [filteredReviews, setFilteredReviews] = useState([]);
 
   const getReviews = (sort, count) => {
     axios.get('/reviews', {
@@ -54,12 +55,12 @@ const Ratings = ({ productId }) => {
     <>
       <div className="widget-container">
         <div className="left-col-container">
-          <RatingBreakdown ratings={ meta.ratings} recommended={ meta.recommended}/>
+          <RatingBreakdown ratings={ meta.ratings} recommended={ meta.recommended} reviews={ reviews } filteredReviews={ filteredReviews } setFilteredReviews={ setFilteredReviews } />
           <ProductBreakdown characteristics={ meta.characteristics }/>
         </div>
         <div className="right-col-container">
-          <ReviewListSort numReviews={ reviews.length } getSortedReviews={ getReviews }/>
-          <ReviewList reviews={ reviews }/>
+          <ReviewListSort numReviews={ filteredReviews.length ? filteredReviews.length : reviews.length } totalNumReviews={ reviews.length } getSortedReviews={ getReviews }/>
+          <ReviewList reviews={ filteredReviews.length ? filteredReviews : reviews }/>
         </div>
       </div>
       <div style={{ "marginBottom": "5em"}}>
