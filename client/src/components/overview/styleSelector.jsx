@@ -8,7 +8,7 @@ function StyleSelector(props) {
           <div className="styles-grid">
             {props.styles.map((item, index) =>
               <img
-                className={props.currentStyle === index ? 'selected-style style-thumbnail' : 'style-thumbnail'}
+                className={props.styleIndex === index ? 'selected-style style-thumbnail' : 'style-thumbnail'}
                 key={index}
                 index={index}
                 src={item.photos[0].thumbnail_url}
