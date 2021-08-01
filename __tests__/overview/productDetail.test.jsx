@@ -1,9 +1,17 @@
 import React from 'react';
 import ProductInfo from '../../client/src/components/overview/productInfo.jsx';
+// import TestRenderer from 'react-test-renderer';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import mockData from '../../mockData.js'
+import mockData from '../../mockData.js';
 
 const {product, styles, styleIndex} = mockData;
+
+// describe('has children', () => {
+//   it('what i say', () => {
+//     const render = TestRenderer.create(<ProductInfo product={product} styles={styles} styleIndex={styleIndex} />)
+//     var x = render.root
+//   })
+// })
 
 describe('displays product info', () => {
   it('display title', () => {
@@ -13,7 +21,6 @@ describe('displays product info', () => {
       styles={styles}
       styleIndex={styleIndex} />);
     const result = render.getRenderOutput()
-    debugger;
     expect(result.props.children[0].props.children).toBe('Heir Force Ones')
   })
 
