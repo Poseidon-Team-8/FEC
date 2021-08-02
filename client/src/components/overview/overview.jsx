@@ -4,6 +4,9 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import Cart from './cart.jsx';
 import Default from './imageDefault.jsx';
+import api from './api.js';
+
+const {getProduct} = api;
 
 function Overview(props) {
   let imageObject = {}
@@ -20,22 +23,14 @@ function Overview(props) {
   const [image, setImage] = useState(imageObject)
 
   useEffect(() => {
-    getProduct();
+    const res = getProduct(props.productId);
+    setProduct({
+      name: res.name,
+      category: res.category,
+      description: res.description
+    })
     getStyles();
   }, []);
-
-  const getProduct = () => {
-    return axios.get('/productInfo', {
-      headers: {id: props.productId}
-    })
-    .then(res => {
-      setProduct({
-          name: res.data.name,
-          category: res.data.category,
-          description: res.data.description
-        })
-      })
-  }
 
   // modularize code, save in different file, & export to test environment. For example
   // return "res" in getProduct. modify useEffect into:

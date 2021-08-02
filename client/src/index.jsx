@@ -4,6 +4,9 @@ import axios from 'axios';
 import Overview from './components/overview/overview.jsx';
 import Ratings from './components/ratings/ratings.jsx';
 import Questions from './components/questions/questions.jsx';
+import api from './api.js';
+
+const {getProduct} = api;
 
 class App extends React.Component {
 
@@ -14,13 +17,17 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const product = getProduct(this.state.productID)
+  }
+
   render() {
     return (
       <div>
         <h1>Working</h1>
-        <Overview productId={ this.state.productId} />
-        <Questions productId={ this.state.productId } />
-        <Ratings productId={ this.state.productId} />
+        <Overview productId={ this.state.productId} product={product} />
+        <Questions productId={ this.state.productId } name={product.name} />
+        <Ratings productId={ this.state.productId} name={product.name}/>
       </div>
     )
   }
