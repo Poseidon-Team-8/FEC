@@ -13,14 +13,14 @@ function ProductInfo(props) {
 
   return (
     <div>
-      <h2>{props.product.title}</h2>
+      <h2>{props.product.name}</h2>
       {/* <StarRating ratingAvg={ ratingAvg }/> */}
       <p>Category: {props.product.category} > Price:
       {prices.sale_price ? <span> <span className="ogprice">${prices.original_price}</span> <span className="salePrice">{prices.sale_price}</span> </span> : <span> ${prices.original_price}</span>}
       </p>
       {Share()}
       {props.children}
-      <p>{props.product.overview}</p>
+      <p>{props.product.description}</p>
     </div>
   );
 }

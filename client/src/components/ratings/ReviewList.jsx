@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import ReviewTile from './ReviewTile.jsx';
+import ReviewFormModal from './ReviewFormModal.jsx';
 
 const ReviewList = ({ reviews }) => {
   if (reviews.length === 0) {
@@ -9,6 +10,7 @@ const ReviewList = ({ reviews }) => {
     );
   }
   const formatedReviews = reviews.map( (review, idx) => { return <ReviewTile key={ idx } review={ review }/> })
+  const [displayModal, setDisplayModal] = useState(false);
   const [numReviewsRendered, setNumReviewsRendered] = useState(2);
   const addReviews = () => {
     setNumReviewsRendered(prev => prev + 2);
@@ -23,7 +25,8 @@ const ReviewList = ({ reviews }) => {
         {
           (numReviewsRendered < formatedReviews.length) ? <button onClick={ () => addReviews() }>More Reviews</button> : null
         }
-        <button>Write A Review +</button>
+        <ReviewFormModal displayModal={ displayModal } setDisplayModal={ setDisplayModal }/>
+        <button onClick={ () => setDisplayModal(true) }>Write A Review +</button>
       </div>
     </>
   )
