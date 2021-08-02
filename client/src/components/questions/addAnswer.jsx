@@ -8,45 +8,11 @@ const AddAnswer = ( {body, productName, questionId}) => {
   const [answerInput, setAnswerInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
+  const [imageInput, setImageInput] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
-  const validate = () => {
-    let requiredAnswer = '';
-    let requiredName = '';
-    let requiredEmail = '';
-    let emailValid = emailInput.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-    let requiredValidEmail = '';
-    let message = 'You must enter the following:';
-
-    if ( answerInput === '' ) {
-      requiredAnswer = 'An answer';
-    }
-    if ( nameInput === '' ) {
-      requiredName = 'A name';
-    }
-    if ( emailInput === '' ) {
-      requiredEmail = 'An email';
-    }
-    if ( !emailValid ) {
-      requiredValidEmail = 'A valid email';
-    }
-    if ( requiredAnswer || requiredName || requiredEmail || requiredValidEmail) {
-      let invalidInfo = [requiredAnswer, requiredName, requiredEmail, requiredValidEmail];
-      let alertMessage = `${message}`;
-      invalidInfo.forEach(requiredInfo => {
-        if ( requiredInfo) {
-          alertMessage += '\n' + requiredInfo;
-        }
-      })
-      alert(alertMessage);
-      return true;
-    }
-  }
 
   const handleOnSubmit = () => {
-    if (validate()) {
-      return;
-    }
     axios({
       method: 'post',
       url: '/addAnswer',
@@ -99,7 +65,13 @@ const AddAnswer = ( {body, productName, questionId}) => {
               onChange={(e) => setEmailInput(e.target.value)}/>
             </label>
             <p>For authentication reasons, you will not be emailed</p>
-              <input className='submit-answerButton' type='button' value='Submit Answer'
+            <label>
+              Upload your photos:
+              <input type='file' multiple
+              onChange={(e) => setImageInput(URL.createObjectURL(e.target.files[0]))} />
+              <img src={imageInput} />
+            </label>
+              <input className='submit-answerButton' type='submit' value='Submit Answer'
               onClick={() => handleOnSubmit()}
               />
           </form>
