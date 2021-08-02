@@ -25,7 +25,7 @@ function Overview(props) {
   }, []);
 
   const getProduct = () => {
-    axios.get('/productInfo', {
+    return axios.get('/productInfo', {
       headers: {id: props.productId}
     })
     .then(res => {
@@ -36,6 +36,12 @@ function Overview(props) {
         })
       })
   }
+
+  // modularize code, save in different file, & export to test environment. For example
+  // return "res" in getProduct. modify useEffect into:
+  // const res = getProduct();
+  // setProduct([as it is now])
+  // this way you can export getProduct() and test that the api call works correctly
 
   const getStyles = () => {
     axios.get('/styles', {

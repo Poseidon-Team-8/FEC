@@ -429,4 +429,6 @@ const styles = [
 
 const styleIndex = 0;
 
+const sku = 522166;
+
 export default {product, styles, styleIndex}
