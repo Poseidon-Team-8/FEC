@@ -429,8 +429,4 @@ const styles = [
 
 const styleIndex = 0;
 
-export default {
-  product,
-  styles,
-  styleIndex
-}
+export default {product, styles, styleIndex}

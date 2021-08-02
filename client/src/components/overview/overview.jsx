@@ -30,9 +30,9 @@ function Overview(props) {
     })
     .then(res => {
       setProduct({
-          title: res.data.name,
+          name: res.data.name,
           category: res.data.category,
-          overview: res.data.description
+          description: res.data.description
         })
       })
   }
