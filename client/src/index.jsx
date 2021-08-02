@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Overview from './components/overview/overview.jsx';
@@ -7,17 +7,10 @@ import Questions from './components/questions/questions.jsx';
 import api from './api.js';
 
 function App() {
-  const productId = 17074;
   const {getProduct} = api;
-  const [product, setProduct] = useState(null);
+  const productId = 17074;
+  const product = getProduct(productId)
 
-  useEffect(() => {
-    setProduct(getProduct(productId))
-  }, [])
-
-  if (!product) {
-    return null
-  }
   return (
     <div>
       <h1>TEAM POSEIDON</h1>
