@@ -340,7 +340,7 @@ button:hover {
 */
 
 .individual-question {
-  display: in-block;
+  display: flex;
 }
 
 /*
