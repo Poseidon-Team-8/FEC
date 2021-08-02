@@ -38,7 +38,7 @@ const ProductBreakdown = ({ characteristics }) => {
           const { value } =  characteristics[characteristic];
           const percentage = (value/5*100).toFixed(2);
           return (
-          <Container>
+          <Container key={ idx }>
             <p style={{ "marginLeft": "1em", "marginBottom": "0.2em" }}>{ characteristic }</p>
             <Track>
               <Arrow src="./icons/arrow.svg" percentage={ percentage }/>

@@ -158,7 +158,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   width: 30%;
-  border: 3px solid black;
 }
 
 .right-col-container {
@@ -340,7 +339,7 @@ button:hover {
 */
 
 .review-list-container {
-  height: 800px;
+  max-height: 800px;
   margin-top: 0.5em;
   overflow-y: auto;
 }
