@@ -10,43 +10,7 @@ const AddQuestion = ({ productName, productId}) => {
   const [emailInput, setEmailInput] = useState('');
   const [isClicked, setIsClicked] = useState(false);
 
-  const validate = () => {
-    let requiredQuestion = '';
-    let requiredName = '';
-    let requiredEmail = '';
-    let emailValid = emailInput.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-    let requiredValidEmail = '';
-    let message = 'You must enter the following:';
-
-    if ( questionInput === '' ) {
-      requiredQuestion = 'A question';
-    }
-    if ( nameInput === '' ) {
-      requiredName = 'A name';
-    }
-    if ( emailInput === '' ) {
-      requiredEmail = 'An email';
-    }
-    if ( !emailValid ) {
-      requiredValidEmail = 'A valid email';
-    }
-    if ( requiredQuestion || requiredName || requiredEmail || requiredValidEmail) {
-      let invalidInfo = [requiredQuestion, requiredName, requiredEmail, requiredValidEmail];
-      let alertMessage = `${message}`;
-      invalidInfo.forEach(requiredInfo => {
-        if ( requiredInfo) {
-          alertMessage += '\n' + requiredInfo;
-        }
-      })
-      alert(alertMessage);
-      return true;
-    }
-  }
-
   const handleOnSubmit = () => {
-    if (validate()) {
-      return;
-    }
     axios({
       method: 'post',
       url: '/addQuestion',
@@ -80,23 +44,23 @@ const AddQuestion = ({ productName, productId}) => {
           <form>
             <label>
               Your Question*:
-              <input className='submit-question' type='text' maxLength='1000' required
+              <input className='submit-question' required type='text' maxLength='1000'
               value={questionInput} onChange={(e) => setQuestionInput(e.target.value)}/>
             </label>
             <label>
               What is your nickname*:
-              <input className='submit-name' type='text' maxLength='60' required
+              <input className='submit-name' required type='text' maxLength='60'
               value={nameInput} placeHolder='Example: jack543!'
               onChange={(e) => setNameInput(e.target.value)}/>
             </label>
             <label>
               Your email*:
-              <input className='submit-email' type='email' maxLength='60' required
+              <input className='submit-email' required type='email' maxLength='60'
               value={emailInput} placeHolder='Example: jack@email.com'
               onChange={(e) => setEmailInput(e.target.value)}/>
             </label>
             <p>For authentication reasons, you will not be emailed</p>
-              <input className='submit-questionButton' type='button' value='Submit Question'
+              <input className='submit-questionButton' type='submit' value='Submit Question'
               onClick={() => handleOnSubmit()}
               />
           </form>

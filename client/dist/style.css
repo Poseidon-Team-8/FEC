@@ -158,7 +158,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   width: 30%;
-  border: 3px solid black;
 }
 
 .right-col-container {
@@ -217,7 +216,7 @@ button:hover {
 */
 
 .photo-modal-background {
-  background: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   top: 0;
   right: 0;
@@ -309,7 +308,7 @@ button:hover {
 
 /*
 ================================================
-              Add Answer Modal
+              Add Answer/ Question Modal
 ================================================
 */
 
@@ -335,12 +334,22 @@ button:hover {
 
 /*
 ================================================
+              Individual Question
+================================================
+*/
+
+.individual-question {
+  display: flex;
+}
+
+/*
+================================================
                  Review List
 ================================================
 */
 
 .review-list-container {
-  height: 800px;
+  max-height: 800px;
   margin-top: 0.5em;
   overflow-y: auto;
 }

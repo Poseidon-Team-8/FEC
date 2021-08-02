@@ -20,12 +20,11 @@ const Helpful = ({id, helpful}) => {
       setDisable(true);
       e.target.style.fontWeight = 'bold';
     })
-
   };
 
   return (
     <div>
-      <button disabled={disable} onClick={(e) => updateHelpfulness(e)}>Yes ({helpCount})</button>
+     <span>Helpful?</span><button disabled={disable} onClick={(e) => updateHelpfulness(e)}>Yes ({helpCount})</button>
     </div>
   )
 }
