@@ -10,6 +10,7 @@ class Questions extends React.Component {
     super(props);
     this.state = {
       productQuestion: [],
+      filteredQuestions: [],
       questionAmount: 2,
       productName: ''
     };
@@ -41,32 +42,44 @@ class Questions extends React.Component {
   }
 
   searchFilterOnChange = (e) => {
-    const copyOfQuestions = this.state.productQuestion.slice();
-    const secondCopy = copyOfQuestions;
-    this.setState({productQuestion:
-      copyOfQuestions.filter( question => {
+    const questions = this.state.productQuestion.slice();
+    this.setState({filteredQuestions:
+      questions.filter( question => {
         // console.log(e.target.value)
         return question.question_body.toLowerCase().includes(e.target.value.toLowerCase());
       })
     });
-    if (e.key === 'Delete' || e.key === 'Backspace') {
-      console.log('i am firing', e.target.value)
-      this.setState({productQuestion:
-        copyOfQuestions.filter( question => {
-          return question.question_body.toLowerCase().includes(e.target.value.toLowerCase());
-        })
-      });
-    }
   }
+  //how to display filtered questions: similar to displaying button, if filterquestions has length
+    //display it, otherwise display productquestions. setup in render using conditional(ternary) and set value
+    //to a variable which will go in the return statment.
 
   render() {
+    let questionDisplay;
     let buttonDisplay;
-    if ( this.state.productQuestion.length > 2 &&
-      this.state.questionAmount < this.state.productQuestion.length ) {
-      buttonDisplay = <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button>;
-    } else {
+
+    this.state.productQuestion.length > 2 &&
+      this.state.questionAmount < this.state.productQuestion.length ?
+      buttonDisplay = <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button> :
       buttonDisplay = null;
-    }
+
+    this.state.filteredQuestions.length > 0 ?
+    questionDisplay = this.state.filteredQuestions.slice(0, this.state.questionAmount).map( question =>
+      <IndividualQ question={question}
+      key={question.question_id}
+      productId={this.props.productId}
+      productName={this.state.productName}
+      />
+    )
+    :
+    questionDisplay = this.state.productQuestion.slice(0, this.state.questionAmount).map( question =>
+      <IndividualQ question={question}
+      key={question.question_id}
+      productId={this.props.productId}
+      productName={this.state.productName}
+      />
+    )
+
     return (
 
       <div className='qa-container'>
@@ -74,20 +87,13 @@ class Questions extends React.Component {
         <Search
         searchFilter={this.searchFilterOnChange}
         />
-        {this.state.productQuestion.slice(0, this.state.questionAmount).map( question =>
-          <IndividualQ question={question}
-          key={question.question_id}
-          productId={this.props.productId}
-          productName={this.state.productName}
-          />
-        )}
+        {questionDisplay}
         {buttonDisplay}
         <AddQuestion
         productName={this.state.productName}
         productId={this.props.productId}
         />
       </div>
-
     )
   }
 }

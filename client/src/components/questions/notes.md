@@ -119,9 +119,10 @@ and display the add answer form when isClicked is true
 ## Setup Search bar to filter questions
 
 
-- [] write onChange handler in questions (parent) for Search component
-- [] use filter to filter questions using includes and passing in the onChange value
-- [] update state of productQuestions
-- [] pass function down with props
-- [] add onChange for input field in Search component calling onChange handler
-- []
+- [x] write onChange handler in questions (parent) for Search component
+- [x] pass function down with props
+- [x] add onChange to input field in Search component calling onChange handler
+- [x] add property filteredQuestions to state set to empty array
+- [x] use filter to filter questions using includes and passing in the onChange value
+- [x] update state of filteredQuestions
+- [x] use ternary to either display filtered questions if filtered length is greater than 0

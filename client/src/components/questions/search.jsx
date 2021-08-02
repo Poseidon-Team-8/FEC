@@ -7,7 +7,6 @@ const Search = ({searchFilter}) => {
     <div>
       <input placeHolder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
         onChange={(e) => searchFilter(e)}
-        onKeyUp={(e) => searchFilter(e)}
       />
     </div>
   )
