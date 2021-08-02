@@ -13,21 +13,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 17071
+      productId: 17071,
+      product: null
     }
   }
 
   componentDidMount() {
-    const product = getProduct(this.state.productID)
+    this.setState({product: getProduct(this.state.productID)})
   }
 
   render() {
+    if (!this.state.product) {
+      return null
+    }
     return (
       <div>
         <h1>Working</h1>
-        <Overview productId={ this.state.productId} product={product} />
-        <Questions productId={ this.state.productId } name={product.name} />
-        <Ratings productId={ this.state.productId} name={product.name}/>
+        <Overview productId={ this.state.productId } product={this.state.product} />
+        <Questions productId={ this.state.productId } name={this.state.product.name} />
+        <Ratings productId={ this.state.productId} name={this.state.product.name}/>
       </div>
     )
   }
