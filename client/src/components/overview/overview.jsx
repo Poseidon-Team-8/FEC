@@ -4,16 +4,13 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import Cart from './cart.jsx';
 import Default from './imageDefault.jsx';
-import api from './api.js';
-
-const {getProduct} = api;
 
 function Overview(props) {
   let imageObject = {}
   for (var i = 0; i < 20; i++) {
     imageObject[i] = 0
   }
-  const [product, setProduct] = useState();
+  const[product, setProduct] = useState();
   const [styles, setStyles] = useState([]);
   const [styleIndex, setStyleIndex] = useState(0);
   const [sku, setSKU] = useState(0);
@@ -23,20 +20,13 @@ function Overview(props) {
   const [image, setImage] = useState(imageObject)
 
   useEffect(() => {
-    const res = getProduct(props.productId);
     setProduct({
-      name: res.name,
-      category: res.category,
-      description: res.description
+      name: props.product.name,
+      category: props.product.category,
+      description: props.product.description
     })
     getStyles();
   }, []);
-
-  // modularize code, save in different file, & export to test environment. For example
-  // return "res" in getProduct. modify useEffect into:
-  // const res = getProduct();
-  // setProduct([as it is now])
-  // this way you can export getProduct() and test that the api call works correctly
 
   const getStyles = () => {
     axios.get('/styles', {
@@ -84,7 +74,7 @@ function Overview(props) {
       quantity: quantity
     })
       .then(res => {
-        alert(`${quantity} ${styles[styleIndex].name} ${product.title} added to cart`);
+        alert(`${quantity} ${styles[styleIndex].name} ${props.product.title} added to cart`);
         // have to update not only the state but the display
         setSKU(0);
         setQuantity(0);
@@ -98,7 +88,7 @@ function Overview(props) {
   return (
     <div>
       <ProductInfo
-        product={product}
+        product={props.product}
         styles={styles}
         styleIndex={styleIndex} >
         <Default
