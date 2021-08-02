@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import IndividualQ from './individualQ.jsx';
 import AddQuestion from './addQuestion.jsx';
+import Search from './search.jsx';
 
 class Questions extends React.Component {
   constructor(props) {
@@ -39,10 +40,27 @@ class Questions extends React.Component {
     this.getQuestions();
   }
 
+  searchFilterOnChange = (e) => {
+    const copyOfQuestions = this.state.productQuestion.slice();
+    const secondCopy = copyOfQuestions;
+    this.setState({productQuestion:
+      copyOfQuestions.filter( question => {
+        // console.log(e.target.value)
+        return question.question_body.toLowerCase().includes(e.target.value.toLowerCase());
+      })
+    });
+    if (e.key === 'Delete' || e.key === 'Backspace') {
+      console.log('i am firing', e.target.value)
+      this.setState({productQuestion:
+        copyOfQuestions.filter( question => {
+          return question.question_body.toLowerCase().includes(e.target.value.toLowerCase());
+        })
+      });
+    }
+  }
+
   render() {
     let buttonDisplay;
-    // this.state.productQuestion.length > 2 ?
-    // <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button> : null;
     if ( this.state.productQuestion.length > 2 &&
       this.state.questionAmount < this.state.productQuestion.length ) {
       buttonDisplay = <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button>;
@@ -51,7 +69,11 @@ class Questions extends React.Component {
     }
     return (
 
-      <div>
+      <div className='qa-container'>
+        <h2>Questions & Answers</h2>
+        <Search
+        searchFilter={this.searchFilterOnChange}
+        />
         {this.state.productQuestion.slice(0, this.state.questionAmount).map( question =>
           <IndividualQ question={question}
           key={question.question_id}

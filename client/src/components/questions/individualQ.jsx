@@ -8,8 +8,8 @@ const IndividualQ = ({question, productId, productName}) => {
 
 
   return (
-    <div>
-      <div>
+    <div >
+      <div className='individual-question'>
         <p>Q: {question.question_body}</p>
         <HelpfulQ id={question.question_id} helpful={question.question_helpfulness} />
         <AddAnswer

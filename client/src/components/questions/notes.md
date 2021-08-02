@@ -114,5 +114,14 @@ and display the add answer form when isClicked is true
     - [x] images selected are invalid or can't upload
 - [x] write a condition to display a button if isClicked is false,
 and display the add answer form when isClicked is true
-
 - [x] setup modal through styles.css file
+
+## Setup Search bar to filter questions
+
+
+- [] write onChange handler in questions (parent) for Search component
+- [] use filter to filter questions using includes and passing in the onChange value
+- [] update state of productQuestions
+- [] pass function down with props
+- [] add onChange for input field in Search component calling onChange handler
+- []

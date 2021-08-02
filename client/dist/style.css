@@ -309,7 +309,7 @@ button:hover {
 
 /*
 ================================================
-              Add Answer Modal
+              Add Answer/ Question Modal
 ================================================
 */
 
@@ -331,6 +331,16 @@ button:hover {
   padding: 20px;
   border: 1px solid black;
   width: 80%;
+}
+
+/*
+================================================
+              Individual Question
+================================================
+*/
+
+.individual-question {
+  display: in-block;
 }
 
 /*
