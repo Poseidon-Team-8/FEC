@@ -9,4 +9,13 @@ const getProduct = (productId) => {
   })
 }
 
-export default {getProduct}
+const getStyles = (productId) => {
+  axios.get('/styles', {
+    headers: {id: productId}
+  })
+  .then(res => {
+    return res.data
+  })
+}
+
+export default {getProduct, getStyles}
