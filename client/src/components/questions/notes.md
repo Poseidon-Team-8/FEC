@@ -126,3 +126,21 @@ and display the add answer form when isClicked is true
 - [x] use filter to filter questions using includes and passing in the onChange value
 - [x] update state of filteredQuestions
 - [x] use ternary to either display filtered questions if filtered length is greater than 0
+
+## Finish up rest of functionality
+
+  ANSWER'S LIST
+    - [x] set div around answer's list
+      - [x] add css to set overflow to auto so div will scroll when answer's list gets too big
+
+  SEARCH BAR
+    - [x] add conditional that renders all questions if search bar state of searchMessage
+    length is less than 3
+
+  ADD ANSWER FORM
+    -[] Add upload feature input
+      - [] add css to make images thumbnails
+    - [] refactor POST request to include image upload
+    - [] refactor POST handlers and POST request inside handler to include image upload
+
+## CSS

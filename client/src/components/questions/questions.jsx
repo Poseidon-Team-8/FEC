@@ -46,6 +46,9 @@ class Questions extends React.Component {
   }
   searchFilterOnChange = (e) => {
     const questions = this.state.productQuestion.slice();
+    if ( e.target.value > 3 ) {
+      this.setState
+    }
     this.setState({filteredQuestions:
       questions.filter( question => {
         return question.question_body.toLowerCase().includes(e.target.value.toLowerCase());
@@ -59,11 +62,13 @@ class Questions extends React.Component {
 
     this.state.productQuestion.length > 2 &&
       this.state.questionAmount < this.state.productQuestion.length ?
-      buttonDisplay = <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button> :
+      buttonDisplay =
+      <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button> :
       buttonDisplay = null;
 
-    this.state.filteredQuestions.length > 0 ?
-    questionDisplay = this.state.filteredQuestions.slice(0, this.state.questionAmount).map( question =>
+    this.state.searchMessage.length > 2 ?
+    questionDisplay =
+    this.state.filteredQuestions.slice(0, this.state.questionAmount).map( question =>
       <IndividualQ question={question}
       key={question.question_id}
       productId={this.props.productId}
@@ -71,7 +76,8 @@ class Questions extends React.Component {
       />
     )
     :
-    questionDisplay = this.state.productQuestion.slice(0, this.state.questionAmount).map( question =>
+    questionDisplay =
+    this.state.productQuestion.slice(0, this.state.questionAmount).map( question =>
       <IndividualQ question={question}
       key={question.question_id}
       productId={this.props.productId}

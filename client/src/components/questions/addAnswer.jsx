@@ -10,9 +10,25 @@ const AddAnswer = ( {body, productName, questionId}) => {
   const [imageInput, setImageInput] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
+  const handleImageLimit = () => {
+    setImageInput([]);
+    alert('You cannot upload more than 5 images!');
+    return;
+  }
+
+  const toggleImageUpload = () => {
+    //if imageInput length greater than 5
+      //call setImageInput with empty array
+      //alert you can upload no more than 5 images
+    //if imageInput length equals 5
+      //only render images
+    //I don't think I need another condition
+      //invoking this function should only work if one of the two conditions are met
+  }
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    handleImageLimit();
     axios({
       method: 'post',
       url: '/addAnswer',
@@ -45,7 +61,8 @@ const AddAnswer = ( {body, productName, questionId}) => {
           <h2>Submit Your Answer </h2>
           <h3>{body}: </h3>
           <p>{productName}</p>
-          <form onSubmit={(e) => handleOnSubmit(e)}>
+          <form
+          onSubmit={(e) => handleOnSubmit(e)}>
             <label>
               Your Answer*:
               <input className='submit-answer' type='text' maxLength='1000' required
@@ -67,8 +84,12 @@ const AddAnswer = ( {body, productName, questionId}) => {
             <label>
               Upload your photos:
               <input type='file' multiple
-              onChange={(e) => setImageInput(URL.createObjectURL(e.target.files[0]))} />
-              <img src={imageInput} />
+              onChange={(e) => setImageInput([...e.target.files])} />
+              {imageInput.length < 6 ? imageInput.map( (image, idx) => {
+                let src=URL.createObjectURL(image);
+                return <img src={src} style={{"height": "80px", "width": "60px"}}/>
+              }) : handleImageLimit()
+              }
             </label>
               <input className='submit-answerButton' type='submit' value='Submit Answer'/>
           </form>
