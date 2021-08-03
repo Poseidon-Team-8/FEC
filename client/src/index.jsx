@@ -4,9 +4,6 @@ import axios from 'axios';
 import Overview from './components/overview/overview.jsx';
 import Ratings from './components/ratings/ratings.jsx';
 import Questions from './components/questions/questions.jsx';
-import api from './api.js';
-
-const {getProduct} = api;
 
 class App extends React.Component {
 
@@ -19,7 +16,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({product: getProduct(this.state.productID)})
+    axios.get('/productInfo', {
+      headers: {id: this.state.productId}
+    })
+    .then(res => {
+      this.setState({product: res.data})
+    })
   }
 
   render() {
