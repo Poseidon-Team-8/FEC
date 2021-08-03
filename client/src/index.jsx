@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Overview from './components/overview/overview.jsx';
@@ -9,8 +9,16 @@ import api from './api.js';
 function App() {
   const {getProduct} = api;
   const productId = 17074;
-  const product = getProduct(productId)
+  const [product, setProduct] = useState();
 
+  useEffect(async () => {
+    let res = await getProduct(productId);
+    setProduct(res.data);
+  }, [])
+
+  if (!product) {
+    return null
+  }
   return (
     <div>
       <h1>TEAM POSEIDON</h1>
