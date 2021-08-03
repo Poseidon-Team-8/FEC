@@ -13,6 +13,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
 
 
   const handleOnSubmit = () => {
+    e.preventDefault();
     axios({
       method: 'post',
       url: '/addAnswer',
@@ -72,7 +73,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
               <img src={imageInput} />
             </label>
               <input className='submit-answerButton' type='submit' value='Submit Answer'
-              onClick={() => handleOnSubmit()}
+              onClick={(e) => handleOnSubmit(e)}
               />
           </form>
         </div>

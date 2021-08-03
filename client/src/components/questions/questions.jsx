@@ -12,7 +12,8 @@ class Questions extends React.Component {
       productQuestion: [],
       filteredQuestions: [],
       questionAmount: 2,
-      productName: ''
+      productName: '',
+      searchMessage: ''
     };
   }
 
@@ -30,6 +31,9 @@ class Questions extends React.Component {
         return b.question_helpfulness - a.question_helpfulness;
       })
       this.setState({productQuestion: sortedQuestions, productName: response.data.name})
+    }).
+    catch(error => {
+      console.log('CLIENT SIDE ERROR', error)
     })
   }
 
@@ -40,19 +44,14 @@ class Questions extends React.Component {
   componentDidMount() {
     this.getQuestions();
   }
-
   searchFilterOnChange = (e) => {
     const questions = this.state.productQuestion.slice();
     this.setState({filteredQuestions:
       questions.filter( question => {
-        // console.log(e.target.value)
         return question.question_body.toLowerCase().includes(e.target.value.toLowerCase());
-      })
+      }), searchMessage: e.target.value
     });
   }
-  //how to display filtered questions: similar to displaying button, if filterquestions has length
-    //display it, otherwise display productquestions. setup in render using conditional(ternary) and set value
-    //to a variable which will go in the return statment.
 
   render() {
     let questionDisplay;
@@ -81,18 +80,23 @@ class Questions extends React.Component {
     )
 
     return (
-
-      <div className='qa-container'>
+      <div>
         <h2>Questions & Answers</h2>
-        <Search
-        searchFilter={this.searchFilterOnChange}
-        />
-        {questionDisplay}
-        {buttonDisplay}
-        <AddQuestion
-        productName={this.state.productName}
-        productId={this.props.productId}
-        />
+          <Search
+          searchFilter={this.searchFilterOnChange}
+          />
+        {this.state.searchMessage.length > 2 && !this.state.filteredQuestions.length ?
+          <p>Oops, it looks like your search didn't return any matches</p> :
+        <div className='qa-container'>
+
+          {questionDisplay}
+          {buttonDisplay}
+          <AddQuestion
+          productName={this.state.productName}
+          productId={this.props.productId}
+          />
+        </div>
+        }
       </div>
     )
   }

@@ -11,6 +11,7 @@ const AddQuestion = ({ productName, productId}) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleOnSubmit = () => {
+    e.preventDefault();
     axios({
       method: 'post',
       url: '/addQuestion',
@@ -61,7 +62,7 @@ const AddQuestion = ({ productName, productId}) => {
             </label>
             <p>For authentication reasons, you will not be emailed</p>
               <input className='submit-questionButton' type='submit' value='Submit Question'
-              onClick={() => handleOnSubmit()}
+              onClick={(e) => handleOnSubmit(e)}
               />
           </form>
         </div>
