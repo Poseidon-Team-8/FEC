@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-// import StarRating from '../ratings/StarRating.jsx';
-// import ratingAvg from '../ratings/RatingBreakdown.jsx';
 
 function ProductInfo(props) {
-  if (!props.styles.length || !props.product) {
+  if (!props.product || !props.styles.length) {
+    debugger;
     return null
   }
 

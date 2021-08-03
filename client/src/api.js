@@ -4,9 +4,18 @@ const getProduct = (productId) => {
   return axios.get('/productInfo', {
     headers: {id: productId}
   })
-  .then(res => {
-    return res.data
+  .catch(err => {
+    console.log(err)
   })
 }
 
-export default {getProduct}
+const getStyles = (productId) => {
+  return axios.get('/styles', {
+      headers: {id: productId}
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+export default {getProduct, getStyles}

@@ -4,13 +4,14 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import Cart from './cart.jsx';
 import Default from './imageDefault.jsx';
+import api from '../../api.js'
 
 function Overview(props) {
   let imageObject = {}
   for (var i = 0; i < 20; i++) {
     imageObject[i] = 0
   }
-  const[product, setProduct] = useState();
+  const {getStyles} = api;
   const [styles, setStyles] = useState([]);
   const [styleIndex, setStyleIndex] = useState(0);
   const [sku, setSKU] = useState(0);
@@ -19,23 +20,10 @@ function Overview(props) {
   const [zoom, setZoom] = useState(false);
   const [image, setImage] = useState(imageObject)
 
-  useEffect(() => {
-    setProduct({
-      name: props.product.name,
-      category: props.product.category,
-      description: props.product.description
-    })
-    getStyles();
+  useEffect(async () => {
+    let res = await getStyles(props.productId)
+    setStyles(res.data)
   }, []);
-
-  const getStyles = () => {
-    axios.get('/styles', {
-      headers: {id: props.productId}
-    })
-    .then(res => {
-      setStyles(res.data)
-    })
-  }
 
   const updateStyle = (index) => {
     setStyleIndex(index);
@@ -85,6 +73,9 @@ function Overview(props) {
       })
   }
 
+  if (styles && !styles.length) {
+    return null
+  }
   return (
     <div>
       <ProductInfo
