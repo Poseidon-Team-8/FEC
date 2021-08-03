@@ -4,13 +4,12 @@ import axios from 'axios';
 
 const AddQuestion = ({ productName, productId}) => {
 
-  // const [productName, setProductName] = useState('');
   const [questionInput, setQuestionInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [isClicked, setIsClicked] = useState(false);
 
-  const handleOnSubmit = () => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
     axios({
       method: 'post',
@@ -33,7 +32,6 @@ const AddQuestion = ({ productName, productId}) => {
     })
   }
 
-// toggle button once I get response so I can clear fields firts
   return (
     <div>
       { !isClicked ? <button onClick={() => setIsClicked(true)}>Add A Question</button> :
@@ -42,7 +40,7 @@ const AddQuestion = ({ productName, productId}) => {
         <button onClick={() => setIsClicked(false)}>Exit</button>
           <h2>Ask Your Question </h2>
           <h3>About the {productName}</h3>
-          <form>
+          <form onClick={(e) => handleOnSubmit(e)}>
             <label>
               Your Question*:
               <input className='submit-question' required type='text' maxLength='1000'
@@ -61,9 +59,7 @@ const AddQuestion = ({ productName, productId}) => {
               onChange={(e) => setEmailInput(e.target.value)}/>
             </label>
             <p>For authentication reasons, you will not be emailed</p>
-              <input className='submit-questionButton' type='submit' value='Submit Question'
-              onClick={(e) => handleOnSubmit(e)}
-              />
+              <input className='submit-questionButton' type='submit' value='Submit Question'/>
           </form>
         </div>
       </div>

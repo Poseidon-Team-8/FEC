@@ -25,6 +25,9 @@ app.get('/productInfo', (req, res) => {
     .then(response => {
       res.send(response.data)
     })
+    .catch(error => {
+      console.log('PRODUCT INFO SERVER SIDE: ', error);
+    })
 })
 
 app.get('/styles', (req, res) => {
@@ -85,7 +88,10 @@ app.post('/addAnswer', (req, res) => {
   )
   .then(result => {
     res.status(200).send('Success server side!')
-  } )
+  })
+  .catch(error => {
+    console.log('POST ANSWER SERVER SIDE: ', error);
+  })
 })
 
 app.post('/addQuestion', (req, res) => {
@@ -108,7 +114,7 @@ app.post('/addQuestion', (req, res) => {
     res.status(200).send('Success server side!')
   })
   .catch(error => {
-    console.log('SERVER SIDE ERROR', error)
+    console.log('SERVER SIDE ERROR', error);
   })
 })
 

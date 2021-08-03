@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const AddAnswer = ( {body, productName, questionId}) => {
 
-  // const [productName, setProductName] = useState('');
   const [answerInput, setAnswerInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
@@ -12,7 +11,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
   const [isClicked, setIsClicked] = useState(false);
 
 
-  const handleOnSubmit = () => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
     axios({
       method: 'post',
@@ -37,7 +36,6 @@ const AddAnswer = ( {body, productName, questionId}) => {
     })
   }
 
-// toggle button once I get response so I can clear fields firts
   return (
     <div>
       { !isClicked ? <button onClick={() => setIsClicked(true)}>Add Answer</button> :
@@ -47,7 +45,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
           <h2>Submit Your Answer </h2>
           <h3>{body}: </h3>
           <p>{productName}</p>
-          <form>
+          <form onSubmit={(e) => handleOnSubmit(e)}>
             <label>
               Your Answer*:
               <input className='submit-answer' type='text' maxLength='1000' required
@@ -72,9 +70,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
               onChange={(e) => setImageInput(URL.createObjectURL(e.target.files[0]))} />
               <img src={imageInput} />
             </label>
-              <input className='submit-answerButton' type='submit' value='Submit Answer'
-              onClick={(e) => handleOnSubmit(e)}
-              />
+              <input className='submit-answerButton' type='submit' value='Submit Answer'/>
           </form>
         </div>
       </div>
