@@ -20,7 +20,7 @@ const Container = styled.div`
   left: 50%;
   margin-left: auto;
   margin-right: auto;
-  width: 60vw;
+  width: 70vw;
   height: 80vh;
   opacity: 100%;
   transform: translate(-50%, -50%);
@@ -37,7 +37,7 @@ const ReviewFormModal = ({ displayModal, setDisplayModal }) => {
       { displayModal ? (
         <Background>
           <Container>
-            <ReviewForm />
+            <ReviewForm setDisplayModal={ setDisplayModal }/>
           </Container>
         </Background>
       ) : null}

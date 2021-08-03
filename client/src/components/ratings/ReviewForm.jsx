@@ -1,9 +1,31 @@
 import React, { useState, useEffect, useContext } from 'react';
+import styled from 'styled-components';
 
-const ReviewForm = () => {
+const PhotoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  width: 80%;
+`;
+
+const ReviewForm = ({ setDisplayModal }) => {
   const [radio, setRadio] = useState("Yes");
+  const [photos, setPhotos] = useState([]);
+
+  const submitForm = (e) => {
+    // make post request and clear inputs
+    e.preventDefault();
+    setDisplayModal(prev => !prev);
+    console.log("form submitted");
+  }
+
+  const cancelSubmit = () => {
+    setDisplayModal(prev => !prev);
+  }
+
   return (
-    <form onSubmit={ () => console.log("form submitted") }>
+    <form onSubmit={ (e) => submitForm(e) }>
       <h1>Write Your Review</h1>
       <p>About the [Product Name Here]</p>
       <p>Do you recommend this product</p>
@@ -34,11 +56,20 @@ const ReviewForm = () => {
                 placeholder="Why did you like the product or not?"
                 maxLength={ 1000 } required />
       <br/>
-      <label htmlFor="review-photo-upload">Upload Your Photos: </label>
+      <label htmlFor="photo-files">Upload Your Photos: </label>
       <input type="file"
-             id="review-photo-upload"
-             onChange={ (e) => console.log(e.target.files) } />
+             id="photo-files"
+             multiple="multiple"
+             onChange={ (e) => {setPhotos(Array.from(e.target.files)), console.log(Array.from(e.target.files))}} />
       <br/>
+      <PhotoContainer>
+        {
+          photos ? photos.map( (photo, idx) => {
+            let src = URL.createObjectURL(photo);
+            return <img src={ src } style={{"height": "80px", "width": "80px"}}/>
+          }) : null
+        }
+      </PhotoContainer>
       <label htmlFor="username">Username: </label>
       <input type="text"
              id="username"
@@ -52,6 +83,7 @@ const ReviewForm = () => {
              required />
       <br/>
       <button type="submit">Submit Review</button>
+      <button onClick={ () => cancelSubmit() }>Cancel</button>
     </form>
   );
 }
