@@ -10,32 +10,33 @@ const AddAnswer = ( {body, productName, questionId}) => {
   const [imageInput, setImageInput] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
-  const handleImageLimit = () => {
-    setImageInput([]);
-    alert('You cannot upload more than 5 images!');
-    return;
-  }
 
-  const toggleImageUpload = () => {
-    //if imageInput length greater than 5
-      //call setImageInput with empty array
-      //alert you can upload no more than 5 images
-    //if imageInput length equals 5
-      //only render images
-    //I don't think I need another condition
-      //invoking this function should only work if one of the two conditions are met
+
+  const handleImageInput = (e) => {
+    if ( e.target.files.length > 5) {
+      e.target.value = null;
+      alert('You cannot upload more than 5 images!');
+    } else {
+      setImageInput([...e.target.files]);
+    }
   }
 
   const handleOnSubmit = (e) => {
+    let images = imageInput.map( image => {
+      let url = URL.createObjectURL(image)
+      return blob.url
+    });
+
+    console.log(images);
     e.preventDefault();
-    handleImageLimit();
     axios({
       method: 'post',
       url: '/addAnswer',
       data: {
         body: `${answerInput}`,
         name: `${nameInput}`,
-        email: `${emailInput}`
+        email: `${emailInput}`,
+        photos: `${images}`
       },
       headers: {
         id: `${questionId}`
@@ -84,11 +85,13 @@ const AddAnswer = ( {body, productName, questionId}) => {
             <label>
               Upload your photos:
               <input type='file' multiple
-              onChange={(e) => setImageInput([...e.target.files])} />
-              {imageInput.length < 6 ? imageInput.map( (image, idx) => {
+                onChange={(e) => handleImageInput(e)} />
+              {
+              imageInput.map( (image, idx) => {
                 let src=URL.createObjectURL(image);
-                return <img src={src} style={{"height": "80px", "width": "60px"}}/>
-              }) : handleImageLimit()
+                return <img src={src} key={idx}
+                style={{"height": "80px", "width": "60px"}}/>
+              })
               }
             </label>
               <input className='submit-answerButton' type='submit' value='Submit Answer'/>

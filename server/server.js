@@ -73,12 +73,14 @@ app.post('/updateCart', (req, res) => {
 */
 
 app.post('/addAnswer', (req, res) => {
+  console.log(req.body.photos);
   axios.post(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,
     {
       body: req.body.body,
       name: req.body.name,
-      email: req.body.email
+      email: req.body.email,
+      photos: req.body.photos
     },
     {
       headers: {
