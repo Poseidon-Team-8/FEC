@@ -1,42 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Overview from './components/overview/overview.jsx';
 import Ratings from './components/ratings/ratings.jsx';
 import Questions from './components/questions/questions.jsx';
 
-class App extends React.Component {
+function App() {
+  const productId = 17074;
+  const [product, setProduct] = useState()
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      productId: 17071,
-      product: null
-    }
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     axios.get('/productInfo', {
-      headers: {id: this.state.productId}
+      headers: {id: productId}
     })
     .then(res => {
-      this.setState({product: res.data})
+      setProduct(res.data)
     })
-  }
+  }, [])
 
-  render() {
-    if (!this.state.product) {
-      return null
-    }
-    return (
-      <div>
-        <h1>Working</h1>
-        <Overview productId={ this.state.productId } product={this.state.product} />
-        <Questions productId={ this.state.productId } name={this.state.product.name} />
-        <Ratings productId={ this.state.productId} name={this.state.product.name}/>
-      </div>
-    )
+  if (!product) {
+    return null
   }
+  return (
+    <div>
+      <h1>Working</h1>
+      <Overview productId={productId} product={product} />
+      <Questions productId={productId} name={product.name} />
+      <Ratings productId={productId} name={product.name}/>
+    </div>
+  )
 }
 
 export default App;
