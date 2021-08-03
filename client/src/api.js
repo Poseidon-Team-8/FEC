@@ -10,12 +10,9 @@ const getProduct = (productId) => {
 }
 
 const getStyles = (productId) => {
-  axios.get('/styles', {
-    headers: {id: productId}
-  })
-  .then(res => {
-    return res.data
-  })
+  return axios.get('/styles', {
+      headers: {id: productId}
+    })
 }
 
 export default {getProduct, getStyles}

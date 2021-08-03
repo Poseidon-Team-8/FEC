@@ -11,8 +11,7 @@ function Overview(props) {
   for (var i = 0; i < 20; i++) {
     imageObject[i] = 0
   }
-  // const {getStyles} = api;
-  // const [isLoaded, setLoaded] = useState(false)
+  const {getStyles} = api;
   const [styles, setStyles] = useState([]);
   const [styleIndex, setStyleIndex] = useState(0);
   const [sku, setSKU] = useState(0);
@@ -22,28 +21,9 @@ function Overview(props) {
   const [image, setImage] = useState(imageObject)
 
   useEffect(async () => {
-    let x = await getStyles(props.productId)
-    x.then(res => {
-      setStyles(res.data)
-    })
-    // getStyles(props.productId)
+    let res = await getStyles(props.productId)
+    setStyles(res.data)
   }, []);
-
-  const getStyles = (productId) => {
-    return axios.get('/styles', {
-        headers: {id: productId}
-      })
-  }
-
-  // const getStyles = (productId) => {
-  //   axios.get('/styles', {
-  //     headers: {id: productId}
-  //   })
-  //   .then(res => {
-  //     setStyles(res.data)
-  //     return res.data
-  //   })
-  // }
 
   const updateStyle = (index) => {
     setStyleIndex(index);
