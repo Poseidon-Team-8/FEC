@@ -6,7 +6,6 @@ function ProductInfo(props) {
     return null
   }
 
-
   const prices = props.styles[props.styleIndex];
   const priceInfo = `Price: ${prices.original_price}`
 
