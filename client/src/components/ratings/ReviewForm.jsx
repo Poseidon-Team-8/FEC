@@ -12,6 +12,7 @@ const PhotoContainer = styled.div`
 
 const ReviewForm = ({ setDisplayModal }) => {
   const [radio, setRadio] = useState("Yes");
+  const [bodyText, setBodyText] = useState("");
   const [photos, setPhotos] = useState([]);
 
   const submitForm = (e) => {
@@ -38,7 +39,6 @@ const ReviewForm = ({ setDisplayModal }) => {
              value="Yes"
              onChange={ (e) => { setRadio(e.target.value) }}
               />
-      <br/>
       <label>No</label>
       <input type="radio"
              checked={radio === "No"}
@@ -57,8 +57,12 @@ const ReviewForm = ({ setDisplayModal }) => {
       <textarea type="text"
                 id="review-htmlForm-body"
                 placeholder="Why did you like the product or not?"
+                onChange={ (e) => { setBodyText(e.target.value)} }
                 maxLength={ 1000 } required />
       <br/>
+      {
+        (50 - bodyText.length) <= 0 ? <p>Minimum Reached</p> : <p>Minimum Required Characters Left: { 50 - bodyText.length }</p>
+      }
       <label htmlFor="photo-files">Upload Your Photos: </label>
       <input type="file"
              id="photo-files"
@@ -79,11 +83,15 @@ const ReviewForm = ({ setDisplayModal }) => {
              placeholder="Example: jackson11!"
              required />
       <br/>
+      <small>For privacy reasons, do not use your full name or email address</small>
+      <br/>
       <label htmlFor="email">Email: </label>
       <input type="email"
              id="email"
              placeholder="Example: jackson11@email.com"
              required />
+      <br/>
+      <small>For authentication reasons, you will not be emailed</small>
       <br/>
       <button type="submit">Submit Review</button>
       <button onClick={ () => cancelSubmit() }>Cancel</button>

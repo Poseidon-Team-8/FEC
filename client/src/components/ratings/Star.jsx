@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-const Star = () => {
-  const [star, setStar] = useState("./icons/no-star.svg");
+const Star = ({ starState, idx, fillUpTo }) => {
+  const [star, setStar] = useState(starState);
+  const [clicked, setClicked] = useState(false);
 
   return (
-    <img src={ star } onMouseEnter={ () => setStar("./icons/star.svg") } onMouseLeave={ () => setStar("./icons/no-star.svg") }></img>
+    <img src={ star } onClick={ (e) => fillUpTo(idx) } onMouseEnter={ () => setStar("./icons/star.svg") } onMouseLeave={ () => clicked ? null : setStar("./icons/no-star.svg") }></img>
   );
 }
 
