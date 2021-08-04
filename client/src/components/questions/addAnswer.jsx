@@ -13,6 +13,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
 
 
   const handleImageInput = (e) => {
+
     if ( e.target.files.length > 5) {
       e.target.value = null;
       alert('You cannot upload more than 5 images!');
@@ -22,13 +23,14 @@ const AddAnswer = ( {body, productName, questionId}) => {
   }
 
   const handleOnSubmit = (e) => {
+    e.preventDefault();
     let images = imageInput.map( image => {
-      let url = URL.createObjectURL(image)
-      return blob.url
+      let url = URL.createObjectURL(image);
+      return url.split('blob:')[1]
     });
 
     console.log(images);
-    e.preventDefault();
+    // e.preventDefault();
     axios({
       method: 'post',
       url: '/addAnswer',
@@ -36,13 +38,14 @@ const AddAnswer = ( {body, productName, questionId}) => {
         body: `${answerInput}`,
         name: `${nameInput}`,
         email: `${emailInput}`,
-        photos: `${images}`
+        photos: images
       },
       headers: {
         id: `${questionId}`
       }
     })
     .then(result => {
+      console.log('it worked!!')
       setAnswerInput('');
       setNameInput('');
       setEmailInput('');
@@ -89,6 +92,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
               {
               imageInput.map( (image, idx) => {
                 let src=URL.createObjectURL(image);
+                // debugger;
                 return <img src={src} key={idx}
                 style={{"height": "80px", "width": "60px"}}/>
               })
