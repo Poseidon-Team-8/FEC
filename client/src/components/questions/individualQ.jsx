@@ -12,12 +12,14 @@ const IndividualQ = ({question, productId, productName}) => {
       <div >
         <div className='individual-question'>
           <p>Q: {question.question_body}</p>
-          <HelpfulQ id={question.question_id} helpful={question.question_helpfulness} />
-          <AddAnswer
-          productName={productName}
-          body={question.question_body}
-          questionId={question.question_id}
-          />
+          <div id='helpful-add-answer'>
+            <HelpfulQ id={question.question_id} helpful={question.question_helpfulness} />
+            <AddAnswer
+            productName={productName}
+            body={question.question_body}
+            questionId={question.question_id}
+            />
+          </div>
         </div>
         <Answers id={question.question_id} ></Answers>
       </div>

@@ -308,6 +308,45 @@ button:hover {
 
 /*
 ================================================
+                 Review List
+================================================
+*/
+
+.review-list-container {
+  max-height: 800px;
+  margin-top: 0.5em;
+  overflow-y: auto;
+}
+
+/*
+================================================
+           Rating Breakdown Sort
+================================================
+*/
+
+.rating-sort-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rating-sort-button {
+  height: 1.5em;
+  width: auto;
+}
+
+/*
+================================================
+              QA Widget
+================================================
+*/
+
+#qa-container {
+  position: relative;
+  left: 25%;
+}
+
+/*
+================================================
               Add Answer/ Question Modal
 ================================================
 */
@@ -355,8 +394,10 @@ button:hover {
 */
 
 .individual-question {
+  width: 52%;
+  font-weight: bold;
   display: flex;
-  justify-content:unset;
+  justify-content:space-between;
 }
 
 .helpful-btn {
@@ -385,36 +426,13 @@ button:hover {
 
 /*
 ================================================
-              Add Answer Form
+              Helpful & Add Answer
 ================================================
 */
 
-
-
-/*
-================================================
-                 Review List
-================================================
-*/
-
-.review-list-container {
-  max-height: 800px;
-  margin-top: 0.5em;
-  overflow-y: auto;
-}
-
-/*
-================================================
-           Rating Breakdown Sort
-================================================
-*/
-
-.rating-sort-menu {
+#helpful-add-answer {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.rating-sort-button {
-  height: 1.5em;
-  width: auto;
-}
+

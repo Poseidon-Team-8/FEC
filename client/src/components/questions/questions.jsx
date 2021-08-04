@@ -86,14 +86,14 @@ class Questions extends React.Component {
     )
 
     return (
-      <div>
+      <div id='qa-container'>
         <h2>Questions & Answers</h2>
           <Search
           searchFilter={this.searchFilterOnChange}
           />
         {this.state.searchMessage.length > 2 && !this.state.filteredQuestions.length ?
           <p>Oops, it looks like your search didn't return any matches</p> :
-        <div className='qa-container'>
+        <div >
           {questionDisplay}
           {buttonDisplay}
           <AddQuestion
