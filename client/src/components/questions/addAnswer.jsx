@@ -23,14 +23,13 @@ const AddAnswer = ( {body, productName, questionId}) => {
   }
 
   const handleOnSubmit = (e) => {
+
     e.preventDefault();
     let images = imageInput.map( image => {
       let url = URL.createObjectURL(image);
       return url.split('blob:')[1]
     });
 
-    console.log(images);
-    // e.preventDefault();
     axios({
       method: 'post',
       url: '/addAnswer',
@@ -45,7 +44,6 @@ const AddAnswer = ( {body, productName, questionId}) => {
       }
     })
     .then(result => {
-      console.log('it worked!!')
       setAnswerInput('');
       setNameInput('');
       setEmailInput('');
@@ -92,7 +90,6 @@ const AddAnswer = ( {body, productName, questionId}) => {
               {
               imageInput.map( (image, idx) => {
                 let src=URL.createObjectURL(image);
-                // debugger;
                 return <img src={src} key={idx}
                 style={{"height": "80px", "width": "60px"}}/>
               })

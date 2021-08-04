@@ -6,7 +6,8 @@ const Search = ({searchFilter}) => {
 // if no match, show a default "oops, nothing here"
   return (
     <div>
-      <input placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+      <input className='search-bar'
+        placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
         onChange={(e) => searchFilter(e)}
       />
     </div>
