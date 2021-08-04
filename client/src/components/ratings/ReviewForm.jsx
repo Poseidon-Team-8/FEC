@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 
+import ReviewFormRating from './ReviewFormRating.jsx';
 const PhotoContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -28,6 +29,8 @@ const ReviewForm = ({ setDisplayModal }) => {
     <form onSubmit={ (e) => submitForm(e) }>
       <h1>Write Your Review</h1>
       <p>About the [Product Name Here]</p>
+
+      <ReviewFormRating />
       <p>Do you recommend this product</p>
       <label>Yes</label>
       <input type="radio"
@@ -59,7 +62,7 @@ const ReviewForm = ({ setDisplayModal }) => {
       <label htmlFor="photo-files">Upload Your Photos: </label>
       <input type="file"
              id="photo-files"
-             multiple="multiple"
+             multiple
              onChange={ (e) => {setPhotos(Array.from(e.target.files)), console.log(Array.from(e.target.files))}} />
       <br/>
       <PhotoContainer>
