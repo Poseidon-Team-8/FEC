@@ -22,7 +22,8 @@ const Report = ({id}) => {
 
   return (
     <div>
-      <button disabled={disable} onClick={() => handleReport(true)}>Report</button>
+      <button disabled={disable} className='helpful-btn'
+      onClick={() => handleReport(true)}>Report</button>
     </div>
   )
 }

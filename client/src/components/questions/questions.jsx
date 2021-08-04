@@ -94,7 +94,6 @@ class Questions extends React.Component {
         {this.state.searchMessage.length > 2 && !this.state.filteredQuestions.length ?
           <p>Oops, it looks like your search didn't return any matches</p> :
         <div className='qa-container'>
-
           {questionDisplay}
           {buttonDisplay}
           <AddQuestion

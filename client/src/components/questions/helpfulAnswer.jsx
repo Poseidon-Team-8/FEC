@@ -24,7 +24,9 @@ const Helpful = ({id, helpful}) => {
 
   return (
     <div>
-     <span>Helpful?</span><button disabled={disable} onClick={(e) => updateHelpfulness(e)}>Yes ({helpCount})</button>
+     <span>Helpful?</span>
+     <button disabled={disable} className='helpful-btn'
+     onClick={(e) => updateHelpfulness(e)}>Yes</button><span>({helpCount})</span>
     </div>
   )
 }

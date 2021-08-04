@@ -62,7 +62,7 @@ const Answers = ({id}) => {
 
   copyOfAnswers = sortAnswers(copyOfAnswers);
   return (
-    <div className="answers-list">
+    <div  className="answers-list">
       <div>
       {copyOfAnswers.slice(0, answerAmount).map( (answer, key)=>
       <div key={answer.answer_id}>

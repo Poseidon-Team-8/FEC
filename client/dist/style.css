@@ -334,12 +334,41 @@ button:hover {
 
 /*
 ================================================
+              Search Bar
+================================================
+*/
+
+.search-bar {
+  border: 1px solid black;
+  font-size: 20px;
+  padding: 20px 10px;
+  cursor: pointer;
+  line-height: 10%;
+  width: 50%;
+}
+
+
+/*
+================================================
               Individual Question
 ================================================
 */
 
 .individual-question {
   display: flex;
+  justify-content:unset;
+}
+
+.helpful-btn {
+  margin-right: 2px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+.helpful-btn:hover {
+  background-color: white;
 }
 
 /*
@@ -349,6 +378,7 @@ button:hover {
 */
 
 .answers-list {
+  display: flex;
   overflow: auto;
   height: 400px;
 }
@@ -359,10 +389,7 @@ button:hover {
 ================================================
 */
 
-.image-upload-add-answer img {
-  height: 60px;
-  width: 45px;
-}
+
 
 /*
 ================================================
