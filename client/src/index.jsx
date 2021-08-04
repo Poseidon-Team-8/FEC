@@ -32,9 +32,9 @@ function App() {
 
   const clickTracker = (e) => {
     const timestamp = Date.now()
-    console.log(timestamp)
-    console.log(e)
-    console.log(FindModule(e))
+    // console.log(timestamp)
+    // console.log(e)
+    // console.log(FindModule(e))
   }
 
   if (!product) {
