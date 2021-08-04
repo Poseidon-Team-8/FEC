@@ -62,11 +62,11 @@ const Answers = ({id}) => {
 
   copyOfAnswers = sortAnswers(copyOfAnswers);
   return (
-    <div className="answers-list">
+    <div  className="answers-list">
       <div>
       {copyOfAnswers.slice(0, answerAmount).map( (answer, key)=>
       <div key={answer.answer_id}>
-        <p >A: {answer.body}</p>
+        <p><strong>A:</strong> {answer.body}</p>
         <p>by <strong>{answer.answerer_name} </strong>
         {moment(answer.date).format('MMMM D YYYY')}</p>
         <Helpful id={answer.answer_id} helpful={answer.helpfulness}/>

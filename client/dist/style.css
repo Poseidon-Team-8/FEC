@@ -308,6 +308,45 @@ button:hover {
 
 /*
 ================================================
+                 Review List
+================================================
+*/
+
+.review-list-container {
+  max-height: 800px;
+  margin-top: 0.5em;
+  overflow-y: auto;
+}
+
+/*
+================================================
+           Rating Breakdown Sort
+================================================
+*/
+
+.rating-sort-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rating-sort-button {
+  height: 1.5em;
+  width: auto;
+}
+
+/*
+================================================
+              QA Widget
+================================================
+*/
+
+#qa-container {
+  position: relative;
+  left: 25%;
+}
+
+/*
+================================================
               Add Answer/ Question Modal
 ================================================
 */
@@ -334,12 +373,43 @@ button:hover {
 
 /*
 ================================================
+              Search Bar
+================================================
+*/
+
+.search-bar {
+  border: 1px solid black;
+  font-size: 15px;
+  padding: 15px 10px;
+  cursor: pointer;
+  width: 50%;
+  font-weight: bold;
+}
+
+
+/*
+================================================
               Individual Question
 ================================================
 */
 
 .individual-question {
+  width: 52%;
+  font-weight: bold;
   display: flex;
+  justify-content:space-between;
+}
+
+.helpful-btn {
+  margin-right: 2px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+.helpful-btn:hover {
+  background-color: white;
 }
 
 /*
@@ -349,45 +419,20 @@ button:hover {
 */
 
 .answers-list {
+  display: flex;
   overflow: auto;
   height: 400px;
 }
 
 /*
 ================================================
-              Add Answer Form
+              Helpful & Add Answer
 ================================================
 */
 
-.image-upload-add-answer img {
-  height: 60px;
-  width: 45px;
-}
-
-/*
-================================================
-                 Review List
-================================================
-*/
-
-.review-list-container {
-  max-height: 800px;
-  margin-top: 0.5em;
-  overflow-y: auto;
-}
-
-/*
-================================================
-           Rating Breakdown Sort
-================================================
-*/
-
-.rating-sort-menu {
+#helpful-add-answer {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.rating-sort-button {
-  height: 1.5em;
-  width: auto;
-}
+
