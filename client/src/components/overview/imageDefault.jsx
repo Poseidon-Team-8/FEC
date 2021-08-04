@@ -8,7 +8,7 @@ function Default(props) {
   }
   let photos = props.styles[props.styleIndex].photos;
   return (
-    <div className="image-gallery">
+    <div id="ImageGallery" className="image-gallery">
       <div className="image-container">
       <img
         className="main"

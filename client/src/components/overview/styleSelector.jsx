@@ -6,7 +6,7 @@ function StyleSelector(props) {
   }
 
   return (
-    <div className="style-selector">
+    <div id="StyleSelector" className="style-selector">
       <p className="style-name">Style > <b>{props.styles[props.styleIndex].name}</b></p>
         <div className="styles-grid">
           {props.styles.map((item, index) =>

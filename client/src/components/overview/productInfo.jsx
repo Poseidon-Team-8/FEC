@@ -10,7 +10,7 @@ function ProductInfo(props) {
   const priceInfo = `Price: ${prices.original_price}`
 
   return (
-    <div>
+    <div id="ProductInfo">
       <h2>{props.product.name}</h2>
       {/* <StarRating ratingAvg={ ratingAvg }/> */}
       <p>Category: {props.product.category} > Price:
