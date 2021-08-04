@@ -10,7 +10,11 @@ const Answers = ({id}) => {
   const [ answers, setAnswer] = useState([]);
   const [answerAmount, setAnswerAmount] = useState(2);
   const [buttonText, setButton] = useState('SEE MORE ANSWERS');
-
+/*
+  ============================
+    add overflow=auto to answers so it turns into scrolling when there's lots of answers
+  ============================
+*/
 
   const toggleButton = () => {
     if (answerAmount === 2 ) {
@@ -58,7 +62,8 @@ const Answers = ({id}) => {
 
   copyOfAnswers = sortAnswers(copyOfAnswers);
   return (
-    <div>
+    <div className="answers-list">
+      <div>
       {copyOfAnswers.slice(0, answerAmount).map( (answer, key)=>
       <div key={answer.answer_id}>
         <p >A: {answer.body}</p>
@@ -69,6 +74,7 @@ const Answers = ({id}) => {
       </div>
       )}
       {answers.length > 2 ? <button onClick={() => toggleButton()}>{buttonText}</button> : null}
+      </div>
     </div>
   )
 }

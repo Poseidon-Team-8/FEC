@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const AddAnswer = ( {body, productName, questionId}) => {
 
-  // const [productName, setProductName] = useState('');
   const [answerInput, setAnswerInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
@@ -12,20 +11,41 @@ const AddAnswer = ( {body, productName, questionId}) => {
   const [isClicked, setIsClicked] = useState(false);
 
 
-  const handleOnSubmit = () => {
+
+  const handleImageInput = (e) => {
+
+    if ( e.target.files.length > 5) {
+      e.target.value = null;
+      alert('You cannot upload more than 5 images!');
+    } else {
+      setImageInput([...e.target.files]);
+    }
+  }
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    let images = imageInput.map( image => {
+      let url = URL.createObjectURL(image);
+      return url.split('blob:')[1]
+    });
+
+    console.log(images);
+    // e.preventDefault();
     axios({
       method: 'post',
       url: '/addAnswer',
       data: {
         body: `${answerInput}`,
         name: `${nameInput}`,
-        email: `${emailInput}`
+        email: `${emailInput}`,
+        photos: images
       },
       headers: {
         id: `${questionId}`
       }
     })
     .then(result => {
+      console.log('it worked!!')
       setAnswerInput('');
       setNameInput('');
       setEmailInput('');
@@ -36,7 +56,6 @@ const AddAnswer = ( {body, productName, questionId}) => {
     })
   }
 
-// toggle button once I get response so I can clear fields firts
   return (
     <div>
       { !isClicked ? <button onClick={() => setIsClicked(true)}>Add Answer</button> :
@@ -46,7 +65,8 @@ const AddAnswer = ( {body, productName, questionId}) => {
           <h2>Submit Your Answer </h2>
           <h3>{body}: </h3>
           <p>{productName}</p>
-          <form>
+          <form
+          onSubmit={(e) => handleOnSubmit(e)}>
             <label>
               Your Answer*:
               <input className='submit-answer' type='text' maxLength='1000' required
@@ -68,12 +88,17 @@ const AddAnswer = ( {body, productName, questionId}) => {
             <label>
               Upload your photos:
               <input type='file' multiple
-              onChange={(e) => setImageInput(URL.createObjectURL(e.target.files[0]))} />
-              <img src={imageInput} />
+                onChange={(e) => handleImageInput(e)} />
+              {
+              imageInput.map( (image, idx) => {
+                let src=URL.createObjectURL(image);
+                // debugger;
+                return <img src={src} key={idx}
+                style={{"height": "80px", "width": "60px"}}/>
+              })
+              }
             </label>
-              <input className='submit-answerButton' type='submit' value='Submit Answer'
-              onClick={() => handleOnSubmit()}
-              />
+              <input className='submit-answerButton' type='submit' value='Submit Answer'/>
           </form>
         </div>
       </div>

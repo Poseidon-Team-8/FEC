@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Cart(props) {
   if (!props.styles.length) {
@@ -6,7 +6,7 @@ function Cart(props) {
   }
   let skus = props.styles[props.styleIndex].skus;
   return (
-    <div className="cart">
+    <div id="Cart" className="cart">
       {Size(skus, props.updateSKU)}
       {Quantity(skus, props.sku, props.updateQuantity)}
       <button onClick={() => props.updateCart()}>Add to Bag</button>

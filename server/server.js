@@ -25,6 +25,9 @@ app.get('/productInfo', (req, res) => {
     .then(response => {
       res.send(response.data)
     })
+    .catch(error => {
+      console.log('PRODUCT INFO SERVER SIDE: ', error);
+    })
 })
 
 app.get('/styles', (req, res) => {
@@ -70,12 +73,14 @@ app.post('/updateCart', (req, res) => {
 */
 
 app.post('/addAnswer', (req, res) => {
+  console.log(req.body.photos);
   axios.post(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,
     {
       body: req.body.body,
       name: req.body.name,
-      email: req.body.email
+      email: req.body.email,
+      photos: req.body.photos
     },
     {
       headers: {
@@ -85,7 +90,10 @@ app.post('/addAnswer', (req, res) => {
   )
   .then(result => {
     res.status(200).send('Success server side!')
-  } )
+  })
+  .catch(error => {
+    console.log('POST ANSWER SERVER SIDE: ', error);
+  })
 })
 
 app.post('/addQuestion', (req, res) => {
@@ -108,7 +116,7 @@ app.post('/addQuestion', (req, res) => {
     res.status(200).send('Success server side!')
   })
   .catch(error => {
-    console.log('SERVER SIDE ERROR', error)
+    console.log('SERVER SIDE ERROR', error);
   })
 })
 
