@@ -8,8 +8,11 @@ import api from './api.js';
 
 function App() {
   const {getProduct} = api;
-  const productId = 17071;
+  const productId = 17074;
   const [product, setProduct] = useState();
+  const [clicks, setClicks] = useState({'NoModule': {}});
+  // uncomment if console logging click data
+  // const [clickCounter, setClickCounter] = useState(0);
 
   useEffect(async () => {
     let res = await getProduct(productId);
@@ -31,10 +34,35 @@ function App() {
   const ModuleIDs = ['ProductInfo', 'StyleSelector', 'Cart', 'ImageGallery']
 
   const clickTracker = (e) => {
-    const timestamp = Date.now()
-    // console.log(timestamp)
-    // console.log(e)
-    // console.log(FindModule(e))
+    const timestamp = Date.now();
+    const module = FindModule(e);
+    if (ModuleIDs.includes(module)) {
+      if (!clicks[module]) {
+        clicks[module] = {};
+      }
+      clicks[module][timestamp] = e;
+    } else {
+      clicks['NoModule'][timestamp] = e;
+    }
+    setClicks({...clicks});
+
+    ////// uncomment to console log every 10th click
+    // setClickCounter(clickCounter + 1);
+    // if (clickCounter % 10 === 0) {
+    //   console.log(clicks)
+    // }
+
+    /* Structure of click tracking data
+    clicks = {
+      module1: {
+        timestamp: tag,
+        timestamp: tag
+      }
+      module2: {
+        timestamp: tag
+      }
+    }
+    */
   }
 
   if (!product) {
