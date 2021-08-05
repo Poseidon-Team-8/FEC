@@ -48,6 +48,7 @@
   margin: auto;
   height: 560px;
   width: auto;
+  max-width: 850px;
   height: 100%;
   position: absolute;
 }
