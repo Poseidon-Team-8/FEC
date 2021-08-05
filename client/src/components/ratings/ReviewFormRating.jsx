@@ -5,25 +5,25 @@ import Star from './Star.jsx';
 const ReviewFormRating = () => {
   const noStar = "./icons/no-star.svg";
   const star = "./icons/star.svg";
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
 
-  const [ratingSelector, setRatingSelector] = useState([]);
+  const ratingSelector = [];
 
-  let ratingState = [];
-  const fillUpTo = (idx) => {
-    ratingState = [];
-    for (let i = 0; i < 5; i++) {
-      if (i < idx) {
-        ratingState.push(<Star starState={ star } key={ i } fillUpTo={ fillUpTo } />)
-      } else {
-        ratingState.push(<Star starState={ noStar } key={ i } fillUpTo={ fillUpTo }/>)
-      }
-    }
-    setRatingSelector(ratingState);
+  const createStar = (src, idx) => {
+    return <Star starState={ src } idx={ idx } isHovering={isHovering} setRating={ setRating } setHoverRating={ setHoverRating } setIsHovering={ setIsHovering } />
   }
 
-  useEffect(() => {
-    fillUpTo(0);
-  }, [])
+  for (let i = 1; i < 6; i++) {
+    const ratingToShow = isHovering ? hoverRating : rating;
+
+    if (i <= ratingToShow) {
+      ratingSelector.push(createStar(star, i))
+    } else {
+      ratingSelector.push(createStar(noStar, i))
+    }
+  }
 
   return (
     <div>

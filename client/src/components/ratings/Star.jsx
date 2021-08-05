@@ -1,11 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 
-const Star = ({ starState, idx, fillUpTo }) => {
-  const [star, setStar] = useState(starState);
-  const [clicked, setClicked] = useState(false);
+const noStar = "./icons/no-star.svg";
+const filledStar = "./icons/star.svg";
+
+const Star = ({ starState, idx, isHovering, setRating, setHoverRating, setIsHovering }) => {
+  const onMouseEnter = () => {
+    setHoverRating(idx);
+    setIsHovering(true);
+  }
+
+  const onMouseLeave = () => {
+    setHoverRating(0);
+    setIsHovering(false);
+  }
 
   return (
-    <img src={ star } onClick={ (e) => fillUpTo(idx) } onMouseEnter={ () => setStar("./icons/star.svg") } onMouseLeave={ () => clicked ? null : setStar("./icons/no-star.svg") }></img>
+    <img src={ starState } onClick={() => setRating(idx)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}></img>
   );
 }
 
