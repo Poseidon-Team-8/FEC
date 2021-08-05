@@ -343,6 +343,7 @@ button:hover {
 #qa-container {
   position: relative;
   left: 25%;
+  width: 100%;
 }
 
 /*
@@ -395,7 +396,6 @@ button:hover {
 
 .individual-question {
   width: 52%;
-  font-weight: bold;
   display: flex;
   justify-content:space-between;
 }

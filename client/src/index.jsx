@@ -8,7 +8,7 @@ import api from './api.js';
 
 function App() {
   const {getProduct} = api;
-  const productId = 17071;
+  const productId = 17078;
   const [product, setProduct] = useState();
 
   useEffect(async () => {

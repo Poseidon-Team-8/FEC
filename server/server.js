@@ -155,8 +155,8 @@ app.get('/productAnswers', (req, res) => {
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,
     {
     params: {
-      page: 2,
-      count: 10
+      page: 1,
+      count: 5
     },
     headers: {
       Authorization: `${auth.TOKEN}`
@@ -185,8 +185,8 @@ app.get('/productQuestions', (req, res) => {
     method: 'get',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=${req.headers.id}`,
     params: {
-      page: 2,
-      count: 10
+      page: 1,
+      count: 7
     },
     headers: {
       Authorization: `${auth.TOKEN}`

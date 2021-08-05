@@ -17,12 +17,12 @@ const Answers = ({id}) => {
 */
 
   const toggleButton = () => {
-    if (answerAmount === 2 ) {
+    if (answerAmount >= 2 ) {
       setAnswerAmount(answers.length);
       setButton('COLLAPSE ANSWERS');
     } else {
       setAnswerAmount(2);
-      setButton('SEE MORE ANSWERS')
+      setButton('LOAD MORE ANSWERS')
     }
   }
 
