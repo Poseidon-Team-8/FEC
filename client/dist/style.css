@@ -51,6 +51,9 @@
   max-width: 850px;
   height: 100%;
   position: absolute;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 
 .thumbnail {

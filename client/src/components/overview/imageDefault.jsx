@@ -11,6 +11,7 @@ function Default(props) {
     <div id="ImageGallery" className="image-gallery">
       <div className="image-container">
       <img
+        loading="lazy"
         className="main"
         src={photos[props.image[props.styleIndex]].url}
         onClick={() => props.toggleModal()}></img>
@@ -20,12 +21,13 @@ function Default(props) {
           toggleModal={props.toggleModal}
           zoom={props.zoom}
           toggleZoom={props.toggleZoom}>
-            <img className="modal-img" src={photos[props.image[props.styleIndex]].url}></img>
+            <img loading="lazy" className="modal-img" src={photos[props.image[props.styleIndex]].url}></img>
         </ImageModal>
 
         <div className="side-images">
           {photos.map((photo, index) =>
             <img
+            loading="lazy"
             className={props.image[props.styleIndex]=== index ? "thumbnail selected-thumb": "thumbnail"}
             src={photo.url}
             key={index}
