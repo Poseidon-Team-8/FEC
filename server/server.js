@@ -174,7 +174,6 @@ app.put('/questionHelpfulness', (req, res) => {
 })
 
 app.get('/productQuestions', (req, res) => {
-  debugger;
   axios({
     method: 'get',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=${req.headers.id}`,
@@ -183,7 +182,6 @@ app.get('/productQuestions', (req, res) => {
     }
   })
   .then(response => {
-    debugger;
     res.send(response.data);
   })
   .catch(err => {
