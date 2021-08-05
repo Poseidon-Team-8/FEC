@@ -27,12 +27,14 @@ class Questions extends React.Component {
       }
     })
     .then( response => {
+      console.log('questions div works')
       let sortedQuestions = response.data.results.sort((a, b) => {
         return b.question_helpfulness - a.question_helpfulness;
       })
       this.setState({productQuestion: sortedQuestions, productName: response.data.name})
     }).
     catch(error => {
+
       console.log('CLIENT SIDE ERROR', error)
     })
   }

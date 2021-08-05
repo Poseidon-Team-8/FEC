@@ -150,13 +150,20 @@ app.put('/answerHelpfulness', (req, res) => {
 })
 
 app.get('/productAnswers', (req, res) => {
+  debugger;
   axios.get(
-    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,{
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,
+    {
+    params: {
+      page: 2,
+      count: 10
+    },
     headers: {
       Authorization: `${auth.TOKEN}`
     }
   })
   .then( result => {
+    debugger;
     res.send(result.data)
   })
 })
@@ -177,6 +184,10 @@ app.get('/productQuestions', (req, res) => {
   axios({
     method: 'get',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=${req.headers.id}`,
+    params: {
+      page: 2,
+      count: 10
+    },
     headers: {
       Authorization: `${auth.TOKEN}`
     }
