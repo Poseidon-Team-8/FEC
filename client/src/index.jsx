@@ -69,8 +69,7 @@ function App() {
     return null
   }
   return (
-    <div onClick={(e) => clickTracker(e.target)}>
-      <h1>TEAM POSEIDON</h1>
+    <div onClick={(e) => clickTracker(e.target)} className="app">
       <Overview productId={productId} product={product} />
       <Questions productId={productId} name={product.name} />
       <Ratings productId={productId} name={product.name}/>
