@@ -11,6 +11,7 @@ function StyleSelector(props) {
         <div className="styles-grid">
           {props.styles.map((item, index) =>
             <img
+              loading="lazy"
               className={props.styleIndex === index ? 'selected-style style-thumbnail' : 'style-thumbnail'}
               key={index}
               index={index}
