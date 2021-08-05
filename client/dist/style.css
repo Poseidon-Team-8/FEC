@@ -342,8 +342,22 @@ button:hover {
 
 #qa-container {
   position: relative;
-  left: 25%;
-  width: 100%;
+}
+
+#more-ans-q {
+  width: 350px;
+  height:75px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#more-ans-q:hover {
+  background-color: rgba(0, 195, 255, 0.92)
+}
+
+#more-add-question {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /*
@@ -369,7 +383,17 @@ button:hover {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid black;
-  width: 80%;
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-answer-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*
@@ -393,7 +417,9 @@ button:hover {
               Individual Question
 ================================================
 */
-
+button:hover {
+  background-color: white;
+}
 .individual-question {
   width: 52%;
   display: flex;
@@ -408,8 +434,18 @@ button:hover {
   border-bottom: 1px solid black;
   cursor: pointer;
 }
-.helpful-btn:hover {
+/* .helpful-btn:hover {
   background-color: white;
+} */
+
+#add-question{
+  width: 250px;
+  height: 75px;
+  font-size: 15px;
+  font-weight: bold;
+}
+#add-question:hover {
+  background-color: rgba(0, 195, 255, 0.92)
 }
 
 /*
@@ -417,18 +453,56 @@ button:hover {
               Answer's List
 ================================================
 */
-
+button {
+  cursor: pointer;
+}
 .answers-list {
+  height: 15%;
+  width: 30%;
   display: flex;
   overflow: auto;
-  height: 400px;
+  height: 250px;
 }
+
+.ans-hlp-rpt {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.usr-name {
+  margin: 5px;
+}
+
+.date-m {
+  margin-right: 5px;
+  margin-left:5px;
+}
+
+.load-more-ans {
+  margin-right: 2px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 
 /*
 ================================================
               Helpful & Add Answer
 ================================================
 */
+.helpful-answer {
+  margin-right: 2px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
 
 #helpful-add-answer {
   display: flex;

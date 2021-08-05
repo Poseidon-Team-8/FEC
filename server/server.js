@@ -73,7 +73,6 @@ app.post('/updateCart', (req, res) => {
 */
 
 app.post('/addAnswer', (req, res) => {
-  console.log(req.body.photos);
   axios.post(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,
     {
@@ -150,21 +149,22 @@ app.put('/answerHelpfulness', (req, res) => {
 })
 
 app.get('/productAnswers', (req, res) => {
-  debugger;
   axios.get(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${req.headers.id}/answers`,
     {
     params: {
       page: 1,
-      count: 5
+      count: 50
     },
     headers: {
       Authorization: `${auth.TOKEN}`
     }
   })
   .then( result => {
-    debugger;
     res.send(result.data)
+  })
+  .catch(error => {
+    console.log('SERVER SIDE ERROR', error);
   })
 })
 
@@ -185,8 +185,8 @@ app.get('/productQuestions', (req, res) => {
     method: 'get',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/?product_id=${req.headers.id}`,
     params: {
-      page: 1,
-      count: 7
+      // page: 1,
+      count: 50
     },
     headers: {
       Authorization: `${auth.TOKEN}`

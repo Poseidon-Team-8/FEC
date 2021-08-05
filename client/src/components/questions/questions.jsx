@@ -34,7 +34,6 @@ class Questions extends React.Component {
       this.setState({productQuestion: sortedQuestions, productName: response.data.name})
     }).
     catch(error => {
-
       console.log('CLIENT SIDE ERROR', error)
     })
   }
@@ -65,7 +64,8 @@ class Questions extends React.Component {
     this.state.productQuestion.length > 2 &&
       this.state.questionAmount < this.state.productQuestion.length ?
       buttonDisplay =
-      <button onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button> :
+      <button id='more-ans-q'
+      onClick={() => this.setQuestions()}>MORE ANSWERED QUESTIONS</button> :
       buttonDisplay = null;
 
     this.state.searchMessage.length > 2 ?
@@ -97,11 +97,13 @@ class Questions extends React.Component {
           <p>Oops, it looks like your search didn't return any matches</p> :
         <div >
           {questionDisplay}
+        <div id='more-add-question'>
           {buttonDisplay}
           <AddQuestion
           productName={this.state.productName}
           productId={this.props.productId}
           />
+        </div>
         </div>
         }
       </div>
