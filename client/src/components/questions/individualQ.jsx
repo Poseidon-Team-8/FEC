@@ -9,7 +9,7 @@ const IndividualQ = ({question, productId, productName}) => {
 
   return (
     <>
-        <div className='individual-question'>
+        <div className='individual-question' id='individual-question'>
           <p><strong>Q: {question.question_body}</strong></p>
           <div id='helpful-add-answer'>
             <HelpfulQ id={question.question_id} helpful={question.question_helpfulness} />
