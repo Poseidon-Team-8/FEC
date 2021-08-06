@@ -13,7 +13,7 @@ function App() {
   const [product, setProduct] = useState();
   const [clicks, setClicks] = useState({'NoModule': {}});
   // // uncomment if console logging click data
-  // const [clickCounter, setClickCounter] = useState(0);
+  const [clickCounter, setClickCounter] = useState(0);
 
   useEffect(async () => {
     let res = await getProduct(productId);
@@ -66,10 +66,10 @@ function App() {
     setClicks({...clicks});
 
     //// uncomment to console log every 10th click
-    // setClickCounter(clickCounter + 1);
-    // if (clickCounter % 10 === 0) {
-    //   console.log(clicks)
-    // }
+    setClickCounter(clickCounter + 1);
+    if (clickCounter % 10 === 0) {
+      console.log(clicks)
+    }
 
     /* Structure of click tracking data
     clicks = {
