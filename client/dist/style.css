@@ -1,7 +1,10 @@
 .app {
   display: flex;
   flex-direction: column;
+  margin-left:  10%;
+  margin-right:  10%;
   align-items: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 /*
@@ -96,6 +99,7 @@
 .style-selector {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .style-name {
@@ -150,6 +154,34 @@
 }
 
 button:hover {
+  background-color: rgba(0, 195, 255, 0.92)
+}
+
+select#size-select {
+    width: 200px;
+    height: 50px;
+    margin: 20px;
+    text-align-last: center;
+    font-size: large;
+}
+
+select#quantity-select {
+  width: 70px;
+  height: 50px;
+  margin: 20px;
+  text-align-last: center;
+  font-size: large;
+}
+
+button#cart {
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+  text-align-last: center;
+  font-size: large;
+}
+
+button#cart:hover {
   background-color: rgba(0, 195, 255, 0.92)
 }
 
@@ -354,7 +386,29 @@ button:hover {
 */
 
 #qa-container {
-  position: relative;
+  margin-bottom: 40px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+#more-ans-q {
+  width: 350px;
+  height:75px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 0;
+}
+
+#more-ans-q:hover {
+  background-color: rgba(0, 195, 255, 0.92)
+}
+
+#more-add-question {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /*
@@ -380,7 +434,16 @@ button:hover {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid black;
-  width: 80%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-answer-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*
@@ -391,10 +454,10 @@ button:hover {
 
 .search-bar {
   border: 1px solid black;
+  width: 100%;
   font-size: 15px;
   padding: 15px 10px;
   cursor: pointer;
-  width: 50%;
   font-weight: bold;
 }
 
@@ -404,10 +467,10 @@ button:hover {
               Individual Question
 ================================================
 */
-
+button:hover {
+  background-color: white;
+}
 .individual-question {
-  width: 52%;
-  font-weight: bold;
   display: flex;
   justify-content:space-between;
 }
@@ -420,8 +483,18 @@ button:hover {
   border-bottom: 1px solid black;
   cursor: pointer;
 }
-.helpful-btn:hover {
+/* .helpful-btn:hover {
   background-color: white;
+} */
+
+#add-question{
+  width: 250px;
+  height: 75px;
+  font-size: 15px;
+  font-weight: bold;
+}
+#add-question:hover {
+  background-color: rgba(0, 195, 255, 0.92)
 }
 
 /*
@@ -429,18 +502,54 @@ button:hover {
               Answer's List
 ================================================
 */
-
+button {
+  cursor: pointer;
+}
 .answers-list {
+  height: 275px;
   display: flex;
   overflow: auto;
-  height: 400px;
 }
+
+.ans-hlp-rpt {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.usr-name {
+  margin: 5px;
+}
+
+.date-m {
+  margin-right: 5px;
+  margin-left:5px;
+}
+
+.load-more-ans {
+  margin-right: 2px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 
 /*
 ================================================
               Helpful & Add Answer
 ================================================
 */
+.helpful-answer {
+  margin-right: 2px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
 
 #helpful-add-answer {
   display: flex;

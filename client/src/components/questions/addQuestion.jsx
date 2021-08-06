@@ -34,7 +34,8 @@ const AddQuestion = ({ productName, productId}) => {
 
   return (
     <div>
-      { !isClicked ? <button onClick={() => setIsClicked(true)}>Add A Question</button> :
+      { !isClicked ? <button id='add-question'
+      onClick={() => setIsClicked(true)}>ADD A QUESTION &nbsp; &nbsp; +</button> :
       <div className='modal-container'>
         <div className='modal-content'>
         <button onClick={() => setIsClicked(false)}>Exit</button>
