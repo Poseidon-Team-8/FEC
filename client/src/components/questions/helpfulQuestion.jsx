@@ -22,8 +22,13 @@ const HelpfulQ = ( {id, helpful} ) => {
   }
 
   return (
+<<<<<<< HEAD
     <div className='helpful-question'>
       <span id='helpful'>Helpful?</span>
+=======
+    <div className='helpful-question' id='helpful-question'>
+      <span>Helpful?</span>
+>>>>>>> main
       <button disabled={disable} className='helpful-btn'
       onClick={(e) => updateHelpfulness(e)}>Yes </button><span id='helpful'>({helpCount})</span>
     </div>

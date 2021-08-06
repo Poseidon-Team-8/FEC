@@ -33,7 +33,7 @@ const AddQuestion = ({ productName, productId}) => {
   }
   console.log(productName)
   return (
-    <div>
+    <div id='add-question'>
       { !isClicked ? <button id='add-question'
       onClick={() => setIsClicked(true)}>ADD A QUESTION &nbsp; &nbsp; +</button> :
       <div className='modal-container'>
