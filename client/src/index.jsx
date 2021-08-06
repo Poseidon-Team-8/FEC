@@ -8,8 +8,7 @@ import api from './api.js';
 
 function App() {
   const {getProduct} = api;
-  const productId = 17122;
-
+  const productId = 17212;
   const [product, setProduct] = useState();
   const [clicks, setClicks] = useState({'NoModule': {}});
   // // uncomment if console logging click data
@@ -40,7 +39,14 @@ function App() {
                      'ReviewListButtons',
                      'ReviewListSortDropdown',
                      'RatingBreakdown',
-                     'ProductBreakdown'
+                     'ProductBreakdown',
+                     'answers',
+                     'individual-question',
+                     'add-answer',
+                     'report',
+                     'search',
+                     'helpful-question',
+                     'add-question'
                     ]
 
   const clickTracker = (e) => {
