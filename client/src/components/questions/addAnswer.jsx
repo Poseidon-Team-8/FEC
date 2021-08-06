@@ -66,37 +66,42 @@ const AddAnswer = ( {body, productName, questionId}) => {
           <p>{productName}</p>
           <form className='add-answer-form'
           onSubmit={(e) => handleOnSubmit(e)}>
-            <label>
+            <label className='label-form'>
               Your Answer*:
-              <input className='submit-answer' type='text' maxLength='1000' required
+              <input id='submit-ans' type='text' maxLength='1000' required
               value={answerInput} onChange={(e) => setAnswerInput(e.target.value)}/>
             </label>
-            <label>
+            <label className='label-form'>
               What is your nickname*:
-              <input className='submit-name' type='text' maxLength='60' required
-              value={nameInput} placeHolder='Example: jack543!'
+              <input id='submit-name' type='text' maxLength='60' required
+              value={nameInput} placeholder='Example: jack543!'
               onChange={(e) => setNameInput(e.target.value)}/>
             </label>
-            <label>
+            <label className='label-form'>
               Your email*:
-              <input className='submit-email' type='email' maxLength='60' required
-              value={emailInput} placeHolder='Example: jack@email.com'
+              <input id='submit-email' type='email' maxLength='60' required
+              value={emailInput} placeholder='Example: jack@email.com'
               onChange={(e) => setEmailInput(e.target.value)}/>
             </label>
             <p>For authentication reasons, you will not be emailed</p>
-            <label>
+            <label id='img-upload'>
               Upload your photos:
-              <input type='file' multiple
+              <input id='choose-file' type='file' multiple
                 onChange={(e) => handleImageInput(e)} />
+              <div id='img-container'>
+
               {
               imageInput.map( (image, idx) => {
                 let src=URL.createObjectURL(image);
-                return <img src={src} key={idx}
+                return <img id='ans-img' src={src} key={idx}
                 style={{"height": "80px", "width": "60px"}}/>
               })
               }
+              </div>
             </label>
-              <input className='submit-answerButton' type='submit' value='Submit Answer'/>
+              <div id='submit-ans-container'>
+                <input id='submit-answerButton' type='submit' value='Submit Answer'/>
+              </div>
           </form>
         </div>
       </div>

@@ -138,9 +138,9 @@ and display the add answer form when isClicked is true
     length is less than 3
 
   ADD ANSWER FORM
-    -[] Add upload feature input
-      - [] add css to make images thumbnails
-    - [] refactor POST request to include image upload
-    - [] refactor POST handlers and POST request inside handler to include image upload
+    -[x] Add upload image feature input
+      - [x] add css to make images thumbnails
+    - [x] refactor POST request to include image upload
+    - [x] refactor POST handlers and POST request inside handler to include image upload
 
 ## CSS

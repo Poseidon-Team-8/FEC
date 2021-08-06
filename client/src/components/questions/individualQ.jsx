@@ -9,10 +9,6 @@ const IndividualQ = ({question, productId, productName}) => {
 
   return (
     <>
-<<<<<<< HEAD
-
-=======
->>>>>>> main
         <div className='individual-question'>
           <p><strong>Q: {question.question_body}</strong></p>
           <div id='helpful-add-answer'>
