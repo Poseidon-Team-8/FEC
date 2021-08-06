@@ -4,8 +4,10 @@ const path = require('path');
 const port = 3000;
 const axios = require('axios');
 const auth = require('../config.js');
+var compression = require('compression')
 
 app.use(express.json());
+app.use(compression());
 app.use(express.static(path.join(__dirname, '..', '/client/dist')));
 
 /*
@@ -261,6 +263,59 @@ app.get('/meta', (req, res) => {
     .catch( err => {
       res.send(err);
     })
+})
+
+app.post('/create-review', (req, res) => {
+
+  // let options = {
+  //   method: 'post',
+  //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
+  //   headers: {
+  //     'Authorization': `${auth.TOKEN}`
+  //   },
+  //   data: JSON.stringify(data)
+  // }
+  // console.log(options.data)
+
+  let data = {
+    "product_id": req.body.product_id,
+    "rating": parseInt(req.body.rating),
+    "summary": req.body.summary,
+    "body": req.body.body,
+    "recommend": req.body.recommend,
+    "name": req.body.name,
+    "email": req.body.email,
+    "photos": req.body.photos,
+    "characteristics": req.body.characteristics
+  };
+  console.log(data);
+
+  var config = {
+    method: 'post',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
+    headers: {
+      'Authorization': `${auth.TOKEN}`,
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios(config)
+  .then( (response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch( (err) => {
+    res.send(err);
+
+  })
+
+  // axios(config)
+  // .then( response => {
+  //   res.send(response.data)
+  // })
+  // .catch( err => {
+  //   res.send(err);
+  // })
 })
 
 // ===================================================

@@ -6,7 +6,7 @@ import ReviewListSort from './ReviewListSort.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 
-const Ratings = ({ productId }) => {
+const Ratings = ({ productId, name }) => {
 
   const [reviews, setReviews] = useState([]);
   const [meta, setMeta] = useState(undefined);
@@ -15,7 +15,7 @@ const Ratings = ({ productId }) => {
   const getReviews = (sort, count) => {
     axios.get('/reviews', {
       headers: {
-        id: 18029,
+        id: productId,
         reqtype: 'general',
         sort: `${sort}`,
         count: count
@@ -32,7 +32,7 @@ const Ratings = ({ productId }) => {
   const getMetaData = () => {
     axios.get('/meta', {
       headers: {
-        id: 18029
+        id: productId
       }
     })
     .then( (res) => {
@@ -60,7 +60,7 @@ const Ratings = ({ productId }) => {
         </div>
         <div className="right-col-container">
           <ReviewListSort numReviews={ filteredReviews.length ? filteredReviews.length : reviews.length } totalNumReviews={ reviews.length } getSortedReviews={ getReviews }/>
-          <ReviewList reviews={ filteredReviews.length ? filteredReviews : reviews }/>
+          <ReviewList productName={name} productId={ productId } meta={ meta } reviews={ filteredReviews.length ? filteredReviews : reviews }/>
         </div>
       </div>
       <div style={{ "marginBottom": "5em"}}>
