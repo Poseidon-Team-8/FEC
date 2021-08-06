@@ -32,7 +32,7 @@ const Arrow = styled.img`
 
 const ProductBreakdown = ({ characteristics }) => {
    return (
-    <div>
+    <div id="ProductBreakdown">
       {
         Object.keys(characteristics).map( (characteristic, idx) => {
           const { value } =  characteristics[characteristic];

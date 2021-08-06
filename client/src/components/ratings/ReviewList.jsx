@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ReviewTile from './ReviewTile.jsx';
 import ReviewFormModal from './ReviewFormModal.jsx';
 
-const ReviewList = ({ reviews }) => {
+const ReviewList = ({ reviews, meta, productId, productName }) => {
   if (reviews.length === 0) {
     return (
       <button>Write A Review +</button>
@@ -18,14 +18,14 @@ const ReviewList = ({ reviews }) => {
 
   return (
     <>
-      <div className="review-list-container">
+      <div className="review-list-container" id="ReviewList">
         { formatedReviews.slice(0, numReviewsRendered) }
       </div>
-      <div className="button-container">
+      <div className="button-container" id="ReviewListButtons">
         {
           (numReviewsRendered < formatedReviews.length) ? <button onClick={ () => addReviews() }>More Reviews</button> : null
         }
-        <ReviewFormModal displayModal={ displayModal } setDisplayModal={ setDisplayModal }/>
+        <ReviewFormModal productName={productName} productId={ productId } meta={ meta } displayModal={ displayModal } setDisplayModal={ setDisplayModal }/>
         <button onClick={ () => setDisplayModal(true) }>Write A Review +</button>
       </div>
     </>

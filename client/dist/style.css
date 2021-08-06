@@ -297,6 +297,13 @@ button#cart:hover {
 ================================================
 */
 
+.review-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+}
+
 .seller-response {
   background-color: lightgray;
 }
@@ -357,6 +364,7 @@ button#cart:hover {
 
 .review-list-container {
   max-height: 800px;
+  max-width: 1200px;
   margin-top: 0.5em;
   overflow-y: auto;
 }
