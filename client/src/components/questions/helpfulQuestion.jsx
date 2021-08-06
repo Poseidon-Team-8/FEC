@@ -17,13 +17,15 @@ const HelpfulQ = ( {id, helpful} ) => {
     .then(result => {
       setHelpCount(helpCount + 1);
       setDisable(true);
-      e.target.style.fontWeight = 'bold';
+      // e.target.style.fontWeight = 'bold';
     })
   }
 
   return (
     <div className='helpful-question'>
-      <span>Helpful?</span><button disabled={disable} onClick={(e) => updateHelpfulness(e)}>Yes ({helpCount})</button>
+      <span>Helpful?</span>
+      <button disabled={disable} className='helpful-btn'
+      onClick={(e) => updateHelpfulness(e)}>Yes </button><span>({helpCount})</span>
     </div>
   )
 }
