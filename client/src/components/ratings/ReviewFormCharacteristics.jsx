@@ -63,7 +63,7 @@ const ReviewFormCharacteristics = ({ characteristic, rating, setRating }) => {
 
   return (
     <>
-      <p>{ characteristic }</p>
+      <b><p>{ characteristic }</p></b>
       <ButtonContainer>
         {
           Object.values(CharacteristicTexts[characteristic]).map( (text, idx) => {
