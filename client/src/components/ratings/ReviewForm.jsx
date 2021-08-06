@@ -104,11 +104,11 @@ const ReviewForm = ({ meta, setDisplayModal, productId, productName }) => {
   return (
     <FormContainer>
       <form onSubmit={ (e) => submitForm(e) } className="review-form">
-        <b><h1 style={{"marginBottom": "0.2em"}}>Write Your Review</h1></b>
+        <b><h1 style={{"marginBottom": "0.1em"}}>Write Your Review</h1></b>
         <h3>About the {productName}</h3>
         <br/>
-        <b><p style={{"marginTop": "0.2em"}}>Select Rating</p></b>
-        <ReviewFormRating rating={rating} setRating={setRating} />
+        <b><p style={{"marginTop": "0.1em"}}>Select Rating</p></b>
+        <ReviewFormRating key={ Math.random() } rating={rating} setRating={setRating} />
         { <small>{ ratingExplanation[rating] }</small> }
 
         <b><p>Do you recommend this product?</p></b>
@@ -118,6 +118,7 @@ const ReviewForm = ({ meta, setDisplayModal, productId, productName }) => {
             <input type="radio"
                   checked={productRec === "Yes"}
                   value="Yes"
+                  key={ Math.random }
                   onChange={ (e) => { setProductRec(e.target.value) }}
                     />
           </label>
@@ -127,6 +128,7 @@ const ReviewForm = ({ meta, setDisplayModal, productId, productName }) => {
                   checked={productRec === "No"}
                   id="product-rec-no"
                   value="No"
+                  key={ Math.random }
                   onChange={ (e) => { setProductRec(e.target.value) }}
                   />
           </label>

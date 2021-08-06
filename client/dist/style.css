@@ -337,7 +337,6 @@ button:hover {
   max-height: 800px;
   max-width: 1200px;
   margin-top: 0.5em;
-  overflow-x: hidden;
   overflow-y: auto;
 }
 

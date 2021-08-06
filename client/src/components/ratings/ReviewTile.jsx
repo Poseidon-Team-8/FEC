@@ -32,7 +32,9 @@ const ReviewTile = ({ review }) => {
       </div>
       <div>
         <b>{ summary }</b>
-        <ReviewBody body={ body } />
+        <div style={{"word-break": "break-all", "word-wrap": "break-word"}}>
+          <ReviewBody body={ body } />
+        </div>
         <ReviewPhotos photos={ photos } toggleModal={ toggleModal }/>
         <PhotoModal displayModal={ displayModal } setDisplayModal={ setDisplayModal } imgSrc={ modalImgSrc }/>
         { recommend ? <span className="product-rec"><img src="./icons/check.svg" className="checkmark"></img> <span> I recommend this product</span></span> : null }
