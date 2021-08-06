@@ -8,7 +8,12 @@ import api from './api.js';
 
 function App() {
   const {getProduct} = api;
+<<<<<<< HEAD
   const productId = 17212;
+=======
+  const productId = 17122;
+
+>>>>>>> 41685f82332bd5affa3d157053331a650729a6f5
   const [product, setProduct] = useState();
   const [clicks, setClicks] = useState({'NoModule': {}});
   // // uncomment if console logging click data
