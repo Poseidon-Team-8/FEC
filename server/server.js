@@ -265,18 +265,6 @@ app.get('/meta', (req, res) => {
 
 app.post('/create-review', (req, res) => {
 
-  // let data = {
-  //   product_id: req.body.product_id,
-  //   rating: req.body.rating,
-  //   recommend: req.body.recommend,
-  //   characteristics: req.body.characteristics,
-  //   body: req.body.body,
-  //   name: req.body.name,
-  //   email: req.body.email,
-  //   summary: req.body.summar,
-  //   photos: req.body.photos
-  // };
-
   // let options = {
   //   method: 'post',
   //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
@@ -287,36 +275,45 @@ app.post('/create-review', (req, res) => {
   // }
   // console.log(options.data)
 
-  var data = JSON.stringify({
-    "product_id": 18029,
-    "rating": 5,
-    "summary": "test",
-    "body": "testoijfweijfweoijwfvnwuecnuesncuenviernveivnejnveuvneirv",
-    "recommend": true,
-    "name": "test",
-    "email": "test@test.com",
-    "photos": [],
-    "characteristics": {
-      "60446": 1
-    }
-  });
+  let data = {
+    "product_id": req.body.product_id,
+    "rating": parseInt(req.body.rating),
+    "summary": req.body.summary,
+    "body": req.body.body,
+    "recommend": req.body.recommend,
+    "name": req.body.name,
+    "email": req.body.email,
+    "photos": req.body.photos,
+    "characteristics": req.body.characteristics
+  };
+  console.log(data);
 
   var config = {
     method: 'post',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
     headers: {
-      'Authorization': `${auth.TOKEN}`
+      'Authorization': `${auth.TOKEN}`,
+      'Content-Type': 'application/json'
     },
     data : data
   };
 
-  axios(options)
-  .then( response => {
-    res.send(response.data)
+  axios(config)
+  .then( (response) => {
+    console.log(JSON.stringify(response.data));
   })
-  .catch( err => {
+  .catch( (err) => {
     res.send(err);
+
   })
+
+  // axios(config)
+  // .then( response => {
+  //   res.send(response.data)
+  // })
+  // .catch( err => {
+  //   res.send(err);
+  // })
 })
 
 // ===================================================

@@ -65,7 +65,7 @@ const ReviewForm = ({ meta, setDisplayModal, productId, productName }) => {
 
     let characteristics = {}
     for (let characteristic in meta.characteristics) {
-      characteristics[meta.characteristics[characteristic].id] = characteristicRatings[characteristic];
+      characteristics[meta.characteristics[characteristic].id] = parseInt(characteristicRatings[characteristic]);
     }
 
     let photoURLs = [];
@@ -78,15 +78,15 @@ const ReviewForm = ({ meta, setDisplayModal, productId, productName }) => {
       method: "post",
       url: "/create-review",
       data: {
-        product_id: 18029,
-        rating: `${rating}`,
-        recommend: (productRec === "Yes"),
-        characteristics: characteristics,
-        photos: photoURLs,
-        summary: `${summary}`,
-        body: `${bodyText}`,
-        name: `${name}`,
-        email: `${email}`
+        "product_id": 18029,
+        "rating": `${rating}`,
+        "recommend": (productRec === "Yes"),
+        "characteristics": characteristics,
+        "photos": photoURLs,
+        "summary": `${summary}`,
+        "body": `${bodyText}`,
+        "name": `${name}`,
+        "email": `${email}`
       }
     })
     .then( (res) => {
@@ -137,12 +137,12 @@ const ReviewForm = ({ meta, setDisplayModal, productId, productName }) => {
             return (
               <div>
                 {
-                  (characteristic === "Size") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={sizeRating} setRating={setSizeRating}/> :
-                  (characteristic === "Width") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={widthRating} setRating={setWidthRating}/> :
-                  (characteristic === "Comfort") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={comfortRating} setRating={setComfortRating}/> :
-                  (characteristic === "Quality") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={qualityRating} setRating={setQualityRating}/> :
-                  (characteristic === "Length") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={lengthRating} setRating={setLengthRating}/> :
-                  (characteristic === "Fit") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={fitRating} setRating={setFitRating}/> : null
+                  (characteristic === "Size") ? <ReviewFormCharacteristics key={ Math.random() } characteristic={ characteristic } rating={sizeRating} setRating={setSizeRating}/> :
+                  (characteristic === "Width") ? <ReviewFormCharacteristics key={ Math.random() } characteristic={ characteristic } rating={widthRating} setRating={setWidthRating}/> :
+                  (characteristic === "Comfort") ? <ReviewFormCharacteristics key={ Math.random() } characteristic={ characteristic } rating={comfortRating} setRating={setComfortRating}/> :
+                  (characteristic === "Quality") ? <ReviewFormCharacteristics key={ Math.random() } characteristic={ characteristic } rating={qualityRating} setRating={setQualityRating}/> :
+                  (characteristic === "Length") ? <ReviewFormCharacteristics key={ Math.random() } characteristic={ characteristic } rating={lengthRating} setRating={setLengthRating}/> :
+                  (characteristic === "Fit") ? <ReviewFormCharacteristics key={ Math.random() } characteristic={ characteristic } rating={fitRating} setRating={setFitRating}/> : null
                 }
               </div>
             )
@@ -171,13 +171,13 @@ const ReviewForm = ({ meta, setDisplayModal, productId, productName }) => {
         <input type="file"
               id="photo-files"
               multiple
-              onChange={ (e) => {setPhotos(Array.from(e.target.files)), console.log(Array.from(e.target.files))}} />
+              onChange={ (e) => {setPhotos(Array.from(e.target.files))}} />
         <br/>
         <PhotoContainer>
           {
             photos ? photos.map( (photo, idx) => {
               let src = URL.createObjectURL(photo);
-              return <img src={ src } style={{"height": "80px", "width": "80px"}}/>
+              return <img key={photo} src={ src } style={{"height": "80px", "width": "80px"}}/>
             }) : null
           }
         </PhotoContainer>
