@@ -263,6 +263,62 @@ app.get('/meta', (req, res) => {
     })
 })
 
+app.post('/create-review', (req, res) => {
+
+  // let data = {
+  //   product_id: req.body.product_id,
+  //   rating: req.body.rating,
+  //   recommend: req.body.recommend,
+  //   characteristics: req.body.characteristics,
+  //   body: req.body.body,
+  //   name: req.body.name,
+  //   email: req.body.email,
+  //   summary: req.body.summar,
+  //   photos: req.body.photos
+  // };
+
+  // let options = {
+  //   method: 'post',
+  //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
+  //   headers: {
+  //     'Authorization': `${auth.TOKEN}`
+  //   },
+  //   data: JSON.stringify(data)
+  // }
+  // console.log(options.data)
+
+  var data = JSON.stringify({
+    "product_id": 18029,
+    "rating": 5,
+    "summary": "test",
+    "body": "testoijfweijfweoijwfvnwuecnuesncuenviernveivnejnveuvneirv",
+    "recommend": true,
+    "name": "test",
+    "email": "test@test.com",
+    "photos": [],
+    "characteristics": {
+      "60446": 1
+    }
+  });
+
+  var config = {
+    method: 'post',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
+    headers: {
+      'Authorization': `${auth.TOKEN}`
+    },
+    data : data
+  };
+
+  axios(options)
+  .then( response => {
+    res.send(response.data)
+  })
+  .catch( err => {
+    res.send(err);
+  })
+})
+
 // ===================================================
 
 app.listen(port, () => {

@@ -16,10 +16,10 @@ const ReviewBody = ({ body }) => {
       );
     } else {
       return (
-        <>
+        <div style={{"overflow-wrap": "anywwhere"}}>
           <p>{ body }</p>
           <a className="extend-text" onClick={ () => setShowPreview(true)}>Show less</a>
-        </>
+        </div>
       )
     }
   } else {

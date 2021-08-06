@@ -32,13 +32,13 @@ const Container = styled.div`
   align-content: center;
 `;
 
-const ReviewFormModal = ({ meta, displayModal, setDisplayModal }) => {
+const ReviewFormModal = ({ productName, productId, meta, displayModal, setDisplayModal }) => {
   return (
     <>
       { displayModal ? (
         <Background>
           <Container>
-            <ReviewForm meta={meta} setDisplayModal={ setDisplayModal }/>
+            <ReviewForm productName={productName} productId={productId} meta={meta} setDisplayModal={ setDisplayModal }/>
           </Container>
         </Background>
       ) : null}

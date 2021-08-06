@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import ReviewFormRating from './ReviewFormRating.jsx';
 import ReviewFormCharacteristics from './ReviewFormCharacteristics.jsx';
@@ -9,6 +10,9 @@ const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   align-content: space-around;
+  max-height: 100%;
+  width: 100%;
+  overflow: auto;
 `;
 
 const PhotoContainer = styled.div`
@@ -27,10 +31,13 @@ const ratingExplanation = {
   5: "Great"
 }
 
-const ReviewForm = ({ meta, setDisplayModal }) => {
+const ReviewForm = ({ meta, setDisplayModal, productId, productName }) => {
   const [rating, setRating] = useState(0);
-  const [productRec, setProductRec] = useState("Yes");
+  const [summary, setSummary] = useState("");
   const [bodyText, setBodyText] = useState("");
+  const [productRec, setProductRec] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [photos, setPhotos] = useState([]);
 
   const [sizeRating, setSizeRating] = useState(0);
@@ -40,11 +47,54 @@ const ReviewForm = ({ meta, setDisplayModal }) => {
   const [lengthRating, setLengthRating] = useState(0);
   const [fitRating, setFitRating] = useState(0);
 
+
   const submitForm = (e) => {
     // make post request and clear inputs
     e.preventDefault();
     setDisplayModal(prev => !prev);
     console.log("form submitted");
+
+    const characteristicRatings = {
+    'Size': sizeRating,
+      'Width': widthRating,
+      'Comfort': comfortRating,
+      'Quality': qualityRating,
+      'Length': lengthRating,
+      'Fit': fitRating,
+    }
+
+    let characteristics = {}
+    for (let characteristic in meta.characteristics) {
+      characteristics[meta.characteristics[characteristic].id] = characteristicRatings[characteristic];
+    }
+
+    let photoURLs = [];
+
+    photos.map( photo => {
+      photoURLs.push(URL.createObjectURL(photo));
+    })
+
+    axios({
+      method: "post",
+      url: "/create-review",
+      data: {
+        product_id: 18029,
+        rating: `${rating}`,
+        recommend: (productRec === "Yes"),
+        characteristics: characteristics,
+        photos: photoURLs,
+        summary: `${summary}`,
+        body: `${bodyText}`,
+        name: `${name}`,
+        email: `${email}`
+      }
+    })
+    .then( (res) => {
+      console.log("it works")
+    })
+    .catch( (err) => {
+      console.log(err);
+    })
   }
 
   const cancelSubmit = () => {
@@ -53,29 +103,34 @@ const ReviewForm = ({ meta, setDisplayModal }) => {
 
   return (
     <FormContainer>
-
       <form onSubmit={ (e) => submitForm(e) } className="review-form">
-        <h1>Write Your Review</h1>
-        <h4>About the [Product Name Here]</h4>
-
-        <b><p>Select Rating</p></b>
+        <b><h1 style={{"marginBottom": "0.2em"}}>Write Your Review</h1></b>
+        <h3>About the {productName}</h3>
+        <br/>
+        <b><p style={{"marginTop": "0.2em"}}>Select Rating</p></b>
         <ReviewFormRating rating={rating} setRating={setRating} />
         { <small>{ ratingExplanation[rating] }</small> }
 
         <b><p>Do you recommend this product?</p></b>
-        <label>Yes</label>
-        <input type="radio"
-              checked={productRec === "Yes"}
-              value="Yes"
-              onChange={ (e) => { setProductRec(e.target.value) }}
-                />
-        <label>No</label>
-        <input type="radio"
-              checked={productRec === "No"}
-              id="product-rec-no"
-              value="No"
-              onChange={ (e) => { setProductRec(e.target.value) }}
-              />
+        <div style={{"display": "flex", "justifyContent": "space-around"}}>
+          <label>
+            Yes
+            <input type="radio"
+                  checked={productRec === "Yes"}
+                  value="Yes"
+                  onChange={ (e) => { setProductRec(e.target.value) }}
+                    />
+          </label>
+          <label>
+            No
+            <input type="radio"
+                  checked={productRec === "No"}
+                  id="product-rec-no"
+                  value="No"
+                  onChange={ (e) => { setProductRec(e.target.value) }}
+                  />
+          </label>
+        </div>
         <br/>
         {
           Object.keys(meta.characteristics).map( characteristic => {
@@ -93,13 +148,15 @@ const ReviewForm = ({ meta, setDisplayModal }) => {
             )
           })
         }
+        <br/>
         <label htmlFor="review-htmlForm-summary"><b>Review Summary:  </b></label>
         <input type="text"
               id="review-htmlForm-summary"
               placeholder="Example: Best purchase ever!"
+              onChange={ (e) => setSummary(e.target.value)}
               maxLength={ 60 } />
         <br/>
-        <label htmlFor="review-htmlForm-body"><b>Review Body: </b></label><br></br>
+        <label htmlFor="review-htmlForm-body"><b>Review Body: </b></label>
         <input type="text"
                   id="review-htmlForm-body"
                   placeholder="Why did you like the product or not?"
@@ -129,6 +186,7 @@ const ReviewForm = ({ meta, setDisplayModal }) => {
               id="username"
               placeholder="Example: jackson11!"
               maxLength={ 60 }
+              onChange={ (e) => setName(e.target.value)}
               required />
         <br/>
         <small>For privacy reasons, do not use your full name or email address</small>
@@ -137,6 +195,7 @@ const ReviewForm = ({ meta, setDisplayModal }) => {
         <input type="email"
               id="email"
               placeholder="Example: jackson11@email.com"
+              onChange={ (e) => setEmail(e.target.value) }
               required />
         <br/>
         <small>For authentication reasons, you will not be emailed</small>

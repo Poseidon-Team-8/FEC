@@ -4,7 +4,6 @@ import CharacteristicRating from './CharacteristicRating.jsx';
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-around;
   margin-left: 5%;
   margin-right: 5%;
 `;
@@ -58,7 +57,6 @@ const ReviewFormCharacteristics = ({ characteristic, rating, setRating }) => {
 
   const onChange = (e) => {
     setRating(e.target.value);
-    console.log(e.target.value);
   }
 
   return (
@@ -68,7 +66,7 @@ const ReviewFormCharacteristics = ({ characteristic, rating, setRating }) => {
         {
           Object.values(CharacteristicTexts[characteristic]).map( (text, idx) => {
             return (
-              <label key={Math.random()*20} style={{ "display": "flex", "flexDirection": "column", "alignItems": "center"}}>
+              <label key={Math.random()*20} style={{ "display": "flex", "flexDirection": "column", "justifyContent": "center", "marginLeft": "5%", "marginRight": "5%"}}>
                 <input type="radio" value={ idx+1 } checked={ parseInt(rating) === (idx+1) } onChange={ (e) => onChange(e) }></input>
                 <small>{ text }</small>
               </label>

@@ -268,13 +268,12 @@ button:hover {
 ================================================
 */
 
-/* .review-form {
+.review-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 80%;
-  max-height: 80%;
-} */
+  width: 80%;
+}
 
 .seller-response {
   background-color: lightgray;
@@ -336,7 +335,9 @@ button:hover {
 
 .review-list-container {
   max-height: 800px;
+  max-width: 1200px;
   margin-top: 0.5em;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
