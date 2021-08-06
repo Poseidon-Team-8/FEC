@@ -55,7 +55,7 @@ const AddAnswer = ( {body, productName, questionId}) => {
   }
 
   return (
-    <div>
+    <div id='add-answer'>
       { !isClicked ? <button className='helpful-answer'
       onClick={() => setIsClicked(true)}>Add Answer</button> :
       <div className='modal-container' >

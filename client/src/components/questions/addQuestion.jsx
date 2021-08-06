@@ -33,7 +33,7 @@ const AddQuestion = ({ productName, productId}) => {
   }
 
   return (
-    <div>
+    <div id='add-question'>
       { !isClicked ? <button id='add-question'
       onClick={() => setIsClicked(true)}>ADD A QUESTION &nbsp; &nbsp; +</button> :
       <div className='modal-container'>
@@ -60,7 +60,7 @@ const AddQuestion = ({ productName, productId}) => {
               onChange={(e) => setEmailInput(e.target.value)}/>
             </label>
             <p>For authentication reasons, you will not be emailed</p>
-              <input className='submit-questionButton' type='submit' value='Submit Question'/>
+              <input className='submit-answerButton' type='submit' value='Submit Question'/>
           </form>
         </div>
       </div>
