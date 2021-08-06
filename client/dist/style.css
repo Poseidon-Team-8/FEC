@@ -351,7 +351,12 @@ button:hover {
 */
 
 #qa-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   margin-bottom: 40px;
+  width: 100%;
 }
 
 #more-ans-q {
@@ -418,7 +423,7 @@ button:hover {
   font-size: 15px;
   padding: 15px 10px;
   cursor: pointer;
-  width: 50%;
+  width: 75%;
   font-weight: bold;
 }
 
@@ -432,7 +437,7 @@ button:hover {
   background-color: white;
 }
 .individual-question {
-  width: 52%;
+  width: 75%;
   display: flex;
   justify-content:space-between;
 }
@@ -469,7 +474,7 @@ button {
 }
 .answers-list {
   height: 15%;
-  width: 30%;
+  width: 100%;
   display: flex;
   overflow: auto;
   height: 250px;

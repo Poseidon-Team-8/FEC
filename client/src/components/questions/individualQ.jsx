@@ -8,8 +8,8 @@ const IndividualQ = ({question, productId, productName}) => {
 
 
   return (
-    <div>
-      <div>
+    <>
+
         <div className='individual-question'>
           <p><strong>Q: {question.question_body}</strong></p>
           <div id='helpful-add-answer'>
@@ -22,8 +22,7 @@ const IndividualQ = ({question, productId, productName}) => {
           </div>
         </div>
         <Answers id={question.question_id} ></Answers>
-      </div>
-    </div>
+    </>
   )
 }
 
