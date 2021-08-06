@@ -60,7 +60,7 @@ const Ratings = ({ productId }) => {
         </div>
         <div className="right-col-container">
           <ReviewListSort numReviews={ filteredReviews.length ? filteredReviews.length : reviews.length } totalNumReviews={ reviews.length } getSortedReviews={ getReviews }/>
-          <ReviewList reviews={ filteredReviews.length ? filteredReviews : reviews }/>
+          <ReviewList meta={ meta } reviews={ filteredReviews.length ? filteredReviews : reviews }/>
         </div>
       </div>
       <div style={{ "marginBottom": "5em"}}>

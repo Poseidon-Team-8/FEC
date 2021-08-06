@@ -2,17 +2,16 @@ import React, { useState, useEffect, useContext } from 'react';
 
 import Star from './Star.jsx';
 
-const ReviewFormRating = () => {
+const ReviewFormRating = ({ rating, setRating }) => {
   const noStar = "./icons/no-star.svg";
   const star = "./icons/star.svg";
-  const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
 
   const ratingSelector = [];
 
   const createStar = (src, idx) => {
-    return <Star starState={ src } idx={ idx } isHovering={isHovering} setRating={ setRating } setHoverRating={ setHoverRating } setIsHovering={ setIsHovering } />
+    return <Star key={Math.random()*20} starState={ src } rating={rating} idx={ idx } isHovering={isHovering} setRating={ setRating } setHoverRating={ setHoverRating } setIsHovering={ setIsHovering } />
   }
 
   for (let i = 1; i < 6; i++) {

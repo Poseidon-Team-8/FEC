@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 
 import ReviewFormRating from './ReviewFormRating.jsx';
+import ReviewFormCharacteristics from './ReviewFormCharacteristics.jsx';
 const PhotoContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -10,10 +11,26 @@ const PhotoContainer = styled.div`
   width: 80%;
 `;
 
-const ReviewForm = ({ setDisplayModal }) => {
-  const [radio, setRadio] = useState("Yes");
+const ratingExplanation = {
+  1: "Poor",
+  2: "Fair",
+  3: "Average",
+  4: "Good",
+  5: "Great"
+}
+
+const ReviewForm = ({ meta, setDisplayModal }) => {
+  const [rating, setRating] = useState(0);
+  const [productRec, setProductRec] = useState("Yes");
   const [bodyText, setBodyText] = useState("");
   const [photos, setPhotos] = useState([]);
+
+  const [sizeRating, setSizeRating] = useState(0);
+  const [widthRating, setWidthRating] = useState(0);
+  const [comfortRating, setComfortRating] = useState(0);
+  const [qualityRating, setQualityRating] = useState(0);
+  const [lengthRating, setLengthRating] = useState(0);
+  const [fitRating, setFitRating] = useState(0);
 
   const submitForm = (e) => {
     // make post request and clear inputs
@@ -27,26 +44,43 @@ const ReviewForm = ({ setDisplayModal }) => {
   }
 
   return (
-    <form onSubmit={ (e) => submitForm(e) }>
+    <form onSubmit={ (e) => submitForm(e) } className="review-form">
       <h1>Write Your Review</h1>
       <p>About the [Product Name Here]</p>
 
-      <ReviewFormRating />
-      <p>Do you recommend this product</p>
+      <ReviewFormRating rating={rating} setRating={setRating} />
+      { <small>{ ratingExplanation[rating] }</small> }
+      <p>Do you recommend this product?</p>
       <label>Yes</label>
       <input type="radio"
-             checked={radio === "Yes"}
+             checked={productRec === "Yes"}
              value="Yes"
-             onChange={ (e) => { setRadio(e.target.value) }}
+             onChange={ (e) => { setProductRec(e.target.value) }}
               />
       <label>No</label>
       <input type="radio"
-             checked={radio === "No"}
+             checked={productRec === "No"}
              id="product-rec-no"
              value="No"
-             onChange={ (e) => { setRadio(e.target.value) }}
+             onChange={ (e) => { setProductRec(e.target.value) }}
              />
       <br/>
+      {
+        Object.keys(meta.characteristics).map( characteristic => {
+          return (
+            <div>
+              {
+                (characteristic === "Size") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={sizeRating} setRating={setSizeRating}/> :
+                (characteristic === "Width") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={widthRating} setRating={setWidthRating}/> :
+                (characteristic === "Comfort") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={comfortRating} setRating={setComfortRating}/> :
+                (characteristic === "Quality") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={qualityRating} setRating={setQualityRating}/> :
+                (characteristic === "Length") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={lengthRating} setRating={setLengthRating}/> :
+                (characteristic === "Fit") ? <ReviewFormCharacteristics characteristic={ characteristic } rating={fitRating} setRating={setFitRating}/> : null
+              }
+            </div>
+          )
+        })
+      }
       <label htmlFor="review-htmlForm-summary">Review Summary: </label>
       <input type="text"
              id="review-htmlForm-summary"
@@ -81,6 +115,7 @@ const ReviewForm = ({ setDisplayModal }) => {
       <input type="text"
              id="username"
              placeholder="Example: jackson11!"
+             maxLength={ 60 }
              required />
       <br/>
       <small>For privacy reasons, do not use your full name or email address</small>

@@ -43,10 +43,6 @@ const Scale = styled.div`
 `;
 
 const CharacteristicScale = ({ characteristic }) => {
-  const displayFit = (characteristic === 'Fit' || characteristic === 'Size');
-  const displayLength = (characteristic === 'Length' || characteristic === 'Width');
-  const displayComfort = (characteristic === 'Comfort');
-  const displayQuality = (characteristic === 'Quality');
 
   const {left, middle, right} = CharacteristicTexts[characteristic];
 

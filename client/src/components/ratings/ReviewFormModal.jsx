@@ -28,16 +28,17 @@ const Container = styled.div`
   background-color: #fefefe;
   cursor: pointer;
   z-index: 21;
-  display: inline-flex;
+  display: flex;
+  align-content: center;
 `;
 
-const ReviewFormModal = ({ displayModal, setDisplayModal }) => {
+const ReviewFormModal = ({ meta, displayModal, setDisplayModal }) => {
   return (
     <>
       { displayModal ? (
         <Background>
           <Container>
-            <ReviewForm setDisplayModal={ setDisplayModal }/>
+            <ReviewForm meta={meta} setDisplayModal={ setDisplayModal }/>
           </Container>
         </Background>
       ) : null}
