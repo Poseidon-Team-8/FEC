@@ -56,14 +56,15 @@ const AddAnswer = ( {body, productName, questionId}) => {
 
   return (
     <div>
-      { !isClicked ? <button onClick={() => setIsClicked(true)}>Add Answer</button> :
+      { !isClicked ? <button className='helpful-answer'
+      onClick={() => setIsClicked(true)}>Add Answer</button> :
       <div className='modal-container' >
         <div className='modal-content'>
         <button onClick={() => setIsClicked(false)}>Exit</button>
           <h2>Submit Your Answer </h2>
           <h3>{body}: </h3>
           <p>{productName}</p>
-          <form
+          <form className='add-answer-form'
           onSubmit={(e) => handleOnSubmit(e)}>
             <label>
               Your Answer*:
