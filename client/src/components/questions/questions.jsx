@@ -27,7 +27,6 @@ class Questions extends React.Component {
       }
     })
     .then( response => {
-      console.log('questions div works')
       let sortedQuestions = response.data.results.sort((a, b) => {
         return b.question_helpfulness - a.question_helpfulness;
       })
