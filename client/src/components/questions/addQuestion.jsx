@@ -31,7 +31,7 @@ const AddQuestion = ({ productName, productId}) => {
       console.log('CLIENT SIDE ERROR', error)
     })
   }
-  console.log(productName)
+  //console.log(productName)
   return (
     <div>
       { !isClicked ? <button id='add-question'
