@@ -90,7 +90,7 @@ function App() {
   return (
     <div onClick={(e) => clickTracker(e.target)} className="app">
       <Overview productId={productId} product={product} />
-      <Questions productId={productId} name={product.name} />
+      <Questions productId={productId} productName={product.name} />
       <Ratings productId={productId} name={product.name}/>
     </div>
   )
