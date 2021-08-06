@@ -97,6 +97,7 @@
 .style-selector {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .style-name {
@@ -151,6 +152,34 @@
 }
 
 button:hover {
+  background-color: rgba(0, 195, 255, 0.92)
+}
+
+select#size-select {
+    width: 200px;
+    height: 50px;
+    margin: 20px;
+    text-align-last: center;
+    font-size: large;
+}
+
+select#quantity-select {
+  width: 70px;
+  height: 50px;
+  margin: 20px;
+  text-align-last: center;
+  font-size: large;
+}
+
+button#cart {
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+  text-align-last: center;
+  font-size: large;
+}
+
+button#cart:hover {
   background-color: rgba(0, 195, 255, 0.92)
 }
 

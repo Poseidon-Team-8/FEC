@@ -9,7 +9,7 @@ function Cart(props) {
     <div id="Cart" className="cart">
       {Size(skus, props.updateSKU)}
       {Quantity(skus, props.sku, props.updateQuantity)}
-      <button onClick={() => props.updateCart()}>Add to Bag</button>
+      <button id="cart" onClick={() => props.updateCart()}>Add to Bag</button>
     </div>
   )
 }
@@ -33,7 +33,7 @@ function Size(skus, updateSKU) {
 function Quantity(skus, sku, updateQuantity) {
   if (sku === 0) {
     return (
-      <select>
+      <select id="quantity-select">
         <option>-</option>
       </select>
     )
