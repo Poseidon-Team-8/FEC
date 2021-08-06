@@ -9,7 +9,7 @@ const Answers = ({id}) => {
 
   const [ answers, setAnswer] = useState([]);
   const [answerAmount, setAnswerAmount] = useState(2);
-  const [buttonText, setButton] = useState('SEE MORE ANSWERS');
+  const [buttonText, setButton] = useState('LOAD MORE ANSWERS');
 /*
   ============================
     add overflow=auto to answers so it turns into scrolling when there's lots of answers
@@ -22,7 +22,7 @@ const Answers = ({id}) => {
       setButton('COLLAPSE ANSWERS');
     } else {
       setAnswerAmount(2);
-      setButton('SEE MORE ANSWERS')
+      setButton('LOAD MORE ANSWERS')
     }
   }
 
@@ -67,13 +67,16 @@ const Answers = ({id}) => {
       {copyOfAnswers.slice(0, answerAmount).map( (answer, key)=>
       <div key={answer.answer_id}>
         <p><strong>A:</strong> {answer.body}</p>
-        <p>by <strong>{answer.answerer_name} </strong>
-        {moment(answer.date).format('MMMM D YYYY')}</p>
-        <Helpful id={answer.answer_id} helpful={answer.helpfulness}/>
-        <Report id={answer.answer_id}/>
+        <div className='ans-hlp-rpt'>
+          <p className='usr-name'>by <strong>{answer.answerer_name} </strong></p>
+          <p id='date-m'>{moment(answer.date).format('MMMM D YYYY')}</p>
+          <Helpful id={answer.answer_id} helpful={answer.helpfulness}/>
+          <Report id={answer.answer_id}/>
+        </div>
       </div>
       )}
-      {answers.length > 2 ? <button onClick={() => toggleButton()}>{buttonText}</button> : null}
+      {answers.length > 2 ? <button className='load-more-ans'
+      onClick={() => toggleButton()}><strong>{buttonText}</strong></button> : null}
       </div>
     </div>
   )

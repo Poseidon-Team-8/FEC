@@ -8,10 +8,9 @@ const IndividualQ = ({question, productId, productName}) => {
 
 
   return (
-    <div >
-      <div >
+    <>
         <div className='individual-question'>
-          <p>Q: {question.question_body}</p>
+          <p><strong>Q: {question.question_body}</strong></p>
           <div id='helpful-add-answer'>
             <HelpfulQ id={question.question_id} helpful={question.question_helpfulness} />
             <AddAnswer
@@ -22,8 +21,7 @@ const IndividualQ = ({question, productId, productName}) => {
           </div>
         </div>
         <Answers id={question.question_id} ></Answers>
-      </div>
-    </div>
+    </>
   )
 }
 
