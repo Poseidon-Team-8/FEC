@@ -32,7 +32,7 @@ const ReviewTile = ({ review }) => {
       </div>
       <div>
         <b>{ summary }</b>
-        <div style={{"word-break": "break-all", "word-wrap": "break-word"}}>
+        <div style={{"wordBreak": "break-all", "wordWrap": "break-word"}}>
           <ReviewBody body={ body } />
         </div>
         <ReviewPhotos photos={ photos } toggleModal={ toggleModal }/>

@@ -15,7 +15,7 @@ const Ratings = ({ productId, name }) => {
   const getReviews = (sort, count) => {
     axios.get('/reviews', {
       headers: {
-        id: 18029,
+        id: productId,
         reqtype: 'general',
         sort: `${sort}`,
         count: count
@@ -32,7 +32,7 @@ const Ratings = ({ productId, name }) => {
   const getMetaData = () => {
     axios.get('/meta', {
       headers: {
-        id: 18029
+        id: productId
       }
     })
     .then( (res) => {

@@ -78,7 +78,7 @@ const ReviewForm = ({ meta, setDisplayModal, productId, productName }) => {
       method: "post",
       url: "/create-review",
       data: {
-        "product_id": 18029,
+        "product_id": productId,
         "rating": `${rating}`,
         "recommend": (productRec === "Yes"),
         "characteristics": characteristics,

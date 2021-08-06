@@ -8,7 +8,7 @@ const ReviewListSort = ({ numReviews, totalNumReviews, getSortedReviews }) => {
   }
 
   return (
-    <div>
+    <div id="ReviewListSortDropdown">
       <b>
         <span>{`${numReviews} reviews, sort by `}</span>
       </b>

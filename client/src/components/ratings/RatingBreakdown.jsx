@@ -28,7 +28,7 @@ const RatingBreakdown = ({ ratings, recommended, reviews, filteredReviews, setFi
 
   return (
     <>
-      <div className="rating-breakdown-container">
+      <div className="rating-breakdown-container" id="RatingBreakdown">
         <RatingSummary ratingAvg={ ratingAvg }/>
         <p style={{ "textAlign": "center"}}>{`${percentRecommended}% of reviews recommend this product`}</p>
         <RatingSortMenu sortSelections={ sortSelections } setSortSelections={ setSortSelections }/>

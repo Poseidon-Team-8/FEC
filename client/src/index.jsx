@@ -12,7 +12,7 @@ function App() {
   const [product, setProduct] = useState();
   const [clicks, setClicks] = useState({'NoModule': {}});
   // uncomment if console logging click data
-  // const [clickCounter, setClickCounter] = useState(0);
+  const [clickCounter, setClickCounter] = useState(0);
 
   useEffect(async () => {
     let res = await getProduct(productId);
@@ -31,10 +31,28 @@ function App() {
   }
 
   // add id to top div of each distinct module, then add to array
-  const ModuleIDs = ['ProductInfo', 'StyleSelector', 'Cart', 'ImageGallery']
+  const ModuleIDs = ['ProductInfo',
+                     'StyleSelector',
+                     'Cart',
+                     'ImageGallery',
+                     'ReviewList',
+                     'ReviewListButtons',
+                     'ReviewListSortDropdown',
+                     'RatingBreakdown',
+                     'ProductBreakdown'
+                    ]
 
   const clickTracker = (e) => {
-    const timestamp = Date.now();
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    }
+    let timestamp = new Date();
+    timestamp = timestamp.toLocaleDateString("en-US", options);
     const module = FindModule(e);
     if (ModuleIDs.includes(module)) {
       if (!clicks[module]) {
@@ -46,11 +64,11 @@ function App() {
     }
     setClicks({...clicks});
 
-    ////// uncomment to console log every 10th click
-    // setClickCounter(clickCounter + 1);
-    // if (clickCounter % 10 === 0) {
-    //   console.log(clicks)
-    // }
+    //// uncomment to console log every 10th click
+    setClickCounter(clickCounter + 1);
+    if (clickCounter % 10 === 0) {
+      console.log(clicks)
+    }
 
     /* Structure of click tracking data
     clicks = {
