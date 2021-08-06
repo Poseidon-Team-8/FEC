@@ -19,6 +19,7 @@
     "start": "webpack --mode development --config webpack.config.js -w",
     "build": "webpack --mode production",
     "server-dev": "npx nodemon server/server.js",
+    "server-prod": "forever start server/server.js",
     "test": "jest"
   },
   "devDependencies": {
