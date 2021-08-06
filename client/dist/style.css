@@ -1,3 +1,12 @@
+/* html {
+  background: url('../../assests/dot-grid.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+} */
+
 .app {
   display: flex;
   flex-direction: column;
@@ -6,6 +15,7 @@
   align-items: center;
   font-family: 'Poppins', sans-serif;
 }
+
 
 /*
 ================================================
@@ -392,6 +402,10 @@ button#cart:hover {
 */
 
 #qa-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   margin-bottom: 40px;
   width: 80%;
   display: flex;
@@ -440,10 +454,11 @@ button#cart:hover {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid black;
-  width: 60%;
+  width: 40%;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space;
 }
 
 .add-answer-form {
@@ -452,6 +467,47 @@ button#cart:hover {
   justify-content: center;
 }
 
+#ans-img {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right:5px;
+}
+
+#choose-file {
+  padding: 10px;
+}
+
+.label-form {
+  padding:10px 0;
+  display: flex;
+  font-weight: 900;
+}
+ #submit-ans {
+   width: 400px;
+   height:200px;
+   margin-left: 10px;
+ }
+ #submit-name {
+   width: 200px;
+   margin-left: 10px;
+ }
+ #submit-email {
+   width: 200px;
+   margin-left: 10px;
+ }
+
+ #submit-answerButton {
+   width: 20%;
+   background-color: white;
+ }
+ #submit-ans-container {
+   display: flex;
+   justify-content: center;
+   margin-top: 75px;
+   margin-bottom: 30px;
+ }
+
+
 /*
 ================================================
               Search Bar
@@ -459,12 +515,13 @@ button#cart:hover {
 */
 
 .search-bar {
-  border: 1px solid black;
+  border: 2px solid black;
   width: 100%;
+  height: 75px;
   font-size: 15px;
-  padding: 15px 10px;
   cursor: pointer;
   font-weight: bold;
+  padding-left: 15px;
 }
 
 
@@ -489,9 +546,6 @@ button:hover {
   border-bottom: 1px solid black;
   cursor: pointer;
 }
-/* .helpful-btn:hover {
-  background-color: white;
-} */
 
 #add-question{
   width: 250px;
@@ -501,6 +555,15 @@ button:hover {
 }
 #add-question:hover {
   background-color: rgba(0, 195, 255, 0.92)
+}
+
+#file-upload-button {
+  background-color: white;
+}
+
+#helpful {
+  border-right: 1px solid black;
+  padding-right: 7px;
 }
 
 /*
@@ -521,7 +584,7 @@ button {
   display: flex;
   flex-direction: row;
   align-content: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -529,7 +592,7 @@ button {
   margin: 5px;
 }
 
-.date-m {
+#date-m {
   margin-right: 5px;
   margin-left:5px;
 }
@@ -546,7 +609,7 @@ button {
 /*
 ================================================
               Helpful & Add Answer
-================================================
+===============================================
 */
 .helpful-answer {
   margin-right: 2px;
