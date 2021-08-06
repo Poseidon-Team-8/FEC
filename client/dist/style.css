@@ -34,6 +34,9 @@
 .image-gallery {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .image-container {
