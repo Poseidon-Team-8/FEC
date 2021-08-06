@@ -98,7 +98,7 @@ class Questions extends React.Component {
           {questionDisplay}
         <div id='more-add-question'>
           {buttonDisplay}
-          <AddQuestion id='add-question'
+          <AddQuestion
           productName={this.props.productName}
           productId={this.props.productId}
           />
