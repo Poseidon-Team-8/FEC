@@ -73,7 +73,7 @@ class Questions extends React.Component {
       <IndividualQ question={question}
       key={question.question_id}
       productId={this.props.productId}
-      productName={this.state.productName}
+      productName={this.props.productName}
       />
     )
     :
@@ -82,14 +82,14 @@ class Questions extends React.Component {
       <IndividualQ question={question}
       key={question.question_id}
       productId={this.props.productId}
-      productName={this.state.productName}
+      productName={this.props.productName}
       />
     )
 
     return (
       <div id='qa-container'>
         <h2>Questions & Answers</h2>
-          <Search
+          <Search id='search'
           searchFilter={this.searchFilterOnChange}
           />
         {this.state.searchMessage.length > 2 && !this.state.filteredQuestions.length ?
@@ -99,7 +99,7 @@ class Questions extends React.Component {
         <div id='more-add-question'>
           {buttonDisplay}
           <AddQuestion
-          productName={this.state.productName}
+          productName={this.props.productName}
           productId={this.props.productId}
           />
         </div>

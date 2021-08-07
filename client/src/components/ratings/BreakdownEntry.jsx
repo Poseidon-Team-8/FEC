@@ -24,7 +24,7 @@ const BreakdownEntry = ({ rating, numReviews, percentage, sortSelections, setSor
   return (
     <div className="breakdown-entry-container">
       <div style={{ "marginRight": "0.5em" }}>
-        <a href="javascript:" className="helpful-count" onClick={ () => setSort() }>{rating} stars</a>
+        <a style={{"cursor": "pointer"}} className="helpful-count" onClick={ () => setSort() }>{rating} stars</a>
       </div>
       <Track>
         <Thumb percentage={ percentage }/>

@@ -20,7 +20,7 @@ const Container = styled.div`
   left: 50%;
   margin-left: auto;
   margin-right: auto;
-  width: 60vw;
+  width: 70vw;
   height: 80vh;
   opacity: 100%;
   transform: translate(-50%, -50%);
@@ -28,16 +28,17 @@ const Container = styled.div`
   background-color: #fefefe;
   cursor: pointer;
   z-index: 21;
-  display: inline-flex;
+  display: flex;
+  align-content: center;
 `;
 
-const ReviewFormModal = ({ displayModal, setDisplayModal }) => {
+const ReviewFormModal = ({ productName, productId, meta, displayModal, setDisplayModal }) => {
   return (
     <>
       { displayModal ? (
         <Background>
           <Container>
-            <ReviewForm />
+            <ReviewForm productName={productName} productId={productId} meta={meta} setDisplayModal={ setDisplayModal }/>
           </Container>
         </Background>
       ) : null}

@@ -10,11 +10,12 @@ let StarRating = ({ rating }) => {
     stars.push(<img src='./icons/star.svg' key={ Math.random(50) }></img>)
   }
   if (numFraction > 0) {
-    let fraction = (numFraction > 0 && numFraction <= 0.25) ? './icons/star-one-quarter.svg' :
-                   (numFraction > 0.25 && numFraction <= 0.5) ? './icons/star-half.svg' :
-                   (numFraction > 0.5 && numFraction <= 0.75) ? './icons/star-three-quarter.svg' :
-                    './icons/star.svg'
-
+    const fraction = [
+      (numFraction > 0.125 && numFraction <= 0.375) && './icons/star-one-quarter.svg',
+      (numFraction > 0.375 && numFraction <= 0.625) && './icons/star-half.svg',
+      (numFraction > 0.625 && numFraction <= 0.875) && './icons/star-three-quarter.svg',
+       './icons/star.svg'
+    ].find(Boolean);
     stars.push(<img src={fraction} key={ Math.random(50) }></img>)
   }
 

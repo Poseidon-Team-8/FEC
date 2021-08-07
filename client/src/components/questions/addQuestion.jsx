@@ -31,9 +31,8 @@ const AddQuestion = ({ productName, productId}) => {
       console.log('CLIENT SIDE ERROR', error)
     })
   }
-
   return (
-    <div>
+    <div id='add-question'>
       { !isClicked ? <button id='add-question'
       onClick={() => setIsClicked(true)}>ADD A QUESTION &nbsp; &nbsp; +</button> :
       <div className='modal-container'>
@@ -41,26 +40,32 @@ const AddQuestion = ({ productName, productId}) => {
         <button onClick={() => setIsClicked(false)}>Exit</button>
           <h2>Ask Your Question </h2>
           <h3>About the {productName}</h3>
-          <form onClick={(e) => handleOnSubmit(e)}>
-            <label>
+          <form className='add-answer-form'
+          onClick={(e) => handleOnSubmit(e)}>
+            <label className='label-form'>
               Your Question*:
-              <input className='submit-question' required type='text' maxLength='1000'
+              <input id='submit-ans' required type='text' maxLength='1000'
               value={questionInput} onChange={(e) => setQuestionInput(e.target.value)}/>
             </label>
-            <label>
+            <label className='label-form'>
               What is your nickname*:
-              <input className='submit-name' required type='text' maxLength='60'
-              value={nameInput} placeHolder='Example: jack543!'
+              <input id='submit-name' required type='text' maxLength='60'
+              value={nameInput} placeholder='Example: jack543!'
               onChange={(e) => setNameInput(e.target.value)}/>
             </label>
-            <label>
+            <label className='label-form'>
               Your email*:
-              <input className='submit-email' required type='email' maxLength='60'
-              value={emailInput} placeHolder='Example: jack@email.com'
+              <input id='submit-email' required type='email' maxLength='60'
+              value={emailInput} placeholder='Example: jack@email.com'
               onChange={(e) => setEmailInput(e.target.value)}/>
             </label>
             <p>For authentication reasons, you will not be emailed</p>
-              <input className='submit-questionButton' type='submit' value='Submit Question'/>
+
+              <div id='submit-ans-container'>
+              <input id='submit-answerButton'
+              type='submit' value='Submit Question'
+              />
+              </div>
           </form>
         </div>
       </div>
