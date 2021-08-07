@@ -6,10 +6,9 @@ import ReviewListSort from './ReviewListSort.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 
-const Ratings = ({ productId, name }) => {
+const Ratings = ({ productId, name, meta }) => {
 
   const [reviews, setReviews] = useState([]);
-  const [meta, setMeta] = useState(undefined);
   const [filteredReviews, setFilteredReviews] = useState([]);
 
   const getReviews = (sort, count) => {
@@ -29,28 +28,12 @@ const Ratings = ({ productId, name }) => {
     })
   }
 
-  const getMetaData = () => {
-    axios.get('/meta', {
-      headers: {
-        id: productId
-      }
-    })
-    .then( (res) => {
-      setMeta(res.data);
-      console.log()
-      let totalReviews = Object.values(res.data.recommended).reduce((a, b) => parseInt(a) + parseInt(b));
-      getReviews('relevant', totalReviews);
-    })
-    .catch( (err) => {
-      console.log("Error Fetching Meta Data");
-    })
-  }
-
   useEffect(() => {
-    getMetaData();
+    let totalReviews = Object.values(meta.recommended).reduce((a, b) => parseInt(a) + parseInt(b));
+    getReviews('relevant', totalReviews);
   }, [])
 
-  if (!reviews || !meta) return null;
+  if (!reviews) return null;
   return (
     <>
       <div className="widget-container">
