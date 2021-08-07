@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Overview from './components/overview/overview.jsx';
-import Ratings from './components/ratings/ratings.jsx';
-import Questions from './components/questions/questions.jsx';
+const Ratings = React.lazy(() => import('./components/ratings/ratings.jsx'));
+const Questions = React.lazy(() => import('./components/questions/questions.jsx'));
 import api from './api.js';
 
 const RatingsContext = React.createContext()
@@ -103,8 +103,10 @@ function App() {
       <RatingsContext.Provider value={meta}>
         <Overview productId={productId} product={product} />
       </RatingsContext.Provider>
+      <Suspense fallback={<div>Loading...</div>}>
         <Questions productId={productId} productName={product.name} />
         <Ratings productId={productId} name={product.name} meta={meta}/>
+      </Suspense>
     </div>
   )
 }
