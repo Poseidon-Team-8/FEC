@@ -1,4 +1,4 @@
-const product = {
+const mockProduct = {
   "id": 17071,
   "campus": "hr-rfp",
   "name": "Heir Force Ones",
@@ -28,7 +28,7 @@ const product = {
   ]
 }
 
-const styles = [
+const mockStyles = [
     {
         "style_id": 90275,
         "name": "White & White",
@@ -427,8 +427,40 @@ const styles = [
     }
 ]
 
-const styleIndex = 0;
+const mockMeta = {
+    "product_id": "17071",
+    "ratings": {
+        "1": "19",
+        "2": "13",
+        "3": "35",
+        "4": "24",
+        "5": "57"
+    },
+    "recommended": {
+        "false": "27",
+        "true": "121"
+    },
+    "characteristics": {
+        "Size": {
+            "id": 57235,
+            "value": "2.5963302752293578"
+        },
+        "Width": {
+            "id": 57236,
+            "value": "2.7264150943396226"
+        },
+        "Comfort": {
+            "id": 57237,
+            "value": "3.2666666666666667"
+        },
+        "Quality": {
+            "id": 57238,
+            "value": "3.2190476190476190"
+        }
+    }
+}
 
-const sku = 522166;
+const mockStyleIndex = 0;
+const mockSKU = 522166;
 
-export default {product, styles, styleIndex}
+export default {mockProduct, mockStyles, mockStyleIndex, mockMeta, mockSKU}

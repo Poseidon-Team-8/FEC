@@ -3,9 +3,6 @@ import ImageModal from './imageModal.jsx'
 
 
 function Default(props) {
-  if (!props.styles.length) {
-    return null
-  }
   let photos = props.styles[props.styleIndex].photos;
   return (
     <div id="ImageGallery" className="image-gallery">

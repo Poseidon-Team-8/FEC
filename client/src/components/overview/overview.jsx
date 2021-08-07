@@ -4,7 +4,8 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import Cart from './cart.jsx';
 import Default from './imageDefault.jsx';
-import api from '../../api.js'
+import api from '../../api.js';
+import mockData from '../../../../mockData.js';
 
 function Overview(props) {
   let imageObject = {}
@@ -12,7 +13,8 @@ function Overview(props) {
     imageObject[i] = 0
   }
   const {getStyles} = api;
-  const [styles, setStyles] = useState([]);
+  const {mockStyles} = mockData;
+  const [styles, setStyles] = useState(mockStyles);
   const [styleIndex, setStyleIndex] = useState(0);
   const [sku, setSKU] = useState(0);
   const [quantity, setQuantity] = useState(0);
@@ -73,9 +75,6 @@ function Overview(props) {
       })
   }
 
-  if (styles && !styles.length) {
-    return null
-  }
   return (
     <div>
       <ProductInfo

@@ -5,14 +5,16 @@ import Overview from './components/overview/overview.jsx';
 const Ratings = React.lazy(() => import('./components/ratings/ratings.jsx'));
 const Questions = React.lazy(() => import('./components/questions/questions.jsx'));
 import api from './api.js';
+import mockData from '../../mockData.js';
 
 const RatingsContext = React.createContext()
 
 function App() {
   const {getProduct, getMetaData} = api;
+  const {mockProduct, mockMeta} = mockData;
   const productId = 17071;
-  const [product, setProduct] = useState();
-  const [meta, setMeta] = useState();
+  const [product, setProduct] = useState(mockProduct);
+  const [meta, setMeta] = useState(mockMeta);
   const [clicks, setClicks] = useState({'NoModule': {}});
   //// uncomment if console logging click data
   const [clickCounter, setClickCounter] = useState(0);
@@ -95,9 +97,6 @@ function App() {
     */
   }
 
-  if (!product || !meta) {
-    return null
-  }
   return (
     <div onClick={(e) => clickTracker(e.target)} className="app">
       <RatingsContext.Provider value={meta}>
