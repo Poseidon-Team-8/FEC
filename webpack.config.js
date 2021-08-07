@@ -1,10 +1,11 @@
 var path = require('path');
 var SRC_DIR = path.join(__dirname, '/client/src');
 var DIST_DIR = path.join(__dirname, '/client/dist');
-var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+var webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
@@ -32,9 +33,10 @@ module.exports = {
               "@babel/preset-react"
             ],
             plugins: [
-              "@babel/plugin-transform-runtime",
-              new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-              new LodashModuleReplacementPlugin
+              ["@babel/plugin-transform-runtime",
+              {options: new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+              }]
+
             ]
           }
         }
