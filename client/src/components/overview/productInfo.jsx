@@ -1,24 +1,35 @@
 import React, { useState, useEffect } from 'react';
-
-// StarRating from './StarRating.jsx' needs ratingAvg passed in
-// ratingAvg is in RatingBreakdown
-// RatingBreakdown uses ratings passed in ratings.jsx
-// so that needs to be put in context
-
+import RatingsContext from '../../index.jsx';
+import StarRating from '../ratings/StarRating.jsx';
 
 function ProductInfo(props) {
   if (!props.product || !props.styles.length) {
-    debugger;
     return null
   }
+
 
   const prices = props.styles[props.styleIndex];
   const priceInfo = `Price: ${prices.original_price}`
 
   return (
     <div id="ProductInfo">
-      <h2>{props.product.name}</h2>
-      {/* <StarRating ratingAvg={ ratingAvg }/> */}
+    <h2>{props.product.name}</h2>
+  <RatingsContext.Consumer>
+    {value => {
+      // could abstract and reuse function in lines 9-15 of RatingBreakdown.jsx
+      let ratings = value.ratings
+      let ratingSum = 0;
+      let numVotes = 0;
+      for (let key in ratings) {
+        ratingSum += parseInt(key)*parseInt(ratings[key]);
+        numVotes += parseInt(ratings[key]);
+      }
+      const ratingAvg = (ratingSum/numVotes).toFixed(1);
+      return (
+        <StarRating rating={ ratingAvg }/>
+      )
+    }}
+  </RatingsContext.Consumer>
       <p>Category: {props.product.category} > Price:
       {prices.sale_price ? <span> <span className="ogprice">${prices.original_price}</span> <span className="salePrice">{prices.sale_price}</span> </span> : <span> ${prices.original_price}</span>}
       </p>

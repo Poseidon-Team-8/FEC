@@ -109,6 +109,6 @@ function App() {
   )
 }
 
-// export default App;
+export default RatingsContext
 
 ReactDOM.render(<App />, document.getElementById('app'));
