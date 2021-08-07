@@ -12,7 +12,7 @@ function App() {
   const {getProduct, getMetaData} = api;
   const productId = 17071;
   const [product, setProduct] = useState();
-  const [meta, setMeta] = useState(undefined);
+  const [meta, setMeta] = useState();
   const [clicks, setClicks] = useState({'NoModule': {}});
   //// uncomment if console logging click data
   const [clickCounter, setClickCounter] = useState(0);
@@ -95,16 +95,16 @@ function App() {
     */
   }
 
-  if (!product) {
+  if (!product || !meta) {
     return null
   }
   return (
     <div onClick={(e) => clickTracker(e.target)} className="app">
       <RatingsContext.Provider value={meta}>
         <Overview productId={productId} product={product} />
-        <Questions productId={productId} productName={product.name} />
-        <Ratings productId={productId} name={product.name}/>
       </RatingsContext.Provider>
+        <Questions productId={productId} productName={product.name} />
+        <Ratings productId={productId} name={product.name} meta={meta}/>
     </div>
   )
 }
