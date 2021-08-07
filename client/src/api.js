@@ -18,4 +18,13 @@ const getStyles = (productId) => {
     })
 }
 
-export default {getProduct, getStyles}
+const getMetaData = (productId) => {
+  return axios.get('/meta', {
+    headers: {id: productId}
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
+export default {getProduct, getStyles, getMetaData}
