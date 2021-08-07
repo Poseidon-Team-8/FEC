@@ -6,17 +6,22 @@ import Ratings from './components/ratings/ratings.jsx';
 import Questions from './components/questions/questions.jsx';
 import api from './api.js';
 
+const RatingsContext = React.createContext()
+
 function App() {
-  const {getProduct} = api;
+  const {getProduct, getMetaData} = api;
   const productId = 17071;
   const [product, setProduct] = useState();
+  const [meta, setMeta] = useState(undefined);
   const [clicks, setClicks] = useState({'NoModule': {}});
-  // // uncomment if console logging click data
+  //// uncomment if console logging click data
   const [clickCounter, setClickCounter] = useState(0);
 
   useEffect(async () => {
-    let res = await getProduct(productId);
-    setProduct(res.data);
+    let res1 = await getProduct(productId);
+    setProduct(res1.data);
+    let res2 = await getMetaData(productId);
+    setMeta(res2.data);
   }, [])
 
   // recursively searches for nearest parent module
@@ -95,13 +100,15 @@ function App() {
   }
   return (
     <div onClick={(e) => clickTracker(e.target)} className="app">
-      <Overview productId={productId} product={product} />
-      <Questions productId={productId} productName={product.name} />
-      <Ratings productId={productId} name={product.name}/>
+      <RatingsContext.Provider value={meta}>
+        <Overview productId={productId} product={product} />
+        <Questions productId={productId} productName={product.name} />
+        <Ratings productId={productId} name={product.name}/>
+      </RatingsContext.Provider>
     </div>
   )
 }
 
-export default App;
+// export default App;
 
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+// StarRating from './StarRating.jsx' needs ratingAvg passed in
+// ratingAvg is in RatingBreakdown
+// RatingBreakdown uses ratings passed in ratings.jsx
+// so that needs to be put in context
+
+
 function ProductInfo(props) {
   if (!props.product || !props.styles.length) {
     debugger;
