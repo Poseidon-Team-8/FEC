@@ -1,10 +1,6 @@
 import React from 'react';
 
 function StyleSelector(props) {
-  if (!props.styles.length) {
-    return null
-  }
-
   return (
     <div id="StyleSelector" className="style-selector">
       <p className="style-name">Style > <b>{props.styles[props.styleIndex].name}</b></p>

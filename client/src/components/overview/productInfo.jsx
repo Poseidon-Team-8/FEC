@@ -3,11 +3,6 @@ import RatingsContext from '../../index.jsx';
 import StarRating from '../ratings/StarRating.jsx';
 
 function ProductInfo(props) {
-  if (!props.product || !props.styles.length) {
-    return null
-  }
-
-
   const prices = props.styles[props.styleIndex];
   const priceInfo = `Price: ${prices.original_price}`
 

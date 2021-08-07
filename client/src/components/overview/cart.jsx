@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 
 function Cart(props) {
-  if (!props.styles.length) {
-    return null
-  }
   let skus = props.styles[props.styleIndex].skus;
   return (
     <div id="Cart" className="cart">
