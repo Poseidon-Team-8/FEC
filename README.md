@@ -24,9 +24,9 @@ In addition to the major components, the project also includes
 
 ## Installation
 1. Create config.js file based on config.example.js template
-2. npm install
-3. npm start
-4. npm run server-dev
+2. Npm install
+3. Npm start
+4. Npm run server-dev
 
 ## Authors
 
