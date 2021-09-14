@@ -30,6 +30,6 @@ In addition to the major components, the project also includes
 
 ## Authors
 
-- [@asamschnaible](https://github.com/Sam-Schnaible)
+- [@samschnaible](https://github.com/Sam-Schnaible)
 - [@spkondo](https://github.com/spkondo)
 - [@bberastain](https://github.com/bberastain)
