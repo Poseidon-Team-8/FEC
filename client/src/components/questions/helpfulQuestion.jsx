@@ -17,7 +17,6 @@ const HelpfulQ = ( {id, helpful} ) => {
     .then(result => {
       setHelpCount(helpCount + 1);
       setDisable(true);
-      // e.target.style.fontWeight = 'bold';
     })
   }
 
