@@ -10,11 +10,7 @@ const Answers = ({id}) => {
   const [ answers, setAnswer] = useState([]);
   const [answerAmount, setAnswerAmount] = useState(2);
   const [buttonText, setButton] = useState('LOAD MORE ANSWERS');
-/*
-  ============================
-    add overflow=auto to answers so it turns into scrolling when there's lots of answers
-  ============================
-*/
+
 
   const toggleButton = () => {
     if (answerAmount === 2 ) {
